@@ -89,17 +89,18 @@
                       type="text"
                       placeholder="請輸入圖片網址"
                       class="form-control"
-                      v-model="temporary.imageUrl[0]"
-                    />
-                    <input
-                      type="text"
-                      placeholder="請輸入圖片網址"
-                      class="form-control"
-                      v-model="temporary.imageUrl[1]"
+                      v-for="(index) in temporary.imageUrl"
+                      :key="index"
+                      v-model="temporary.imageUrl[index]"
                     />
                   </div>
-                  <img :src="temporary.imageUrl[0]" alt class="img-fluid">
+                  <img :src="temporary.imageUrl[index]" alt class="img-fluid" v-for="(index) in temporary.imageUrl" :key="index">
+                  <!-- <img :src="temporary.imageUrl[0]" alt class="img-fluid">
                   <img :src="temporary.imageUrl[1]" alt class="img-fluid">
+                  <img :src="temporary.imageUrl[2]" alt class="img-fluid">
+                  <img :src="temporary.imageUrl[3]" alt class="img-fluid">
+                  <img :src="temporary.imageUrl[4]" alt class="img-fluid">
+                  <img :src="temporary.imageUrl[5]" alt class="img-fluid"> -->
                 </div>
                 <div class="col-6">
                   <div class="form-group">
@@ -266,14 +267,19 @@ export default {
         content: 'test',
         description: 'test',
         imageUrl: [
-          'https://cf.shopee.tw/file/3c83aaa78b7bd35d18777790eb3d8a87'
+          'https://cf.shopee.tw/file/3c83aaa78b7bd35d18777790eb3d8a87',
+          '',
+          '',
+          '',
+          '',
+          ''
         ],
         enabled: true,
         origin_price: '2000',
         price: '1000',
         unit: '個',
         options: {
-          colors: ['曜石黑', '玫瑰金']
+          colors: ['曜石黑', '石墨綠', '玫瑰金']
           // sizes: ['26吋', '29吋']
         }
       },

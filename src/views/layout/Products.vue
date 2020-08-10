@@ -15,40 +15,49 @@
 
     <cart :shopping="apiShoppingData"></cart>
     <notice :message="message"></notice>
-    <ul class="list__products row list-unstyled mb-5">
-      <li class="col-12 col-md-6 col-lg-4" v-for="(item) in hexAPI.data" :key="item.id">
-        <div class="inner__card card mb-3">
-          <!-- v-for 會影響到全部 -->
-          <!-- 方案一 : 產品列表可獨立選擇顏色 -->
-          <!-- 方案二 : 產品內頁才選擇顏色 -->
-          <router-link :to="`/product/${item.id}`">
-            <img :src="item.imageUrl[0]" class="img-fluid rounded-top">
-          </router-link>
-          <!-- <img :src="item.imageUrl[0]" class="img-fluid rounded-top"> -->
-          <div class="card-body">
-            <!-- 商品標題 -->
-            <h5 class="font-weight-bold">{{item.title}}</h5>
-            <!-- 商品顏色 -->
-            <!-- <button type="button" v-for="(color, index) in item.options.colors" :key="index" class="btn btn-secondary mr-2" @click.prevent="selectImg(item.imageUrl[index])">{{color}}</button> -->
-            <p v-if="item.options.colors[1]">多色可選</p>
-            <!-- 商品內容 -->
-            <p class="mt-2">{{item.content}}</p>
-            <!-- 商品價格 -->
-            <div class="d-flex justify-content-between">
-              <small class="mb-0">
-                售價 : <del>{{item.origin_price}}</del>
-              </small>
-              <p class="font-weight-bold mb-0">特價 : {{item.price}}</p>
-            </div>
-          </div>
-          <!-- <div class="card-footer">
-            <router-link :to="`/product/${item.id}`" class="btn btn-primary">More</router-link>
-            <button type="button" class="btn btn-info" @click="addShopping(item.id)">加入購物車</button>
-          </div> -->
+    <div class="row">
+      <div class="col-2">
+        <h3 class="font-weight-bold">分類</h3>
+        <div class="list-group list-group-flush">
+          <a v-for="(item, index) in category" :key="index" class="list-group-item list-group-item-action">{{ item }}</a>
         </div>
-      </li>
-    </ul>
-
+      </div>
+      <div class="col-10">
+        <ul class="list__products row list-unstyled mb-5">
+          <li class="col-12 col-md-6 col-lg-4" v-for="item in hexAPI.data" :key="item.id">
+            <div class="inner__card card mb-3">
+              <!-- v-for 會影響到全部 -->
+              <!-- 方案一 : 產品列表可獨立選擇顏色 -->
+              <!-- 方案二 : 產品內頁才選擇顏色 -->
+              <router-link :to="`/product/${item.id}`">
+                <img :src="item.imageUrl[0]" class="img-fluid rounded-top">
+              </router-link>
+              <!-- <img :src="item.imageUrl[0]" class="img-fluid rounded-top"> -->
+              <div class="card-body">
+                <!-- 商品標題 -->
+                <h5 class="font-weight-bold">{{item.title}}</h5>
+                <!-- 商品顏色 -->
+                <!-- <button type="button" v-for="(color, index) in item.options.colors" :key="index" class="btn btn-secondary mr-2" @click.prevent="selectImg(item.imageUrl[index])">{{color}}</button> -->
+                <p v-if="item.options.colors[1]">多色可選</p>
+                <!-- 商品內容 -->
+                <p class="mt-2">{{item.content}}</p>
+                <!-- 商品價格 -->
+                <div class="d-flex justify-content-between">
+                  <small class="mb-0">
+                    售價 : <del>{{item.origin_price}}</del>
+                  </small>
+                  <p class="font-weight-bold mb-0">特價 : {{item.price}}</p>
+                </div>
+              </div>
+              <!-- <div class="card-footer">
+                <router-link :to="`/product/${item.id}`" class="btn btn-primary">More</router-link>
+                <button type="button" class="btn btn-info" @click="addShopping(item.id)">加入購物車</button>
+              </div> -->
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="d-flex justify-content-center ">
       <!-- :pages="pagination" 的 pagination是由這裡的 data所定義的，因為前面有使用 v-bind-->
       <pagination :pages="pagination" @emit-pages="getData"></pagination>
@@ -84,7 +93,8 @@ export default {
       pagination: {},
       isLoading: false,
       selectImage: false,
-      message: ''
+      message: '',
+      category: []
     }
   },
   methods: {
@@ -98,6 +108,10 @@ export default {
         .then((response) => {
           vm.hexAPI.data = response.data.data
           vm.pagination = response.data.meta.pagination
+          vm.category = vm.hexAPI.data.map((item) => {
+            return item.category
+          })
+          vm.category = [...(new Set(vm.category))]
           vm.isLoading = false
         })
     },
