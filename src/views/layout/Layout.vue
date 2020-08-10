@@ -43,5 +43,33 @@
       </div>
     </nav>
     <router-view/>
+    <footer class="bg-primary">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col">
+            <h4 class="font-weight-bold">台中行李箱維修 <small>© 2020. All Rights Reserved.</small></h4>
+          </div>
+          <div class="col">
+            <div class="d-flex justify-content-center">
+              <a
+                href="tel:0903017408"
+                class="h2 text-decoration-none text-white mr-2">
+                <i class="fas fa-phone-square-alt"></i>
+              </a>
+              <a
+                href="https://www.facebook.com/%E5%8F%B0%E4%B8%AD%E8%A1%8C%E6%9D%8E%E7%AE%B1%E7%B6%AD%E4%BF%AE-2188614921350371/"
+                class="h2 text-decoration-none text-white mr-2">
+                <i class="fab fa-facebook-square "></i>
+              </a>
+              <a
+                href="https://line.me/ti/p/台中行李箱維修"
+                class="h2 text-decoration-none text-white">
+                <i class="fab fa-line"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>

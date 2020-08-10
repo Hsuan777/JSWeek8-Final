@@ -1,5 +1,5 @@
 <template>
-  <section  class="container mt-6">
+  <section  class="container mt-6 mb-5">
     <loading :active.sync="isLoading"></loading>
     <cart :shopping="apiShoppingData"></cart>
     <div class="row">

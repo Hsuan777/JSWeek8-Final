@@ -17,11 +17,14 @@
     <notice :message="message"></notice>
     <ul class="list__products row list-unstyled mb-5">
       <li class="col-12 col-md-6 col-lg-4" v-for="(item) in hexAPI.data" :key="item.id">
-        <div class="card mb-3">
+        <div class="inner__card card mb-3">
           <!-- v-for 會影響到全部 -->
           <!-- 方案一 : 產品列表可獨立選擇顏色 -->
           <!-- 方案二 : 產品內頁才選擇顏色 -->
-          <img :src="item.imageUrl[0]" class="img-fluid rounded-top">
+          <router-link :to="`/product/${item.id}`">
+            <img :src="item.imageUrl[0]" class="img-fluid rounded-top">
+          </router-link>
+          <!-- <img :src="item.imageUrl[0]" class="img-fluid rounded-top"> -->
           <div class="card-body">
             <!-- 商品標題 -->
             <h5 class="font-weight-bold">{{item.title}}</h5>
@@ -38,10 +41,10 @@
               <p class="font-weight-bold mb-0">特價 : {{item.price}}</p>
             </div>
           </div>
-          <div class="card-footer d-flex justify-content-between">
+          <!-- <div class="card-footer">
             <router-link :to="`/product/${item.id}`" class="btn btn-primary">More</router-link>
             <button type="button" class="btn btn-info" @click="addShopping(item.id)">加入購物車</button>
-          </div>
+          </div> -->
         </div>
       </li>
     </ul>
@@ -112,13 +115,11 @@ export default {
         .then(() => {
           vm.getShopping()
           vm.message = '成功加入購物車!'
-          // vm.noticeMessage()
           $('#noticeModal').modal('show')
           vm.isLoading = false
         })
         .catch(() => {
           vm.message = '商品已存在，請修改數量即可~'
-          // vm.noticeMessage()
           $('#noticeModal').modal('show')
           setTimeout(() => {
             $('#noticeModal').modal('hide')
@@ -141,9 +142,6 @@ export default {
           vm.apiShoppingData.moneyTotal = total
           vm.isLoading = false
         })
-    },
-    noticeMessage () {
-      $('#noticeModal').modal('show')
     }
   },
   created () {
