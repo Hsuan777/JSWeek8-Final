@@ -16,7 +16,7 @@
       ref="shoppingModal"
       tabindex="-1"
       role="dialog"
-      aria-labelledby="loginModal"
+      aria-labelledby="shoppingModal"
       aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
@@ -36,11 +36,11 @@
                   <th>商品名稱</th>
                   <th class="text-right">價格</th>
                   <th class="text-center">數量</th>
-                  <th class="text-center">操作</th>
+                  <th class="text-center"></th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(item, index) in shopping.data" :key="index" class="border-top">
+                <tr v-for="(item, index) in shopping.data" :key="index">
                   <td class="align-middle">{{ item.product.title }}</td>
                   <td class="align-middle text-right">{{ item.product.price }}</td>
                   <td class="align-middle text-center">
@@ -53,9 +53,9 @@
                   <td class="align-middle text-center">
                     <button
                       type="button"
-                      class="btn btn-secondary"
+                      class="btn btn-white border-0 btn-lg"
                       @click="deleteShopping( item.product.id )"
-                    >刪除</button>
+                    ><span aria-hidden="true">&times;</span></button>
                   </td>
                 </tr>
               </tbody>
@@ -63,8 +63,8 @@
 
             <h3 class="text-right mr-4">總計金額 : NT.{{ shopping.moneyTotal }}</h3>
             <div class="modal-footer d-flex justify-content-around border-0">
-              <button type="button" class="btn btn-primary" @click="deleteAll">Clean</button>
-              <a href class="btn btn-info" @click.prevent="pay">結帳</a>
+              <button type="button" class="btn btn-secondary btn-lg" @click="deleteAll">Clean</button>
+              <button type="button" class="btn btn-info btn-lg" @click.prevent="pay">結帳</button>
             </div>
           </div>
         </div>

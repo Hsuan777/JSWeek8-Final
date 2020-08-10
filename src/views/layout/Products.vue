@@ -14,6 +14,7 @@
     </button> -->
 
     <cart :shopping="apiShoppingData"></cart>
+    <notice :message="message"></notice>
     <ul class="list__products row list-unstyled mb-5">
       <li class="col-12 col-md-6 col-lg-4" v-for="(item) in hexAPI.data" :key="item.id">
         <div class="card mb-3">
@@ -31,10 +32,10 @@
             <p class="mt-2">{{item.content}}</p>
             <!-- 商品價格 -->
             <div class="d-flex justify-content-between">
-              <p class="mb-0">
-                原價 : <del>{{item.origin_price}}</del>
-              </p>
-              <p class="mb-0">特價 : {{item.price}}</p>
+              <small class="mb-0">
+                售價 : <del>{{item.origin_price}}</del>
+              </small>
+              <p class="font-weight-bold mb-0">特價 : {{item.price}}</p>
             </div>
           </div>
           <div class="card-footer d-flex justify-content-between">
@@ -53,12 +54,15 @@
 </template>
 
 <script type="module">
+import $ from 'jquery'
 import Pagination from '@/components/Pagination.vue'
 import Cart from '@/components/Cart.vue'
+import Notice from '@/components/Notice.vue'
 export default {
   components: {
     Pagination,
-    Cart
+    Cart,
+    Notice
   },
   data () {
     return {
@@ -76,7 +80,8 @@ export default {
       },
       pagination: {},
       isLoading: false,
-      selectImage: false
+      selectImage: false,
+      message: ''
     }
   },
   methods: {
@@ -106,11 +111,18 @@ export default {
         )
         .then(() => {
           vm.getShopping()
-          alert('已成功加入購物車~')
+          vm.message = '成功加入購物車!'
+          // vm.noticeMessage()
+          $('#noticeModal').modal('show')
           vm.isLoading = false
         })
         .catch(() => {
-          alert('商品已存在，請修改數量即可~')
+          vm.message = '商品已存在，請修改數量即可~'
+          // vm.noticeMessage()
+          $('#noticeModal').modal('show')
+          setTimeout(() => {
+            $('#noticeModal').modal('hide')
+          }, 1500)
           vm.isLoading = false
         })
     },
@@ -130,8 +142,8 @@ export default {
           vm.isLoading = false
         })
     },
-    selectImg (imgURL) {
-      this.selectImage = imgURL
+    noticeMessage () {
+      $('#noticeModal').modal('show')
     }
   },
   created () {

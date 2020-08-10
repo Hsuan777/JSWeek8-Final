@@ -1,3 +1,15 @@
+.layout{
+  &__nav{
+    @include media-breakpoint-down(md) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index:1030 ;
+    }
+  }
+}
+
 .banner{
   &__img {
     position: absolute;
@@ -6,7 +18,6 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: -1;
     border-radius: 0 0 0 10px ;
   }
   &__title {
@@ -15,19 +26,18 @@
   &__home{
     background-image: url('https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80');
     box-shadow: 0px 0px 20px map-get($theme-colors, primary);
+    margin-top: -82px;
     right: 0;
+    z-index: -1;
   }
   &__repair {
     background-image: url('https://images.unsplash.com/photo-1503345463055-de0624b23d82?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
-    top: 0;
-    bottom: 0;
   }
 }
 .bg-nav {
   background-color: rgba(0, 0, 0, 0.5);
   @include media-breakpoint-up(md) {
     background-color: transparent;
-
   }
 }
 
