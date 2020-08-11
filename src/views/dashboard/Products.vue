@@ -20,7 +20,7 @@
             <th scope="row" class="text-nowrap">產品分類</th>
             <th scope="row" width="150px">產品名稱</th>
             <th scope="row" width="300px">產品顏色</th>
-            <th scope="row" width="100px" class="text-right text-nowrap">原價</th>
+            <th scope="row" width="100px" class="text-right text-nowrap">售價</th>
             <th scope="row" width="100px" class="text-right text-nowrap">售價</th>
             <th scope="row" width="100px" class="text-center text-nowrap">是否開放</th>
             <th scope="row" class="text-nowrap">編輯</th>
@@ -31,8 +31,8 @@
             <td class="align-middle">{{item.category}}</td>
             <td class="align-middle">{{item.title}}</td>
             <td class="align-middle" v-if="item.options">
-              <span v-for="(item, index) in item.options.colors" :key="index">
-                。{{item}}
+              <span v-for="(color) in item.options.colors" :key="color">
+                。{{color}}
               </span>
             </td>
             <td class="text-right align-middle">{{item.origin_price}}</td>
@@ -84,23 +84,21 @@
               <div class="form-row">
                 <div class="col-6">
                   <div class="form-group">
-                    <label for class>商品圖片</label>
-                    <input
-                      type="text"
-                      placeholder="請輸入圖片網址"
-                      class="form-control"
-                      v-for="(index) in temporary.imageUrl"
-                      :key="index"
-                      v-model="temporary.imageUrl[index]"
-                    />
+                    <label for class>商品圖片(點輸入欄位預覽)
+                      <button type="button" class="btn btn-secondary btn-sm mr-2" @click.prevent="addCell(temporary.imageUrl)">增加圖片欄位</button>
+                      <button type="button" class="btn btn-secondary btn-sm" @click.prevent="removeCell(temporary.imageUrl)">移除圖片欄位</button>
+                    </label>
+                    <blockquote v-for="(item, index) in temporary.imageUrl" :key="index">
+                      <input
+                        type="text"
+                        placeholder="請輸入圖片網址"
+                        class="form-control"
+                        v-model="temporary.imageUrl[index]"
+                        @focus="viewImage(item)"
+                      />
+                    </blockquote>
                   </div>
-                  <img :src="temporary.imageUrl[index]" alt class="img-fluid" v-for="(index) in temporary.imageUrl" :key="index">
-                  <!-- <img :src="temporary.imageUrl[0]" alt class="img-fluid">
-                  <img :src="temporary.imageUrl[1]" alt class="img-fluid">
-                  <img :src="temporary.imageUrl[2]" alt class="img-fluid">
-                  <img :src="temporary.imageUrl[3]" alt class="img-fluid">
-                  <img :src="temporary.imageUrl[4]" alt class="img-fluid">
-                  <img :src="temporary.imageUrl[5]" alt class="img-fluid"> -->
+                  <img :src="viewImageSrc" alt class="img-fluid">
                 </div>
                 <div class="col-6">
                   <div class="form-group">
@@ -158,7 +156,6 @@
                       </div>
                     </div>
                   </div>
-
                   <div class="form-group">
                     <label for class>商品描述</label>
                     <textarea
@@ -179,16 +176,21 @@
                   </div>
                   <!-- 若沒有 value，預設會是布林值 -->
                   <!-- TODO:接收資料回來時，可能還需要再多一個暫存空間放 options -->
-                  <div class="form-check form-check-inline mb-3" v-for="(item, index) in product.options.colors" :key="index">
-                    <input
-                      type="checkbox"
-                      :id="`checkbox${index}`"
-                      class="form-check-input"
-                      :value="item"
-                      v-model="temporary.options.colors"
-                      v-if="temporary.options"
-                    >
-                    <label :for="`checkbox${index}`" class="form-check-label">{{ item }}</label>
+                  <div class="form-group" >
+                    <label class="form-label">商品顏色
+                      <button type="button" class="btn btn-secondary btn-sm mr-2" @click.prevent="addCell(temporary.options.colors)">增加顏色</button>
+                      <button type="button" class="btn btn-secondary btn-sm" @click.prevent="removeCell(temporary.options.colors)">移除顏色</button>
+                    </label>
+                    <div class="form-row justify-content-between">
+                      <div class="col-6" v-for="(color, index) in temporary.options.colors" :key="index">
+                        <input
+                        type="text"
+                        :id="`checkbox${index}`"
+                        class="form-control mb-2"
+                        v-model="temporary.options.colors[index]"
+                      >
+                      </div>
+                    </div>
                   </div>
                   <div class="form-check">
                     <input
@@ -267,12 +269,7 @@ export default {
         content: 'test',
         description: 'test',
         imageUrl: [
-          'https://cf.shopee.tw/file/3c83aaa78b7bd35d18777790eb3d8a87',
-          '',
-          '',
-          '',
-          '',
-          ''
+          'https://cf.shopee.tw/file/3c83aaa78b7bd35d18777790eb3d8a87'
         ],
         enabled: true,
         origin_price: '2000',
@@ -280,7 +277,6 @@ export default {
         unit: '個',
         options: {
           colors: ['曜石黑', '石墨綠', '玫瑰金']
-          // sizes: ['26吋', '29吋']
         }
       },
       hexAPI: {
@@ -291,10 +287,10 @@ export default {
         imageUrl: [],
         options: {
           colors: []
-          // sizes: []
         }
       },
       modalTitle: '',
+      viewImageSrc: '',
       isLoading: false
     }
   },
@@ -314,7 +310,6 @@ export default {
         .then((res) => {
           // 取得該頁資料
           vm.hexAPI.data = res.data.data
-          console.log(vm.hexAPI.data)
           // 取得分頁資訊
           vm.pagination = res.data.meta.pagination
           vm.isLoading = false
@@ -323,7 +318,6 @@ export default {
     /* 新增資料 */
     addData () {
       const vm = this
-      console.log(vm.temporary)
       vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
       vm.axios
         .post(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product`, vm.temporary)
@@ -334,6 +328,7 @@ export default {
     /* 新建資料 */
     // 將 this.product的屬性值複製到暫存
     initData () {
+      this.cleanData()
       this.modalTitle = '新增商品'
       // Object.assign 為潛層拷貝，若需要 options，則必須使用深拷貝
       // this.temporary = Object.assign({}, this.product)
@@ -343,13 +338,15 @@ export default {
     // 將 v-for所取出的 item放入暫存
     copyData (action, item) {
       const vm = this
+      vm.cleanData()
       vm.isLoading = true
       vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
       vm.axios
         .get(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${item.id}`)
         .then((res) => {
-          this.temporary = Object.assign({}, res.data.data)
-          vm.modalTitle = this.temporary.title
+          // this.temporary = Object.assign({}, res.data.data)
+          vm.temporary = JSON.parse(JSON.stringify(res.data.data))
+          vm.modalTitle = vm.temporary.title
           vm.isLoading = false
           if (action === 'edit') {
             $('#addProductModal').modal('show')
@@ -401,8 +398,20 @@ export default {
     // 工具類 //
     cleanData () {
       this.temporary = {
-        imageUrl: []
+        imageUrl: [],
+        options: {
+          colors: []
+        }
       }
+    },
+    addCell (input) {
+      input.push('')
+    },
+    removeCell (input) {
+      input.pop()
+    },
+    viewImage (src) {
+      this.viewImageSrc = src
     }
   },
   created () {

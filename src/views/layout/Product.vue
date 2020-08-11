@@ -4,13 +4,24 @@
     <cart :shopping="apiShoppingData"></cart>
     <div class="row">
       <div class="col-md-12 col-lg-6">
-        <div class="card">
-          <div class="card-head">
-            <img :src="selectImage" class="img-fluid rounded-top">
-            <!-- <img :src="hexAPI.product.imageUrl[0]" class="img-fluid rounded-top"> -->
+        <div class="card border-0">
+          <div class="card-head row">
+            <div class="col-9">
+              <img :src="selectImage" class="img-fluid rounded-top">
+            </div>
+            <!-- 圖片列表 : 方案一 -->
+            <div class="col-3">
+              <div class="d-flex flex-column justify-content-center">
+                <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
+              </div>
+            </div>
           </div>
           <div class="card-body">
-            <p>{{ hexAPI.product.content }}</p>
+            <!-- 圖片列表 : 方案二 -->
+            <!-- <div class="row justify-content-around mb-3">
+              <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg img-fluid" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
+            </div> -->
+            <p>{{ hexAPI.product.description }}</p>
           </div>
         </div>
       </div>
@@ -28,7 +39,7 @@
           </nav>
           <h2 class="font-weight-bold">{{ hexAPI.product.title }}</h2>
           <div class="" v-if="hexAPI.product.options">
-            <button type="button" v-for="(color, index) in hexAPI.product.options.colors" :key="index" class="btn btn-secondary mr-2" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">{{color}}</button>
+            <button type="button" v-for="(color, index) in hexAPI.product.options.colors" :key="index" class="btn btn-secondary mr-2" @click.prevent="selectImg(hexAPI.product.imageUrl[index+1])">{{color}}</button>
           </div>
           <div class="d-flex flex-column align-items-end mb-3">
             <small class="mb-0">

@@ -1,3 +1,14 @@
+.shopping{
+  position: relative;
+  
+}
+.shoppingTop{
+  position: fixed;
+  top: 80px;
+  right: 110px;
+  z-index: 9;
+}
+
 .layout{
   &__nav{
     @include media-breakpoint-down(md) {
@@ -45,6 +56,15 @@
   &__img {
     width: 450px;
     height: 550px;
+  }
+  &__iconImg {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+  &__productListImg{
+    width: 100%;
+    height: 285px;
   }
 }
 .icon{

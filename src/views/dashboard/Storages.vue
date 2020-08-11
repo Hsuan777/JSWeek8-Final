@@ -192,6 +192,10 @@ export default {
     },
     /* 新建檔案 */
     initData () {
+      this.previewTemporary = {
+        file: '',
+        src: ''
+      }
       this.modalTitle = '新增檔案'
     },
     /* 複製資料 */
