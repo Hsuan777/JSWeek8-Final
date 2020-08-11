@@ -26,7 +26,7 @@
       <!-- 商品列表 -->
       <div class="col-10">
         <ul class="list__products row list-unstyled mb-5">
-          <li class="col-12 col-md-6 col-lg-4" v-for="item in hexAPI.data" :key="item.id">
+          <li class="col-12 col-md-6 col-lg-4" v-for="item in category.data" :key="item.id">
             <div class="card mb-3">
               <!-- v-for 會影響到全部 -->
               <!-- 方案一 : 產品列表可獨立選擇顏色 -->
@@ -74,8 +74,7 @@ export default {
   data () {
     return {
       hexAPI: {
-        data: [],
-        product: {}
+        data: []
       },
       apiShoppingData: {
         data: [],
@@ -90,7 +89,7 @@ export default {
       selectImage: false,
       message: '',
       category: {
-        list: [],
+        list: ['全部分類'],
         data: []
       }
     }
@@ -106,8 +105,9 @@ export default {
         .then((response) => {
           vm.hexAPI.data = response.data.data
           vm.pagination = response.data.meta.pagination
-          vm.category.list = vm.hexAPI.data.map((item) => {
-            return item.category
+          vm.category.data = vm.hexAPI.data
+          vm.hexAPI.data.map((item) => {
+            return vm.category.list.push(item.category)
           })
           vm.category.list = [...(new Set(vm.category.list))]
           vm.isLoading = false
@@ -155,17 +155,25 @@ export default {
           vm.isLoading = false
         })
     },
-    categoryData (List) {
+    categoryData (categoryName) {
       const vm = this
-      vm.hexAPI.data.map((item) => {
-        if (item.category = List) {
-          vm.category.data.push(item)
-        }
-      })
+      vm.category.data = []
+      if (categoryName === '全部分類') {
+        vm.category.data = vm.hexAPI.data
+      } else {
+        vm.hexAPI.data.map((item) => {
+          if (item.category === categoryName) {
+            vm.category.data.push(item)
+          }
+        })
+      }
     }
   },
   created () {
     this.getData()
+    this.categoryData()
+  },
+  mounted () {
   }
 }
 </script>
