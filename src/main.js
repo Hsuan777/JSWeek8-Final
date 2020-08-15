@@ -14,8 +14,8 @@ import 'vue-loading-overlay/dist/vue-loading.css'
 // vee-validate，表單驗證
 import Validate from './assets/js/validate.js'
 // Aos
-import AOS from "aos";
-import "aos/dist/aos.css";
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 Vue.config.productionTip = false
 
@@ -28,7 +28,7 @@ Vue.component('loading', Loading)
 
 new Vue({
   created () {
-    AOS.init();
+    AOS.init()
   },
   router,
   render: h => h(App)
