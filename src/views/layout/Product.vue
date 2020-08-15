@@ -2,24 +2,31 @@
   <section  class="container mt-6 mb-5">
     <loading :active.sync="isLoading"></loading>
     <cart :shopping="apiShoppingData"></cart>
+    <notice :message="message"></notice>
     <div class="row">
       <div class="col-md-12 col-lg-6">
         <div class="card border-0">
           <div class="card-head row">
-            <div class="col-9">
+            <div class="col-12">
               <img :src="selectImage" class="img-fluid rounded-top">
             </div>
             <!-- 圖片列表 : 方案一 -->
-            <div class="col-3">
+            <!-- <div class="col-3">
               <div class="d-flex flex-column justify-content-center">
                 <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
               </div>
-            </div>
+            </div> -->
           </div>
-          <div class="card-body">
+          <div class="card-body" v-if="hexAPI.product.imageUrl">
             <!-- 圖片列表 : 方案二 -->
-            <!-- <div class="row justify-content-around mb-3">
-              <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg img-fluid" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
+            <!-- <div class="col"> -->
+              <!-- TODO:左右滑動 loop -->
+            <div class="d-flex flex-wrap" v-if="hexAPI.product.imageUrl[1]">
+              <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg object-fit img-fluid" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
+            </div>
+            <!-- </div> -->
+            <!-- <div class="d-flex justify-content-between mb-3">
+              <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg object-fit img-fluid" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
             </div> -->
             <p>{{ hexAPI.product.description }}</p>
           </div>
@@ -50,13 +57,13 @@
           <div class="row">
             <div class="col-6">
               <div class="btn-group btn-group-lg btn-block" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-outline-secondary text-dark"> - </button>
-                <button type="button" class="btn btn-outline-secondary text-dark"> 1 </button>
-                <button type="button" class="btn btn-outline-secondary text-dark"> + </button>
+                <button type="button" class="btn btn-outline-secondary text-dark" @click="productQuantity('reduce')"> - </button>
+                <button type="button" class="btn btn-outline-secondary text-dark"> {{ temporary.quantity }} </button>
+                <button type="button" class="btn btn-outline-secondary text-dark" @click="productQuantity('add')"> + </button>
               </div>
             </div>
             <div class="col-6">
-              <button type="button" class="btn btn-info btn-lg btn-block">加入購物車</button>
+              <button type="button" class="btn btn-info btn-lg btn-block" @click="addShopping">加入購物車</button>
             </div>
           </div>
         </div>
@@ -66,10 +73,13 @@
 </template>
 
 <script>
-import Cart from '@/components/Cart.vue'
+import $ from 'jquery'
+import Cart from '@/components/cart.vue'
+import Notice from '@/components/notice.vue'
 export default {
   components: {
-    Cart
+    Cart,
+    Notice
   },
   data () {
     return {
@@ -83,8 +93,13 @@ export default {
         data: [],
         moneyTotal: 0
       },
+      temporary: {
+        product: '',
+        quantity: 1
+      },
       isLoading: false,
-      selectImage: ''
+      selectImage: '',
+      message: ''
     }
   },
   methods: {
@@ -103,6 +118,62 @@ export default {
     },
     selectImg (imgURL) {
       this.selectImage = imgURL
+    },
+    addShopping () {
+      const vm = this
+      vm.isLoading = true
+      vm.temporary.product = vm.hexAPI.product.id
+      vm.axios
+        .post(
+          `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`,
+          vm.temporary
+        )
+        .then(() => {
+          vm.getShopping()
+          vm.message = '成功加入購物車!'
+          $('#noticeModal').modal('show')
+          vm.isLoading = false
+        })
+        .catch(() => {
+          vm.message = '商品已存在，請在購物車修改數量即可~'
+          $('#noticeModal').modal('show')
+          setTimeout(() => {
+            $('#noticeModal').modal('hide')
+          }, 1500)
+          vm.isLoading = false
+        })
+    },
+    getShopping () {
+      const vm = this
+      vm.axios
+        .get(
+          `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
+        )
+        .then((response) => {
+          vm.apiShoppingData.data = response.data.data
+          let total = 0
+          vm.apiShoppingData.data.forEach((item) => {
+            total += item.product.price * item.quantity
+          })
+          vm.apiShoppingData.moneyTotal = total
+          vm.isLoading = false
+        })
+    },
+    productQuantity (action) {
+      const vm = this
+      switch (action) {
+        case 'add':
+          vm.temporary.quantity += 1
+          break
+        case 'reduce':
+          if (vm.temporary.quantity - 1 === 0) {
+            alert('最低為 1!')
+            vm.isLoading = false
+          } else {
+            vm.temporary.quantity -= 1
+            break
+          }
+      }
     }
   },
   created () {

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- TODO:固定 nav在某些頁面會 RWD反而不適合 -->
-    <nav id="nav" class="layout__nav navbar navbar-expand-lg navbar-light font-weight-bold bg-transparent">
+    <nav id="nav" class="layout__nav navbar navbar-expand-lg navbar-light font-weight-bold bg-white">
       <div class="container">
         <router-link to="/" class="navbar-brand text-primary">
           <h1 class="h2 d-flex align-items-center">

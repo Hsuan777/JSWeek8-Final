@@ -23,9 +23,9 @@
 
 .banner{
   &__img {
-    position: absolute;
+    // position: absolute;
     width: 100%;
-    height: 800px;
+    height: 900px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -35,14 +35,20 @@
     height: 800px;
   }
   &__home{
-    background-image: url('https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80');
-    box-shadow: 0px 0px 20px map-get($theme-colors, primary);
-    margin-top: -82px;
-    right: 0;
+    // background-image: url('https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80');
+    background-image: 
+    linear-gradient(120deg, #fff 40%, transparent 50%),
+    url('https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80');
+    background-size: 100% 100%, cover;
+    background-position: center center, top center;
+
+    // box-shadow: 0px 0px 20px map-get($theme-colors, primary);
+    // margin-top: -82px;
+    // right: 0;
     z-index: -1;
   }
   &__repair {
-    background-image: url('https://images.unsplash.com/photo-1503345463055-de0624b23d82?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+    background-image: url('https://hexschool-api.s3.us-west-2.amazonaws.com/custom/0CqX3ArxMBdgTm8d1rR1RWDlh5kt7KLq0L9LpuWde7yigiBbbeCwQTwRG7rZr2vkQqyUk5ETJwojenruyp17p3HnSHI4B87db2P4LXesREdPohCulrP8QarDzz8FybdZ.jpg');
   }
 }
 .bg-nav {
@@ -58,7 +64,8 @@
     height: 550px;
   }
   &__iconImg {
-    width: 100%;
+    // width: 100%;
+    width: 150px;
     height: auto;
     cursor: pointer;
   }

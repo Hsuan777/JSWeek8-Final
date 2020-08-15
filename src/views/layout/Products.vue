@@ -14,12 +14,11 @@
     </button> -->
 
     <cart :shopping="apiShoppingData"></cart>
-    <notice :message="message"></notice>
     <div class="row">
       <!-- 商品分類 -->
       <div class="col-2">
         <h3 class="font-weight-bold">分類</h3>
-        <div class="list-group list-group-flush">
+        <div class="cursor-pointer list-group list-group-flush">
           <a v-for="(item, index) in category.list" :key="index" class="list-group-item list-group-item-action" @click.prevent="categoryData(item)">{{ item }}</a>
         </div>
       </div>
@@ -61,15 +60,12 @@
 </template>
 
 <script type="module">
-import $ from 'jquery'
-import Pagination from '@/components/Pagination.vue'
-import Cart from '@/components/Cart.vue'
-import Notice from '@/components/Notice.vue'
+import Pagination from '@/components/pagination.vue'
+import Cart from '@/components/cart.vue'
 export default {
   components: {
     Pagination,
-    Cart,
-    Notice
+    Cart
   },
   data () {
     return {
@@ -87,7 +83,6 @@ export default {
       pagination: {},
       isLoading: false,
       selectImage: false,
-      message: '',
       category: {
         list: ['全部分類'],
         data: []
@@ -110,48 +105,6 @@ export default {
             return vm.category.list.push(item.category)
           })
           vm.category.list = [...(new Set(vm.category.list))]
-          vm.isLoading = false
-        })
-    },
-    addShopping (pid) {
-      const vm = this
-      vm.isLoading = true
-      vm.temporary = {}
-      vm.temporary.product = pid
-      vm.temporary.quantity = 1
-      vm.axios
-        .post(
-          `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`,
-          vm.temporary
-        )
-        .then(() => {
-          vm.getShopping()
-          vm.message = '成功加入購物車!'
-          $('#noticeModal').modal('show')
-          vm.isLoading = false
-        })
-        .catch(() => {
-          vm.message = '商品已存在，請修改數量即可~'
-          $('#noticeModal').modal('show')
-          setTimeout(() => {
-            $('#noticeModal').modal('hide')
-          }, 1500)
-          vm.isLoading = false
-        })
-    },
-    getShopping () {
-      const vm = this
-      vm.axios
-        .get(
-          `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/shopping`
-        )
-        .then((response) => {
-          vm.apiShoppingData.data = response.data.data
-          let total = 0
-          vm.apiShoppingData.data.forEach((item) => {
-            total += item.product.price * item.quantity
-          })
-          vm.apiShoppingData.moneyTotal = total
           vm.isLoading = false
         })
     },

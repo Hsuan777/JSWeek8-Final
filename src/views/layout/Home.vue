@@ -1,22 +1,21 @@
 <template>
   <main>
     <!-- Banner -->
-    <section class="container-fluid mb-5">
-      <div class="row">
+    <section class="container-fluid mb-5 banner__img banner__home">
+      <div class="row ">
         <div class="container banner__title">
           <div class="row h-100 align-items-center">
             <div class="col">
-              <div class=" ">
-                <h2 class="font-weight-bold mb-5">{{ title }}</h2>
-                <div class="btn-group">
-                  <router-link to="/repair" class="btn btn-info btn-lg font-weight-bold">快速維修</router-link>
-                  <router-link to="/products" class="btn btn-primary btn-lg font-weight-bold">行李箱</router-link>
-                </div>
+              <h2 class="font-weight-bold">{{ title }}</h2>
+              <h4 class="font-weight-bold mb-5">不分廠牌。現場維修</h4>
+              <div class="btn-group">
+                <router-link to="/repair" class="btn btn-info btn-lg font-weight-bold">快速維修</router-link>
+                <router-link to="/products" class="btn btn-primary btn-lg font-weight-bold">行李箱</router-link>
               </div>
             </div>
           </div>
         </div>
-        <div class="banner__img banner__home col-md-12 col-lg-6"></div>
+        <div class="col-md-12 col-lg-6"></div>
       </div>
     </section>
     <!-- 服務 -->
@@ -52,8 +51,9 @@
         </div>
       </div>
     </section>
-    <section class="container">
-      <!-- Special Clays -->
+    <!-- 維修案例 -->
+    <!-- <section class="container">
+      <h2 class="font-weight-bold text-center">維修案例</h2>
       <div class="row mb-lg-4 mb-3">
         <div class="col-md-6 col-12 mb-2 mb-md-0">
           <img src="https://images.unsplash.com/photo-1564209510114-d98212b0e861?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" alt="" class="inner__img img-fluid rounded object-fit">
@@ -70,7 +70,6 @@
         </div>
       </div>
 
-      <!-- Less is more -->
       <div class="row flex-lg-row-reverse mb-lg-4 mb-3 ">
         <div class="col-md-6 col-12 mb-2 mb-md-0">
           <div class="d-flex justify-content-center">
@@ -88,23 +87,16 @@
           </div>
         </div>
       </div>
-
-      <!-- Marvelous Detail -->
-      <!-- <div class="row mb-lg-6 mb-5">
-        <div class="col-md-6 col-12 mb-2 mb-md-0">
-          <img src="assets/images/index_tom-crew-GOtE6-VOwH0-unsplash.jpg" alt="" class="img-fluid object-fit ">
-        </div>
-        <div class="col-md-6  ">
-          <div class="row justify-content-center align-items-center h-100 ">
-            <main class="col-md-8 col-12 ">
-              <h3 class="font-weight-bold mb-2">Marvelous Detail</h3>
-              <p class="mb-3">In Craftsman, the art director, working with marketers, develops or creates an idea of a
-                new creation.</p>
-              <a href="" class="font-weight-bold text-decoration-none text-primary">Learn more</a>
-            </main>
-          </div>
-        </div>
-      </div> -->
+    </section> -->
+    <!-- 五星評價 -->
+    <section class="container">
+      <h2 class="font-weight-bold text-center">五星評價</h2>
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+      </div>
+      <h3 class="font-weight-bold text-center">感謝曾經來維修的各位給予肯定!</h3>
     </section>
   </main>
 </template>

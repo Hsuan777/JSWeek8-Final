@@ -104,6 +104,8 @@ export default {
           vm.isLoading = false
         })
     },
+    // TODO:數量的使用者體驗，會一直等待伺服器回報
+    // TODO: 相同產品，但不同數量，如何更新?
     productQuantity (action, pid, quantity) {
       const vm = this
       vm.isLoading = true
