@@ -30,10 +30,7 @@
               <router-link to="/repair" class="nav-link">快速維修</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/question" class="nav-link">常見問題</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/case" class="nav-link">維修案例</router-link>
+              <router-link to="/questions" class="nav-link">常見問題</router-link>
             </li>
             <li class="nav-item">
               <router-link to="/login" class="nav-link">Login</router-link>
@@ -43,30 +40,39 @@
       </div>
     </nav>
     <router-view/>
-    <footer class="bg-primary">
+    <footer class="bg-primary py-2">
       <div class="container">
         <div class="row align-items-center">
           <div class="col">
-            <h4 class="font-weight-bold">台中行李箱維修 <small>© 2020. All Rights Reserved.</small></h4>
+            <h4 class="font-weight-bold mb-0">
+              <span>台中行李箱維修</span>
+              <small class="d-block d-md-inline">© 2020. All Rights Reserved.</small>
+            </h4>
           </div>
           <div class="col">
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-end align-items-center">
               <a
                 href="tel:0903017408"
-                class="h2 text-decoration-none text-white mr-2">
+                class="h2 text-decoration-none text-white mb-0 mr-2">
                 <i class="fas fa-phone-square-alt"></i>
               </a>
               <a
                 href="https://www.facebook.com/%E5%8F%B0%E4%B8%AD%E8%A1%8C%E6%9D%8E%E7%AE%B1%E7%B6%AD%E4%BF%AE-2188614921350371/"
-                class="h2 text-decoration-none text-white mr-2">
-                <i class="fab fa-facebook-square "></i>
+                class="h2 text-decoration-none text-white mb-0 mr-2">
+                <i class="fab fa-facebook-square"></i>
               </a>
               <a
                 href="https://line.me/ti/p/台中行李箱維修"
-                class="h2 text-decoration-none text-white">
+                class="h2 text-decoration-none text-white mb-0">
                 <i class="fab fa-line"></i>
               </a>
               <!-- TODO:蝦皮 icon -->
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-end">
+              <a href="http://maps.google.com/maps?q=台中市西屯區黎明路三段477號" class="text-dark text-nowrap text-decoration">
+                台中市西屯區黎明路三段477號
+              </a>
+              <p class="mb-0">週一 - 週六 10:00 ~ 17:00</p>
             </div>
           </div>
         </div>

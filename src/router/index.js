@@ -27,6 +27,10 @@ const routes = [
         component: () => import('../views/layout/Repair.vue')
       },
       {
+        path: 'questions',
+        component: () => import('../views/layout/Questions.vue')
+      },
+      {
         path: 'payment',
         component: () => import('../views/layout/Payment.vue')
       },

@@ -25,7 +25,7 @@
   &__img {
     // position: absolute;
     width: 100%;
-    height: 900px;
+    height: 850px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -41,11 +41,10 @@
     url('https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80');
     background-size: 100% 100%, cover;
     background-position: center center, top center;
-
     // box-shadow: 0px 0px 20px map-get($theme-colors, primary);
     // margin-top: -82px;
     // right: 0;
-    z-index: -1;
+    // z-index: -1;
   }
   &__repair {
     background-image: url('https://hexschool-api.s3.us-west-2.amazonaws.com/custom/0CqX3ArxMBdgTm8d1rR1RWDlh5kt7KLq0L9LpuWde7yigiBbbeCwQTwRG7rZr2vkQqyUk5ETJwojenruyp17p3HnSHI4B87db2P4LXesREdPohCulrP8QarDzz8FybdZ.jpg');
@@ -59,9 +58,12 @@
 }
 
 .inner{
-  &__img {
+  &__repairImg {
     width: 100%;
-    height: 200px;
+    height: 250px;
+    @include media-breakpoint-up(lg) {
+      height: 200px;
+    }
   }
   &__iconImg {
     // width: 100%;
