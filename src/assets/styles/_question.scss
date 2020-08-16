@@ -1,11 +1,11 @@
 .question {
   &__list {
-    margin-bottom: 156px;
-    @include media-breakpoint-md {
+    margin-bottom: 56px;
+    @include media-breakpoint-up(md) {
       margin-bottom: 104px;
     }
-    @include media-breakpoint-sm {
-      margin-bottom: 56px;
+    @include media-breakpoint-up(lg) {
+      margin-bottom: 156px;
     }
     .active {
       .question {
@@ -13,7 +13,8 @@
           display: block;
         }
         &__title__icon {
-          background-image: url("../images/ic_keyboard_arrow_down_24px.svg");
+          // background-image: url("../public/ic_keyboard_arrow_down_24px.svg");
+          // background-image: url("../public/ic_keyboard_arrow_down_24px.svg");
           width: 40px;
           height: 24px;
           display: block;
@@ -25,22 +26,22 @@
     cursor: pointer;
   }
   &__title {
-    padding: 22px 38px;
+    padding: 16px 38px;
     border-bottom: 1px solid #000;
-    @include media-breakpoint-sm{
-      padding:16px;
+    @include media-breakpoint-up(md){
+      padding:22px;
     }
     &__icon {
-      background-image: url("../images/ic_keyboard_arrow_up_24px.svg");
+      // background-image: url("../public/ic_keyboard_arrow_up_24px.svg");
       width: 40px;
       height: 26px;
       display: block;
     }
   }
   &__text {
-    padding: 22px 38px;
-    background-color: #f2f2f2;
-    border-bottom: 1px solid #000;
-    display: none;
+    // padding: 22px 38px;
+    // background-color: #f2f2f2;
+    // border-bottom: 1px solid #000;
+    // display: none;
   }
 }

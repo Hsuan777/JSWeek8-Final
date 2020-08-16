@@ -1,53 +1,71 @@
 <template>
   <section class="container">
-    <h2 class="d-flex align-items--center ">常見問題</h2>
-    <ul class="question__list border-dark">
-      <li class="question__item ">
-        <h4  class="question__title d-flex align-items--center justify-content--between">
-          Q1.請問可否自備鏡框單配鏡片？
+    <h2 class="font-weight-bold text-center">常見問題</h2>
+    <ul class="list-unstyled border-dark">
+      <li class="question__item" @click="toggle('q1')">
+        <h4  class="question__title d-flex align-items-center justify-content-between mb-0">
+          Q1.請問行李箱是淘寶來的嗎？
           <span class="question__title__icon"></span>
         </h4>
-        <p class="question__text" >A1.我牌鏡框搭配薄型非球面鏡片1480元，搭配功能型鏡片則依鏡片種類加價購買。 <br>
-          當日購買JINS盒裝眼鏡，搭配薄型非球面鏡片980元(隔日後則為1480元)，搭配功能型鏡片則依鏡片種類加價購買。  <br>
-          他牌鏡框，搭配薄型非球面鏡片1980元，搭配功能型鏡片則依鏡片種類加價購買。</p>
+        <p class="p-2 bg-secondary" v-if="isShow.q1">台灣品牌 品質有保障 通過CNS15331國家標準檢測及SGS檢驗測試合格，不是淘寶貨喔~~</p>
       </li>
-      <li class="question__item ">
-        <h4 class="question__title d-flex align-items--center justify-content--between">
-          Q2.眼鏡都可以20分鐘取件嗎？
+      <li class="question__item" @click="toggle('q2')">
+        <h4 class="question__title d-flex align-items-center justify-content-between mb-0">
+          Q2.請問行李箱保固多久？
           <span class="question__title__icon"></span>
         </h4>
-        <p class="question__text" >A1.我牌鏡框搭配薄型非球面鏡片1480元，搭配功能型鏡片則依鏡片種類加價購買。 <br>
-          當日購買JINS盒裝眼鏡，搭配薄型非球面鏡片980元(隔日後則為1480元)，搭配功能型鏡片則依鏡片種類加價購買。  <br>
-          他牌鏡框，搭配薄型非球面鏡片1980元，搭配功能型鏡片則依鏡片種類加價購買。</p>
+        <p class="p-2 bg-secondary" v-if="isShow.q2">三年保固維修，一年破箱免費換(需提正本航空破箱證明)。</p>
       </li>
-      <li class="question__item">
-        <h4 class="question__title d-flex align-items--center justify-content--between">
-          Q3.散光鏡片需要額外加價嗎？
+      <!-- <li class="question__item">
+        <h4 class="question__title d-flex align-items-center justify-content-between mb-0">
+          Q3.請問行李箱材質是甚麼 ？
           <span class="question__title__icon"></span>
 
         </h4>
-        <p class="question__text" >A1.我牌鏡框搭配薄型非球面鏡片1480元，搭配功能型鏡片則依鏡片種類加價購買。 <br>
-          當日購買JINS盒裝眼鏡，搭配薄型非球面鏡片980元(隔日後則為1480元)，搭配功能型鏡片則依鏡片種類加價購買。  <br>
-          他牌鏡框，搭配薄型非球面鏡片1980元，搭配功能型鏡片則依鏡片種類加價購買。</p>
+        <p class="p-2 bg-secondary" >採用優質ABS+PC塑料材質，此材質具高韌性，鋁合金防護角，耐摔、耐撞</p>
       </li>
       <li class="question__item">
-        <h4 class="question__title d-flex align-items--center justify-content--between">
-          Q4.我可以使用舊眼鏡的度數配鏡片嗎？
+        <h4 class="question__title d-flex align-items-center justify-content-between mb-0">
+          Q4.請問行李箱的零件都有甚麼？
           <span class="question__title__icon"></span>
         </h4>
-        <p class="question__text" >A1.我牌鏡框搭配薄型非球面鏡片1480元，搭配功能型鏡片則依鏡片種類加價購買。 <br>
-          當日購買JINS盒裝眼鏡，搭配薄型非球面鏡片980元(隔日後則為1480元)，搭配功能型鏡片則依鏡片種類加價購買。  <br>
-          他牌鏡框，搭配薄型非球面鏡片1980元，搭配功能型鏡片則依鏡片種類加價購買。</p>
+        <p class="p-2 bg-secondary" >鋁合金拉杆，鋁和合金防護包腳，多面提把設計，360度萬向靜音輪，360度滑順好推，國際標準TSA海關鎖。</p>
       </li>
       <li class="question__item">
-        <h4 class="question__title d-flex align-items--center justify-content--between border-bottom--none">
-          Q5.請問可以單購買鏡框嗎？
+        <h4 class="question__title d-flex align-items-center justify-content-between border-bottom-none mb-0">
+          Q5.請問維修師傅很有經驗嗎？
           <span class="question__title__icon"></span>
         </h4>
-        <p class="question__text border-dark--top" >A1.我牌鏡框搭配薄型非球面鏡片1480元，搭配功能型鏡片則依鏡片種類加價購買。 <br>
-          當日購買JINS盒裝眼鏡，搭配薄型非球面鏡片980元(隔日後則為1480元)，搭配功能型鏡片則依鏡片種類加價購買。  <br>
-          他牌鏡框，搭配薄型非球面鏡片1980元，搭配功能型鏡片則依鏡片種類加價購買。</p>
-      </li>
+        <p class="p-2 bg-secondary" >我們的維修師傅經驗豐富，也因此行李箱維修不分廠牌並且懂行李箱材質好壞，找我們維修不須擔心才剛維修就壞掉喔~!</p>
+      </li> -->
     </ul>
   </section>
 </template>
+<script>
+// import $ from 'jquery'
+export default {
+  data () {
+    return {
+      isShow: {
+        q1: false,
+        q2: false
+      }
+    }
+  },
+  methods: {
+    toggle (question) {
+      console.log(question)
+      switch (question) {
+        case 'q1':
+          this.isShow.q1 = !this.isShow.q1
+          break
+        case 'q2':
+          this.isShow.q2 = !this.isShow.q2
+          break
+      }
+      // this.isShow[num] = !this.isShow[num]
+      // $('.bg-secondary').fadeIn('slow').toggle()
+    }
+  }
+}
+</script>
