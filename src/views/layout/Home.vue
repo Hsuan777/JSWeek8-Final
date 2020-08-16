@@ -60,13 +60,13 @@
         <div class="col-md-12 col-lg-4 mb-3 mb-lg-0">
           <div class="form-row">
             <div class="col-6">
-              <span class="material-icons text-danger h3 text-center w-100">
+              <span class="material-icons text-danger h2 text-center w-100">
                 unpublished
               </span>
               <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/toRNDCE5uV4IvEe8r8pqNH86FFtSPDDg736TfAd8KK9yHthBuTH2t9AenIqjBm5areDayeoGrgVELOH0GqpnoFRckcCtYRC32zv5HtRCK4AFnmv4m7n31x3ER90zRTgt.jpg" alt="" class="inner__repairImg rounded object-fit border border-danger">
             </div>
             <div class="col-6">
-              <span class="material-icons text-info h3 text-center w-100">
+              <span class="material-icons text-info h2 text-center w-100">
                 check_circle
               </span>
               <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/l4wcbpx6qFjCSbXALh0WULUhnaT6UMolZHHEtV8O0kK21OOEJRCFpXERE4EEmAMXWRIJ2lxpg4xvKL1R0hmGTl9HL9TlXR2k8R5a4ao4bmScSKYDSquBSpi7VMTuvcjU.jpg" alt="" class="inner__repairImg rounded object-fit border border-info" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
@@ -77,13 +77,13 @@
         <div class="col-md-12 col-lg-4 mb-3 mb-lg-0">
           <div class="form-row">
             <div class="col-6">
-              <span class="material-icons text-danger h3 text-center w-100">
+              <span class="material-icons text-danger h2 text-center w-100">
                 unpublished
               </span>
               <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/jKCz3yyHkmAWPgzTASm4PWYYMUs2FYQ8ZQGpXUgHdgtizuYHxEd0wYlKqnCJCQvMK4980NcyNkmnNmMAxZz6lqv04Pm3vO5wiWosqxOGkyrZI2rGznCCAJapYRAKvnwW.jpg" alt="" class="inner__repairImg rounded object-fit border border-danger">
             </div>
             <div class="col-6">
-              <span class="material-icons text-info h3 text-center w-100">
+              <span class="material-icons text-info h2 text-center w-100">
                 check_circle
               </span>
               <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/CkpGFLxVQpCP6Fwm863aknR2uXksKQ2Gu1Q85RsDn76pwaJ6YHqwPV8UftsufPFs1oPFZ1W9xNGiEWiYS0ilcZ6OFHqgd5Dl9Cd10L86T0gZNLWIzFI5wl8QECh1zrul.jpg" alt="" class="inner__repairImg rounded object-fit border border-info" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000" data-aos-delay="300">
@@ -94,13 +94,13 @@
         <div class="col-md-12 col-lg-4">
           <div class="form-row">
             <div class="col-6">
-              <span class="material-icons text-danger h3 text-center w-100">
+              <span class="material-icons text-danger h2 text-center w-100">
                 unpublished
               </span>
               <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/V79YBmsQRreHBX4ShMSnFPtOM6Bpm392V3lH1DjDwxjjUTZBpQlHc8DdcJNbFrXkC9MYjiaA6COKuh8wUK3noUJFlvyjJTai8IrDGPu9kp8IH5oMTsGgQ181bJabOItK.jpg" alt="" class="inner__repairImg rounded object-fit border border-danger">
             </div>
             <div class="col-6">
-              <span class="material-icons text-info h3 text-center w-100">
+              <span class="material-icons text-info h2 text-center w-100">
                 check_circle
               </span>
               <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/e7F1OgJw8amdvaASZ3y9DgHvbzLdKvMZVnTdZOIn8Zx7f41bIPCkYJCOtHzuC9TkDBnWDqntSqI8IVcX0we25lLmZZc5zudi40L4XXibBUclPeKSVlMmXZnb7OrHAb5r.jpg" alt="" class="inner__repairImg rounded object-fit border border-info" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000" data-aos-delay="600">

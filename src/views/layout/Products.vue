@@ -1,29 +1,23 @@
 <template>
-  <section class="container mt-6">
+  <section class="container">
     <loading :active.sync="isLoading"></loading>
-    <h2 class="mt-2 mb-5 font-weight-bold">行李箱</h2>
-    <!-- 將 購物車作為元件 -->
-    <!-- <button
-      type="button"
-      class="shoppingTop btn btn-secondary btn-lg text-decoration-none d-flex p-2"
-      data-toggle="modal"
-      data-target="#shoppingModal"
-    >
-      <span class="material-icons">shopping_cart</span>
-      <sup class="text-danger ml-n1">{{ shopping.data.length }}</sup>
-    </button> -->
-
     <cart :shopping="apiShoppingData"></cart>
+    <h2 class="mb-5 font-weight-bold">行李箱</h2>
     <div class="row">
       <!-- 商品分類 -->
-      <div class="col-2">
+      <div class="col-2 d-none d-lg-block">
         <h3 class="font-weight-bold">分類</h3>
-        <div class="cursor-pointer list-group list-group-flush">
+        <div class="cursor--pointer list-group list-group-flush">
           <a v-for="(item, index) in category.list" :key="index" class="list-group-item list-group-item-action" @click.prevent="categoryData(item)">{{ item }}</a>
         </div>
       </div>
+      <div class="col-12 d-lg-none">
+        <select class="form-control mb-3" @change="categoryData($event.target.value)" v-if="category.list">
+          <option :value="item" v-for="(item, index) in category.list" :key="index">{{ item }}</option>
+        </select>
+      </div>
       <!-- 商品列表 -->
-      <div class="col-10">
+      <div class="col-md-12 col-lg-10">
         <ul class="list__products row list-unstyled mb-5">
           <li class="col-12 col-md-6 col-lg-4" v-for="item in category.data" :key="item.id">
             <div class="card mb-3">
@@ -111,6 +105,7 @@ export default {
     categoryData (categoryName) {
       const vm = this
       vm.category.data = []
+      console.log(categoryName)
       if (categoryName === '全部分類') {
         vm.category.data = vm.hexAPI.data
       } else {
