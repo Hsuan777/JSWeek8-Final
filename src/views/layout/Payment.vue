@@ -1,6 +1,7 @@
 <template>
   <section class="container">
     <loading :active.sync="isLoading"></loading>
+    <notice :message="message"></notice>
     <h2 id="peopleData" class="mt-2 mb-5 font-weight-bold">顧客資訊</h2>
     <div class="row">
       <div class="col-6">
@@ -127,7 +128,8 @@
             <tr v-for="(item, index) in shopping.data" :key="index" class="border-top">
               <td class="align-middle">{{ item.product.title }}</td>
               <td class="align-middle">
-                <img :src="item.product.imageUrl" alt class="product__img img-fluid rounded" />
+                <!-- TODO:如何隨著商品所選顏色變換? -->
+                <img :src="item.product.imageUrl[0]" alt class="inner__cartImg rounded" />
               </td>
               <td class="align-middle text-right">{{ item.product.price }}</td>
               <td class="align-middle text-center">{{ item.quantity }}</td>
@@ -141,7 +143,12 @@
 </template>
 
 <script>
+import $ from 'jquery'
+import Notice from '@/components/notice.vue'
 export default {
+  components: {
+    Notice
+  },
   data () {
     return {
       hexAPI: {
@@ -166,7 +173,8 @@ export default {
         data: [],
         moneyTotal: 0
       },
-      isLoading: false
+      isLoading: false,
+      message: ''
     }
   },
   methods: {
@@ -195,11 +203,11 @@ export default {
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders`, vm.person
         )
         .then((response) => {
-          // 後台需要刷新才會有資料
-          vm.isLoading = false
           // TODO:改成 modal
-          alert('感謝您的訂購~')
-          vm.$router.push('/products')
+          const vm = this
+          vm.message = '感謝您的訂購~'
+          $('#noticeModal').modal('show')
+          vm.isLoading = false
         })
     }
   },

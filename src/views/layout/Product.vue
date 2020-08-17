@@ -65,7 +65,7 @@
               <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg object-fit img-fluid" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
             </div> -->
             <!-- 商品文案格式錯誤 -->
-            <div>{{ hexAPI.product.description }}</div>
+            <div v-html="hexAPI.product.content"></div>
           </div>
         </div>
       </div>

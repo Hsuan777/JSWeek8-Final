@@ -71,6 +71,11 @@
     cursor: pointer;
     object-fit: contain;
   }
+  &__cartImg{
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+  }
 }
 
 .icon{

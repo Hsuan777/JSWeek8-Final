@@ -1,18 +1,17 @@
 <template>
 
   <section class="container mb-5">
-    <h2 class="text-center font-weight-bold mb-5">維修三步驟</h2>
+    <h2 class="text-center font-weight-bold mb-5">快速維修</h2>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-12 mb-5">
-          <div class="d-flex justify-content-center align-items-center">
-            <h3 class="font-weight-bold mr-3">拍照維修點</h3>
+        <div class="col-6 border-right">
+          <h3 class="text-center font-weight-bold">詢價</h3>
+          <div class="d-flex justify-content-center align-items-center h-50">
+            <h3 class="font-weight-bold mr-3">拍攝損壞處</h3>
             <span class="material-icons h2 text-danger">add_a_photo</span>
           </div>
-        </div>
-        <div class="col-12 mb-5">
           <div class="d-flex justify-content-center align-items-center">
-            <h3 class="font-weight-bold mr-3">聯絡 / 傳送照片</h3>
+            <h3 class="font-weight-bold mr-3">詢問我們</h3>
             <div class="d-flex justify-content-center">
               <a
                 href="tel:0903017408"
@@ -32,7 +31,9 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-8 mx-auto">
+        <!-- <div class="col-12 mb-5">
+        </div> -->
+        <div class="col-12 col-lg-6">
           <h3 class="d-flex justify-content-center align-items-center font-weight-bold">
             現場維修
             <span class="material-icons text-info mx-2 h2 mb-0">

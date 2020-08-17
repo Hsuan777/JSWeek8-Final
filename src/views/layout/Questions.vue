@@ -8,7 +8,7 @@
           <span class="material-icons" v-if="isShow.a1.more">expand_more</span>
           <span class="material-icons" v-if="isShow.a1.less">expand_less</span>
         </h4>
-        <p class="p-2 bg-secondary" v-if="isShow.a1.text">台灣品牌 品質有保障 通過CNS15331國家標準檢測及SGS檢驗測試合格，不是淘寶貨喔~~</p>
+        <p class="p-2 bg-secondary" v-if="isShow.a1.text">台灣品牌，品質有保障，通過CNS15331國家標準檢測及SGS檢驗測試合格，不是淘寶貨喔~!</p>
       </li>
       <li class="cursor--pointer border-bottom" @click="toggle('a2')">
         <h4 class="p-2 d-flex align-items-center justify-content-between mb-0">
@@ -24,11 +24,11 @@
           <span class="material-icons" v-if="isShow.a3.more">expand_more</span>
           <span class="material-icons" v-if="isShow.a3.less">expand_less</span>
         </h4>
-        <p class="p-2 bg-secondary" v-if="isShow.a3.text">採用優質ABS+PC塑料材質，此材質具高韌性，鋁合金防護角，耐摔、耐撞</p>
+        <p class="p-2 bg-secondary" v-if="isShow.a3.text">採用優質 ABS + PC塑料材質，此材質具高韌性，鋁合金防護角，耐摔、耐撞</p>
       </li>
       <li class="cursor--pointer border-bottom" @click="toggle('a4')">
         <h4 class="p-2 d-flex align-items-center justify-content-between mb-0">
-          Q4.請問行李箱的零件都有甚麼？
+          Q4.請問行李箱的零件都有甚麼 ？
           <span class="material-icons" v-if="isShow.a4.more">expand_more</span>
           <span class="material-icons" v-if="isShow.a4.less">expand_less</span>
         </h4>
@@ -36,7 +36,7 @@
       </li>
       <li class="cursor--pointer" @click="toggle('a5')">
         <h4 class="p-2 d-flex align-items-center justify-content-between mb-0">
-          Q5.請問維修師傅很有經驗嗎？
+          Q5.請問維修師傅很有經驗嗎 ？
           <span class="material-icons" v-if="isShow.a5.more">expand_more</span>
           <span class="material-icons" v-if="isShow.a5.less">expand_less</span>
         </h4>
