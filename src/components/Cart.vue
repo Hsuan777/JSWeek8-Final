@@ -2,7 +2,7 @@
   <aside>
     <button
         type="button"
-        class="shoppingTop btn btn-secondary btn-lg text-decoration-none d-flex p-2"
+        class="shoppingTop btn btn-primary btn-lg text-decoration-none d-flex p-2"
         data-toggle="modal"
         data-target="#shoppingModal"
       >

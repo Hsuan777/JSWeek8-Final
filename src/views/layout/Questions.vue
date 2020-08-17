@@ -2,7 +2,7 @@
   <section class="container">
     <h2 class="font-weight-bold text-center">常見問題</h2>
     <ul class="list-unstyled">
-      <li class="cursor--pointer" @click="toggle('a1')">
+      <li class="cursor--pointer border-bottom" @click="toggle('a1')">
         <h4  class="p-2 d-flex align-items-center justify-content-between mb-0">
           Q1.請問行李箱是淘寶來的嗎？
           <span class="material-icons" v-if="isShow.a1.more">expand_more</span>
@@ -10,7 +10,7 @@
         </h4>
         <p class="p-2 bg-secondary" v-if="isShow.a1.text">台灣品牌 品質有保障 通過CNS15331國家標準檢測及SGS檢驗測試合格，不是淘寶貨喔~~</p>
       </li>
-      <li class="cursor--pointer" @click="toggle('a2')">
+      <li class="cursor--pointer border-bottom" @click="toggle('a2')">
         <h4 class="p-2 d-flex align-items-center justify-content-between mb-0">
           Q2.請問行李箱保固多久？
           <span class="material-icons" v-if="isShow.a2.more">expand_more</span>
@@ -18,27 +18,30 @@
         </h4>
         <p class="p-2 bg-secondary" v-if="isShow.a2.text">三年保固維修，一年破箱免費換(需提正本航空破箱證明)。</p>
       </li>
-      <!-- <li class="cursor--pointer">
+      <li class="cursor--pointer border-bottom" @click="toggle('a3')">
         <h4 class="p-2 d-flex align-items-center justify-content-between mb-0">
           Q3.請問行李箱材質是甚麼 ？
-          <span class="material-icons">expand_more</span>
+          <span class="material-icons" v-if="isShow.a3.more">expand_more</span>
+          <span class="material-icons" v-if="isShow.a3.less">expand_less</span>
         </h4>
-        <p class="p-2 bg-secondary" >採用優質ABS+PC塑料材質，此材質具高韌性，鋁合金防護角，耐摔、耐撞</p>
+        <p class="p-2 bg-secondary" v-if="isShow.a3.text">採用優質ABS+PC塑料材質，此材質具高韌性，鋁合金防護角，耐摔、耐撞</p>
       </li>
-      <li class="cursor--pointer">
+      <li class="cursor--pointer border-bottom" @click="toggle('a4')">
         <h4 class="p-2 d-flex align-items-center justify-content-between mb-0">
           Q4.請問行李箱的零件都有甚麼？
-          <span class="material-icons">expand_more</span>
+          <span class="material-icons" v-if="isShow.a4.more">expand_more</span>
+          <span class="material-icons" v-if="isShow.a4.less">expand_less</span>
         </h4>
-        <p class="p-2 bg-secondary" >鋁合金拉杆，鋁和合金防護包腳，多面提把設計，360度萬向靜音輪，360度滑順好推，國際標準TSA海關鎖。</p>
+        <p class="p-2 bg-secondary" v-if="isShow.a4.text">鋁合金拉杆，鋁和合金防護包腳，多面提把設計，360度萬向靜音輪，360度滑順好推，國際標準TSA海關鎖。</p>
       </li>
-      <li class="cursor--pointer">
-        <h4 class="d-flex align-items-center justify-content-between border-bottom-none mb-0">
+      <li class="cursor--pointer" @click="toggle('a5')">
+        <h4 class="p-2 d-flex align-items-center justify-content-between mb-0">
           Q5.請問維修師傅很有經驗嗎？
-          <span class="material-icons">expand_more</span>
+          <span class="material-icons" v-if="isShow.a5.more">expand_more</span>
+          <span class="material-icons" v-if="isShow.a5.less">expand_less</span>
         </h4>
-        <p class="p-2 bg-secondary" >我們的維修師傅經驗豐富，也因此行李箱維修不分廠牌並且懂行李箱材質好壞，找我們維修不須擔心才剛維修就壞掉喔~!</p>
-      </li> -->
+        <p class="p-2 bg-secondary" v-if="isShow.a5.text">我們的維修師傅經驗豐富，也因此行李箱維修不分廠牌並且懂行李箱材質好壞，找我們維修不須擔心才剛維修就壞掉喔~!</p>
+      </li>
     </ul>
   </section>
 </template>
@@ -57,24 +60,44 @@ export default {
           text: false,
           more: true,
           less: false
+        },
+        a3: {
+          text: false,
+          more: true,
+          less: false
+        },
+        a4: {
+          text: false,
+          more: true,
+          less: false
+        },
+        a5: {
+          text: false,
+          more: true,
+          less: false
         }
       }
     }
   },
   methods: {
-    toggle (question) {
-      switch (question) {
-        case 'a1':
-          this.isShow.a1.text = !this.isShow.a1.text
-          this.isShow.a1.more = !this.isShow.a1.more
-          this.isShow.a1.less = !this.isShow.a1.less
-          break
-        case 'a2':
-          this.isShow.a2.text = !this.isShow.a2.text
-          this.isShow.a2.more = !this.isShow.a2.more
-          this.isShow.a2.less = !this.isShow.a2.less
-          break
-      }
+    toggle (ans) {
+      // console.log(ans)
+      // console.log(this.isShow[ans].text)
+      this.isShow[ans].text = !this.isShow[ans].text
+      this.isShow[ans].more = !this.isShow[ans].more
+      this.isShow[ans].less = !this.isShow[ans].less
+      // switch (question) {
+      //   case 'a1':
+      //     this.isShow.a1.text = !this.isShow.a1.text
+      //     this.isShow.a1.more = !this.isShow.a1.more
+      //     this.isShow.a1.less = !this.isShow.a1.less
+      //     break
+      //   case 'a2':
+      //     this.isShow.a2.text = !this.isShow.a2.text
+      //     this.isShow.a2.more = !this.isShow.a2.more
+      //     this.isShow.a2.less = !this.isShow.a2.less
+      //     break
+      // }
       // this.isShow[num] = !this.isShow[num]
       // $('.bg-secondary').fadeIn('slow').toggle()
       // this.$refs.a1.fadeIn('slow').show()

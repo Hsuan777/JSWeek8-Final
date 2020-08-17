@@ -3,35 +3,7 @@
     <loading :active.sync="isLoading"></loading>
     <cart :shopping="apiShoppingData"></cart>
     <notice :message="message"></notice>
-    <div class="row">
-      <div class="col-md-12 col-lg-6">
-        <div class="card border-0">
-          <div class="card-head row">
-            <div class="col-12">
-              <img :src="selectImage" class="img-fluid rounded-top">
-            </div>
-            <!-- 圖片列表 : 方案一 -->
-            <!-- <div class="col-3">
-              <div class="d-flex flex-column justify-content-center">
-                <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
-              </div>
-            </div> -->
-          </div>
-          <div class="card-body" v-if="hexAPI.product.imageUrl">
-            <!-- 圖片列表 : 方案二 -->
-            <!-- <div class="col"> -->
-              <!-- TODO:左右滑動 loop -->
-            <div class="d-flex flex-wrap" v-if="hexAPI.product.imageUrl[1]">
-              <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg object-fit img-fluid" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
-            </div>
-            <!-- </div> -->
-            <!-- <div class="d-flex justify-content-between mb-3">
-              <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg object-fit img-fluid" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
-            </div> -->
-            <p>{{ hexAPI.product.description }}</p>
-          </div>
-        </div>
-      </div>
+    <div class="row flex-row-reverse">
       <div class="col-md-12 col-lg-5">
         <div class="p-3">
           <nav aria-label="breadcrumb">
@@ -45,8 +17,8 @@
             </ol>
           </nav>
           <h2 class="font-weight-bold">{{ hexAPI.product.title }}</h2>
-          <div class="" v-if="hexAPI.product.options">
-            <button type="button" v-for="(color, index) in hexAPI.product.options.colors" :key="index" class="btn btn-secondary mr-2" @click.prevent="selectImg(hexAPI.product.imageUrl[index+1])">{{color}}</button>
+          <div class="mb-3" v-if="hexAPI.product.options">
+            <button type="button" v-for="(color, index) in hexAPI.product.options.colors" :key="index" class="btn btn-secondary mr-2 mb-2" @click.prevent="selectImg(hexAPI.product.imageUrl[index+1])">{{color}}</button>
           </div>
           <div class="d-flex flex-column align-items-end mb-3">
             <small class="mb-0">
@@ -65,6 +37,35 @@
             <div class="col-6">
               <button type="button" class="btn btn-info btn-lg btn-block" @click="addShopping">加入購物車</button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <div class="card border-0">
+          <div class="card-head p-0">
+            <img :src="selectImage" class="img-fluid rounded-top">
+            <!-- 圖片列表 : 方案一 右側 -->
+            <!-- <div class="col-3">
+              <div class="d-flex flex-column justify-content-center">
+                <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
+              </div>
+            </div> -->
+          </div>
+          <div class="card-body" v-if="hexAPI.product.imageUrl">
+            <!-- 圖片列表 : 方案二 下方 -->
+            <!-- <div class="col"> -->
+              <!-- TODO:左右滑動 loop -->
+            <div class="row justify-content-center " v-if="hexAPI.product.imageUrl[1]">
+              <div class="col" v-for="(item, index) in hexAPI.product.imageUrl" :key="index">
+                <img :src="item" class="inner__iconImg" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
+              </div>
+            </div>
+            <!-- </div> -->
+            <!-- <div class="d-flex justify-content-between mb-3">
+              <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg object-fit img-fluid" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
+            </div> -->
+            <!-- 商品文案格式錯誤 -->
+            <div>{{ hexAPI.product.description }}</div>
           </div>
         </div>
       </div>
@@ -135,7 +136,7 @@ export default {
           vm.isLoading = false
         })
         .catch(() => {
-          vm.message = '商品已存在，請在購物車修改數量即可~'
+          vm.message = '商品已存在，請購物車修改數量即可~'
           $('#noticeModal').modal('show')
           setTimeout(() => {
             $('#noticeModal').modal('hide')
