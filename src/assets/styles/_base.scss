@@ -39,7 +39,7 @@ h1, h2, h3, h4{
   cursor: pointer;
 }
 .height{
-  &--content {
-    margin-bottom: 285px;
+  &--100vh {
+    min-height: 100vh;
   }
 }

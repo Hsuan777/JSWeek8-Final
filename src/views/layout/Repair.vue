@@ -1,5 +1,5 @@
 <template>
-  <section class="container mb-5">
+  <section class="height--100vh container mb-5">
     <h2 class="font-weight-bold mb-5">聯絡維修</h2>
       <div class="row justify-content-center">
         <div class="col-12 col-md-6 mb-5 mb-md-0">
