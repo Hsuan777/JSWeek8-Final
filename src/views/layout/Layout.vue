@@ -23,16 +23,19 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
-            <li class="nav-item" @click="collapseHide">
-              <router-link to="/products" class="nav-link">行李箱</router-link>
+            <li class="nav-item h3" @click="collapseHide">
+              <router-link to="/products" class="nav-link d-none d-lg-block">行李箱</router-link>
+              <router-link to="/products" class="nav-link border-bottom d-lg-none">行李箱</router-link>
             </li>
-            <li class="nav-item" @click="collapseHide">
-              <router-link to="/repair" class="nav-link">聯絡維修</router-link>
+            <li class="nav-item h3" @click="collapseHide">
+              <router-link to="/repair" class="nav-link d-none d-lg-block">聯絡維修</router-link>
+              <router-link to="/repair" class="nav-link border-bottom d-lg-none">聯絡維修</router-link>
             </li>
-            <li class="nav-item" @click="collapseHide">
-              <router-link to="/questions" class="nav-link">常見問題</router-link>
+            <li class="nav-item h3" @click="collapseHide">
+              <router-link to="/questions" class="nav-link d-none d-lg-block">常見問題</router-link>
+              <router-link to="/questions" class="nav-link border-bottom d-lg-none">常見問題</router-link>
             </li>
-            <li class="nav-item" @click="collapseHide">
+            <li class="nav-item h3" @click="collapseHide">
               <router-link to="/login" class="nav-link">Login</router-link>
             </li>
           </ul>
