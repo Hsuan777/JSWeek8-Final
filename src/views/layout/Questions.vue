@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section class="container mb-5 pb-3">
     <h2 class="font-weight-bold text-center">常見問題</h2>
     <ul class="list-unstyled">
       <li class="cursor--pointer border-bottom" @click="toggle('a1')">
