@@ -6,11 +6,11 @@
         <div class="container banner__title">
           <div class="row h-100 align-items-center">
             <div class="col">
-              <h2 class="font-weight-bold" data-aos="fade-right" data-aos-delay="300">台中行李箱維修</h2>
-              <h4 class="font-weight-bold mb-5" data-aos="fade-right" data-aos-delay="300">不分廠牌。現場維修</h4>
+              <h2 class="font-weight-bold" data-aos="fade-down" data-aos-delay="300">台中行李箱維修</h2>
+              <h4 class="font-weight-bold mb-5" data-aos="fade-down" data-aos-delay="300">不分廠牌。現場維修</h4>
               <div class="btn-group">
-                <router-link to="/repair" class="btn btn-info btn-lg font-weight-bold" data-aos="zoom-out-right" data-aos-delay="500">快速維修</router-link>
-                <router-link to="/products" class="btn btn-primary btn-lg font-weight-bold" data-aos="zoom-out-left" data-aos-delay="800">行李箱</router-link>
+                <router-link to="/repair" class="btn btn-info btn-lg font-weight-bold" data-aos="zoom-in-right" data-aos-delay="500">快速維修</router-link>
+                <router-link to="/products" class="btn btn-primary btn-lg font-weight-bold" data-aos="zoom-in-left" data-aos-delay="800">行李箱</router-link>
               </div>
             </div>
           </div>

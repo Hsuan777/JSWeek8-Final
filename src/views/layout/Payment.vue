@@ -4,7 +4,7 @@
     <notice :message="message"></notice>
     <h2 id="peopleData" class="mt-2 mb-5 font-weight-bold">顧客資訊</h2>
     <div class="row">
-      <div class="col-6">
+      <div class="col-12 col-lg-6">
         <validation-observer v-slot="{ invalid }">
           <form @submit.prevent="submitForm">
             <validation-provider
@@ -21,7 +21,7 @@
                 type="text"
                 id="inputName"
                 name="姓名"
-                placeholder="預定人姓名"
+                placeholder="訂購人姓名"
                 class="form-control form-control-lg"
                 :class="classes"
                 v-model="person.name"
@@ -42,7 +42,7 @@
                 type="email"
                 id="inputEmail"
                 name="Email"
-                placeholder="預定人信箱"
+                placeholder="訂購人信箱"
                 class="form-control form-control-lg"
                 :class="classes"
                 v-model="person.email"
@@ -63,7 +63,7 @@
                 type="tel"
                 id="inputTel"
                 name="電話"
-                placeholder="預定人電話"
+                placeholder="訂購人電話"
                 class="form-control form-control-lg"
                 :class="classes"
                 v-model="person.tel"
@@ -84,20 +84,29 @@
                 type="text"
                 id="inputAddress"
                 name="地址"
-                placeholder="預定人地址"
+                placeholder="訂購人地址"
                 class="form-control form-control-lg"
                 :class="classes"
                 v-model="person.address"
               />
               <small class="invalid-feedback">{{ errors[0] }}</small>
             </validation-provider>
-            <div class="form-group">
-              <label for="selectPay" class="h3 font-weight-bold">付款方式</label>
+            <validation-provider
+              rules="required"
+              v-slot="{ errors }"
+              tag="div"
+              class="form-group"
+            >
+              <label for="selectPay" class="h3 font-weight-bold">
+                付款方式
+                <sup class="text-danger">*</sup>
+              </label>
               <select name="selectPay" id="selectPay" class="form-control form-control-lg" v-model="person.payment">
                 <option value disabled>請選擇付款方式</option>
                 <option :value="item" v-for="(item, index) in selectPay" :key="index">{{ item }}</option>
               </select>
-            </div>
+              <small class="invalid-feedback">{{ errors[0] }}</small>
+            </validation-provider>
             <div class="form-group">
               <label for="inputRemarks" class="h3 font-weight-bold">留言</label>
               <textarea name="remarks" id="inputRemarks" cols="30" rows="10" class="form-control"></textarea>
@@ -114,7 +123,7 @@
           </form>
         </validation-observer>
       </div>
-      <div class="col-6">
+      <div class="col-12 col-lg-6">
         <table class="table table-borderless">
           <thead>
             <tr>
