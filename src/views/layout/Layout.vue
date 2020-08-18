@@ -27,7 +27,7 @@
               <router-link to="/products" class="nav-link">行李箱</router-link>
             </li>
             <li class="nav-item" @click="collapseHide">
-              <router-link to="/repair" class="nav-link">快速維修</router-link>
+              <router-link to="/repair" class="nav-link">聯絡維修</router-link>
             </li>
             <li class="nav-item" @click="collapseHide">
               <router-link to="/questions" class="nav-link">常見問題</router-link>

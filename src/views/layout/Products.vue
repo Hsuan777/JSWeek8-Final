@@ -27,11 +27,10 @@
               <router-link :to="`/product/${item.id}`">
                 <img :src="item.imageUrl[0]" class="inner__productListImg object-fit rounded-top">
               </router-link>
-              <!-- <img :src="item.imageUrl[0]" class="img-fluid rounded-top"> -->
               <div class="card-body">
                 <!-- 商品標題 -->
                 <h5 class="font-weight-bold">{{item.title}}</h5>
-                <!-- 商品內容 -->
+                <!-- 商品內容，描述作為 v-html -->
                 <p class="mt-2 text-truncate">{{item.content}}</p>
                 <!-- 商品價格 -->
                 <div class="d-flex justify-content-between">

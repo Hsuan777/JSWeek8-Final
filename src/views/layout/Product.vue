@@ -44,28 +44,18 @@
         <div class="card border-0">
           <div class="card-head p-0">
             <img :src="selectImage" class="img-fluid rounded-top">
-            <!-- 圖片列表 : 方案一 右側 -->
-            <!-- <div class="col-3">
-              <div class="d-flex flex-column justify-content-center">
-                <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
-              </div>
-            </div> -->
           </div>
           <div class="card-body" v-if="hexAPI.product.imageUrl">
+            <!-- 圖片列表 : 方案一 右側 -->
             <!-- 圖片列表 : 方案二 下方 -->
-            <!-- <div class="col"> -->
-              <!-- TODO:左右滑動 loop -->
+            <!-- TODO:左右滑動 loop -->
             <div class="row justify-content-center " v-if="hexAPI.product.imageUrl[1]">
               <div class="col" v-for="(item, index) in hexAPI.product.imageUrl" :key="index">
                 <img :src="item" class="inner__iconImg" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
               </div>
             </div>
-            <!-- </div> -->
-            <!-- <div class="d-flex justify-content-between mb-3">
-              <img :src="item" v-for="(item, index) in hexAPI.product.imageUrl" :key="index" class="inner__iconImg object-fit img-fluid" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
-            </div> -->
-            <!-- 商品文案格式錯誤 -->
-            <div v-html="hexAPI.product.content"></div>
+            <!-- 商品內容，描述作為 v-html -->
+            <div v-html="hexAPI.product.description"></div>
           </div>
         </div>
       </div>
