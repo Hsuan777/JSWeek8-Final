@@ -10,7 +10,6 @@ $spacers: () !default;
 $spacers: map-merge(
   (
     0: 0,
-    25:($spacer * 0.25),
     1: ($spacer * .5),
     2: $spacer,
     3: ($spacer * 1.5),

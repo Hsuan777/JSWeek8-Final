@@ -1,7 +1,7 @@
 <template>
-  <section class="container mb-5 pb-5">
+  <section class="height--content container">
     <h2 class="font-weight-bold text-center">常見問題</h2>
-    <ul class="list-unstyled mb-5 pb-5">
+    <ul class="list-unstyled">
       <li class="cursor--pointer border-bottom" @click="toggle('a1')">
         <h4  class="p-2 d-flex align-items-center justify-content-between mb-0">
           Q1.請問行李箱是淘寶來的嗎？
