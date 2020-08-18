@@ -128,7 +128,6 @@
             <tr v-for="(item, index) in shopping.data" :key="index" class="border-top">
               <td class="align-middle">{{ item.product.title }}</td>
               <td class="align-middle">
-                <!-- TODO:如何隨著商品所選顏色變換? -->
                 <img :src="item.product.imageUrl[0]" alt class="inner__cartImg rounded" />
               </td>
               <td class="align-middle text-right">{{ item.product.price }}</td>
@@ -203,7 +202,6 @@ export default {
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders`, vm.person
         )
         .then((response) => {
-          // TODO:改成 modal
           const vm = this
           vm.message = '感謝您的訂購~'
           $('#noticeModal').modal('show')

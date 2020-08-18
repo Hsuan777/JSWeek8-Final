@@ -1,28 +1,30 @@
-.shopping{
-  position: relative;
-  
-}
-.shoppingTop{
+
+.top {
   position: fixed;
-  top: 15vh;
   right: 4vw;
   @include media-breakpoint-up(md) {
     right: 10vw;
   }
   z-index: 9;
-}
-// TODO:保留固定
-.layout{
-  &__nav{
-    @include media-breakpoint-down(md) {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index:1030 ;
-    }
+  &__scroll{
+    bottom: 15vh;
+  }
+  &__shoppingCart {
+    top: 15vh;
   }
 }
+// TODO:保留固定
+// .layout{
+//   &__nav{
+//     @include media-breakpoint-down(md) {
+//       position: fixed;
+//       top: 0;
+//       left: 0;
+//       right: 0;
+//       z-index:1030 ;
+//     }
+//   }
+// }
 
 .banner{
   &__img {

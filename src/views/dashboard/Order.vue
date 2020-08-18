@@ -12,7 +12,7 @@
             <th scope="row" width="300px">訂購產品</th>
             <th scope="row" class="text-nowrap text-right">訂單金額</th>
             <th scope="row" class="text-nowrap">出貨狀態</th>
-            <!-- TODO: 編輯訂單，出貨狀態、維修狀態 -->
+            <!-- 編輯訂單，出貨狀態、維修狀態 -> 只能修改是否結帳 -->
             <th scope="row" class="text-nowrap">編輯訂單</th>
           </tr>
         </thead>

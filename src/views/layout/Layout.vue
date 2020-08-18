@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- TODO:固定 nav在某些頁面會 RWD反而不適合 -->
+    <!-- TODO: 要不要固定 nav? -->
     <nav id="nav" class="navbar navbar-expand-lg navbar-light font-weight-bold bg-white">
       <div class="container">
         <router-link to="/" class="navbar-brand text-primary">
@@ -39,6 +39,7 @@
         </div>
       </div>
     </nav>
+    <top></top>
     <router-view/>
     <footer class="bg-primary py-2">
       <div class="container">
@@ -85,7 +86,11 @@
 
 <script>
 import $ from 'jquery'
+import Top from '@/components/top.vue'
 export default {
+  components: {
+    Top
+  },
   methods: {
     collapseHide () {
       $('#navbarSupportedContent').collapse('hide')

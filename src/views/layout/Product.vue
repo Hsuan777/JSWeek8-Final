@@ -140,7 +140,7 @@ export default {
           $('#noticeModal').modal('show')
           setTimeout(() => {
             $('#noticeModal').modal('hide')
-          }, 1500)
+          }, 3000)
           vm.isLoading = false
         })
     },

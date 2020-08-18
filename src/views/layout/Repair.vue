@@ -1,13 +1,14 @@
 <template>
 
-  <section class="container mb-5">
+  <section class="container-fluid mb-5">
     <h2 class="text-center font-weight-bold mb-5">快速維修</h2>
-    <div class="container">
       <div class="row justify-content-center">
-        <div class="col-6 border-right">
-          <h3 class="text-center font-weight-bold">詢價</h3>
+        <div class="col-6">
+          <h3 class="text-center font-weight-bold">維修詢價</h3>
           <div class="d-flex justify-content-center align-items-center h-50">
             <h3 class="font-weight-bold mr-3">拍攝損壞處</h3>
+            <!-- TODO:取得權限，開啟相機 getUserMedia -->
+            <!-- https://developers.google.com/web/fundamentals/media/capturing-images?hl=zh-tw -->
             <span class="material-icons h2 text-danger">add_a_photo</span>
           </div>
           <div class="d-flex justify-content-center align-items-center">
@@ -56,7 +57,6 @@
           </div>
         </div> -->
       </div>
-    </div>
   </section>
 </template>
 <script>

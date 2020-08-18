@@ -10,6 +10,11 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
+          <div class="modal-header bg-primary">
+            <h3 class="d-flex align-items-center">
+              通知<span class="material-icons ml-1">notification_important</span>
+            </h3>
+          </div>
           <div class="modal-body d-flex flex-column align-items-center">
             <h3 class="mb-3">{{ message }}</h3>
             <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close" @click="jump">確定</button>

@@ -175,7 +175,7 @@
                     ></textarea>
                   </div>
                   <!-- 若沒有 value，預設會是布林值 -->
-                  <!-- TODO:接收資料回來時，可能還需要再多一個暫存空間放 options -->
+                  <!-- TODO: 接收資料回來時，options的 color屬性所對應的圖片顏色如何隨著購物車走 ? -->
                   <div class="form-group" >
                     <label class="form-label">商品顏色
                       <button type="button" class="btn btn-secondary btn-sm mr-2" @click.prevent="addCell(temporary.options.colors)">增加顏色</button>

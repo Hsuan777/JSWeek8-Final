@@ -2,7 +2,7 @@
   <aside>
     <button
         type="button"
-        class="shoppingTop btn btn-primary btn-lg text-decoration-none d-flex p-2"
+        class="top top__shoppingCart btn btn-primary btn-lg text-decoration-none d-flex p-2"
         data-toggle="modal"
         data-target="#shoppingModal"
       >
@@ -104,8 +104,7 @@ export default {
           vm.isLoading = false
         })
     },
-    // TODO:數量的使用者體驗，會一直等待伺服器回報
-    // TODO: 相同產品，但不同數量，如何更新?
+    // 相同產品，但不同數量，如何更新? -> 改為購物車修正
     productQuantity (action, pid, quantity) {
       const vm = this
       vm.isLoading = true

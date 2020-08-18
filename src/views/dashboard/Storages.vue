@@ -186,7 +186,6 @@ export default {
             vm.cleanData()
           })
       } else {
-        // TODO:似乎可以用驗證方式來回饋錯誤訊息
         alert('請選擇檔案~')
       }
     },
