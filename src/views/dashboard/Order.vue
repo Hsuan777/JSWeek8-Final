@@ -136,7 +136,6 @@ export default {
         .get(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders/${item.id}`)
         .then((res) => {
           vm.temporary = Object.assign({}, res.data.data)
-          console.log(vm.temporary)
           vm.modalTitle = vm.temporary.user.name
           vm.isLoading = false
           $('#editOrderModal').modal('show')

@@ -162,12 +162,3 @@
     </section>
   </main>
 </template>
-<script>
-export default {
-  data () {
-    return {
-      googleReviews: {}
-    }
-  }
-}
-</script>

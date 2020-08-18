@@ -81,26 +81,9 @@ export default {
   },
   methods: {
     toggle (ans) {
-      // console.log(ans)
-      // console.log(this.isShow[ans].text)
       this.isShow[ans].text = !this.isShow[ans].text
       this.isShow[ans].more = !this.isShow[ans].more
       this.isShow[ans].less = !this.isShow[ans].less
-      // switch (question) {
-      //   case 'a1':
-      //     this.isShow.a1.text = !this.isShow.a1.text
-      //     this.isShow.a1.more = !this.isShow.a1.more
-      //     this.isShow.a1.less = !this.isShow.a1.less
-      //     break
-      //   case 'a2':
-      //     this.isShow.a2.text = !this.isShow.a2.text
-      //     this.isShow.a2.more = !this.isShow.a2.more
-      //     this.isShow.a2.less = !this.isShow.a2.less
-      //     break
-      // }
-      // this.isShow[num] = !this.isShow[num]
-      // $('.bg-secondary').fadeIn('slow').toggle()
-      // this.$refs.a1.fadeIn('slow').show()
     }
   }
 }

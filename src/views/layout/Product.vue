@@ -49,11 +49,12 @@
             <!-- 圖片列表 : 方案一 右側 -->
             <!-- 圖片列表 : 方案二 下方 -->
             <!-- TODO:左右滑動 loop -->
-            <div class="row justify-content-center " v-if="hexAPI.product.imageUrl[1]">
-              <div class="col" v-for="(item, index) in hexAPI.product.imageUrl" :key="index">
+            <swiper class="swiper" :options="swiperOption" v-if="hexAPI.product.imageUrl[1]">
+              <swiper-slide v-for="(item, index) in hexAPI.product.imageUrl" :key="index">
                 <img :src="item" class="inner__iconImg" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
-              </div>
-            </div>
+              </swiper-slide>
+              <div class="swiper-pagination" slot="pagination"></div>
+            </swiper>
             <!-- 商品內容，描述作為 v-html -->
             <div v-html="hexAPI.product.description"></div>
           </div>
@@ -67,10 +68,14 @@
 import $ from 'jquery'
 import Cart from '@/components/cart.vue'
 import Notice from '@/components/notice.vue'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import 'swiper/swiper-bundle.css'
 export default {
   components: {
     Cart,
-    Notice
+    Notice,
+    Swiper,
+    SwiperSlide
   },
   data () {
     return {
@@ -90,7 +95,15 @@ export default {
       },
       isLoading: false,
       selectImage: '',
-      message: ''
+      message: '',
+      swiperOption: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        }
+      }
     }
   },
   methods: {
@@ -168,7 +181,6 @@ export default {
     }
   },
   created () {
-    // 或許可以用 $bus
     this.getProduct(this.$route.params.id)
   }
 }

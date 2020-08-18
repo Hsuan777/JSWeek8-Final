@@ -1,5 +1,4 @@
 <template>
-
   <section class="container mb-5">
     <h2 class="font-weight-bold mb-5">聯絡維修</h2>
       <div class="row justify-content-center">
@@ -56,7 +55,3 @@
       </div>
   </section>
 </template>
-<script>
-export default {
-}
-</script>

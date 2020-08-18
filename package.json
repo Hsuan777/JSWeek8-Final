@@ -1,5 +1,5 @@
 {
-  "name": "week6-router",
+  "name": "week8-final",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,8 +14,10 @@
     "core-js": "^3.6.5",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
+    "swiper": "^6.1.2",
     "vee-validate": "^3.3.7",
     "vue": "^2.6.11",
+    "vue-awesome-swiper": "^4.1.1",
     "vue-axios": "^2.1.5",
     "vue-loading-overlay": "^3.3.2",
     "vue-router": "^3.2.0"

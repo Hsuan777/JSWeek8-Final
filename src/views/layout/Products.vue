@@ -56,6 +56,7 @@
 import Pagination from '@/components/pagination.vue'
 import Cart from '@/components/cart.vue'
 export default {
+  title: '台中行李箱維修 | 行李箱列表',
   components: {
     Pagination,
     Cart
