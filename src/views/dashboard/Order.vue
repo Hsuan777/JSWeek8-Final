@@ -18,9 +18,9 @@
         </thead>
         <tbody class="p-0">
           <tr v-for="(item) in hexAPI.data" :key="item.id">
-            <td class="align-middle">{{item.created.datetime}}</td>
-            <td class="align-middle">{{item.products[0].product.title}}</td>
-            <td class="align-middle text-right">{{item.amount}}</td>
+            <td class="align-middle">{{ item.created.datetime }}</td>
+            <td class="align-middle">{{ item.products[0].product.title }}</td>
+            <td class="align-middle text-right">{{ item.amount }}</td>
             <td class="align-middle">
               <span v-if="item.paid" class="text-success">已付款</span>
               <span v-else class="text-danger">未付款</span>

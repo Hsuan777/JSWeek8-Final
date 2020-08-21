@@ -28,15 +28,15 @@
         </thead>
         <tbody class="p-0">
           <tr v-for="(item) in hexAPI.data" :key="item.id">
-            <td class="align-middle">{{item.category}}</td>
-            <td class="align-middle">{{item.title}}</td>
+            <td class="align-middle">{{ item.category }}</td>
+            <td class="align-middle">{{ item.title }}</td>
             <td class="align-middle" v-if="item.options">
               <span v-for="(color) in item.options.colors" :key="color">
                 。{{color}}
               </span>
             </td>
-            <td class="text-right align-middle">{{item.origin_price}}</td>
-            <td class="text-right align-middle">{{item.price}}</td>
+            <td class="text-right align-middle">{{ item.origin_price }}</td>
+            <td class="text-right align-middle">{{ item.price }}</td>
             <td class="text-center align-middle">
               <span v-if="item.enabled" class="text-success">已開放</span>
               <span v-else class="text-danger">未開放</span>
@@ -415,9 +415,6 @@ export default {
     }
   },
   created () {
-    // 取出 token 名稱，若為空值則跳回 login.html，防止直接進 products.html
-    // 由於 Dashboard.vue的 <router-view :token="token.api_token" v-if="checkSucces" />影響
-    // 若 v-if="checkSucces" 為 false，不會將頁面導入
     this.getData()
   }
 }

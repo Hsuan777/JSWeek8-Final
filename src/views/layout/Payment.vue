@@ -171,10 +171,10 @@ export default {
         'GooglePay'
       ],
       person: {
-        name: '六小杰',
-        email: 'hex@gmail.com',
-        tel: '0999123456',
-        address: '高雄市小港區',
+        name: '',
+        email: '',
+        tel: '',
+        address: '',
         payment: ''
       },
       shopping: {
@@ -211,7 +211,6 @@ export default {
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders`, vm.person
         )
         .then((response) => {
-          const vm = this
           vm.message = '感謝您的訂購~'
           $('#noticeModal').modal('show')
           vm.isLoading = false

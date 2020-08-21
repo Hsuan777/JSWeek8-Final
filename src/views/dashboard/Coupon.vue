@@ -27,10 +27,10 @@
         </thead>
         <tbody class="p-0">
           <tr v-for="(item) in hexAPI.data" :key="item.id">
-            <td class="align-middle">{{item.title}}</td>
-            <td class="align-middle">{{item.code}}</td>
-            <td class="text-right align-middle">{{item.percent}}</td>
-            <td class="align-middle">{{item.deadline.datetime}}</td>
+            <td class="align-middle">{{ item.title }}</td>
+            <td class="align-middle">{{ item.code }}</td>
+            <td class="text-right align-middle">{{ item.percent }}</td>
+            <td class="align-middle">{{ item.deadline.datetime }}</td>
             <td class="text-center align-middle">
               <span v-if="item.enabled" class="text-success">已開放</span>
               <span v-else class="text-danger">未開放</span>
@@ -257,8 +257,8 @@ export default {
       vm.axios
         .get(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${item.id}`)
         .then((res) => {
-          this.temporary = Object.assign({}, res.data.data)
-          vm.modalTitle = this.temporary.title
+          vm.temporary = Object.assign({}, res.data.data)
+          vm.modalTitle = vm.temporary.title
           vm.isLoading = false
           if (action === 'edit') {
             $('#addCouponModal').modal('show')

@@ -21,23 +21,20 @@
         <ul class="list__products row list-unstyled mb-5">
           <li class="col-12 col-md-6 col-lg-4" v-for="item in category.data" :key="item.id">
             <div class="card mb-3">
-              <!-- v-for 會影響到全部 -->
-              <!-- 方案一 : 產品列表可獨立選擇顏色 -->
-              <!-- 方案二 : 產品內頁才選擇顏色 -->
               <router-link :to="`/product/${item.id}`">
                 <img :src="item.imageUrl[0]" class="inner__productListImg object-fit rounded-top">
               </router-link>
               <div class="card-body">
                 <!-- 商品標題 -->
-                <h5 class="font-weight-bold">{{item.title}}</h5>
+                <h5 class="font-weight-bold">{{ item.title }}</h5>
                 <!-- 商品內容，描述作為 v-html -->
-                <p class="mt-2 text-truncate">{{item.content}}</p>
+                <p class="mt-2 text-truncate">{{ item.content }}</p>
                 <!-- 商品價格 -->
                 <div class="d-flex justify-content-between">
                   <small class="mb-0">
-                    售價 : <del>{{item.origin_price}}</del>
+                    售價 : <del>{{ item.origin_price }}</del>
                   </small>
-                  <p class="font-weight-bold mb-0">特價 : {{item.price}}</p>
+                  <p class="font-weight-bold mb-0">特價 : {{ item.price }}</p>
                 </div>
               </div>
             </div>
@@ -46,7 +43,6 @@
       </div>
     </div>
     <div class="d-flex justify-content-center ">
-      <!-- :pages="pagination" 的 pagination是由這裡的 data所定義的，因為前面有使用 v-bind-->
       <pagination :pages="pagination" @emit-pages="getData"></pagination>
     </div>
   </section>
@@ -120,8 +116,6 @@ export default {
   created () {
     this.getData()
     this.categoryData()
-  },
-  mounted () {
   }
 }
 </script>

@@ -21,7 +21,7 @@
                 </a>
               </li>
               <li>
-                <a href="https://line.me/ti/p/台中行李箱維修" class="h3 text-decoration-none icon__LINE">
+                <a href="https://line.me/ti/p/0903017408" class="h3 text-decoration-none icon__LINE">
                   <i class="fab fa-line h2 mr-2"></i>
                   台中行李箱維修
                 </a>

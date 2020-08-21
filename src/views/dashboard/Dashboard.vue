@@ -41,7 +41,6 @@
         </div>
       </div>
     </nav>
-    <!-- router-link的頁面會被放入 router-view -->
     <router-view :token="token.api_token" v-if="checkSucces" />
 
     <!-- signout Modal -->
@@ -67,7 +66,7 @@
                 <button
                   type="button"
                   class="btn btn-secondary"
-                  @click="signout"
+                  @click.prevent="signout"
                   data-dismiss="modal"
                 >登出</button>
                 <button type="button" class="btn btn-outline-secondary text-dark" data-dismiss="modal">Close</button>
@@ -92,15 +91,12 @@ export default {
   },
   methods: {
     signout (e) {
-      e.preventDefault()
-      // 將存放在瀏覽器的 cookie清空
       document.cookie = 'hexToken=; expires=; path=/'
       this.$router.push('/')
     },
     checkToken () {
       const vm = this
-      // eslint-disable-next-line
-      vm.token.api_token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/, '$1')
+      vm.token.api_token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
       if (vm.token.api_token === '') {
         vm.$router.push('/')
       } else {
@@ -115,6 +111,9 @@ export default {
     }
   },
   created () {
+    this.checkToken()
+  },
+  mounted () {
     this.checkToken()
   }
 }

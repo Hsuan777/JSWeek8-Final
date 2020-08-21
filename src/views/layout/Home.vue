@@ -7,7 +7,7 @@
           <div class="row h-100 align-items-center">
             <div class="col">
               <h2 class="font-weight-bold" data-aos="fade-down" data-aos-delay="300">台中行李箱維修</h2>
-              <h4 class="font-weight-bold mb-5" data-aos="fade-down" data-aos-delay="300">不分廠牌。現場維修</h4>
+              <h4 class="font-weight-bold mb-5" data-aos="fade-down" data-aos-delay="300">不分廠牌。現場維修。快速取件</h4>
               <div class="btn-group">
                 <router-link to="/repair" class="btn btn-info btn-lg font-weight-bold" data-aos="zoom-in" data-aos-delay="500">快速維修</router-link>
                 <router-link to="/products" class="btn btn-primary btn-lg font-weight-bold" data-aos="zoom-in" data-aos-delay="800">行李箱</router-link>
@@ -124,8 +124,10 @@
           </div>
           <p></p>
           <blockquote class="blockquote">
-            <p>"在這疫情時期，大家出國的機會變少，但國旅正起步，在幾分鐘之內，有人買新箱子，有人電話諮詢，有人來取件，台中行李箱維修專業可靠，價格公道。 同樣的換手把跟換拉桿曾經到別家維修，費用不僅是台中行李箱維修兩倍，也沒辦法當場取件，台中行李箱維修替顧客省了來回的車資與時間，搭配上有透明的報價，絕對值得！ 非常謝謝老闆，專業的技術與服務及詳細透明的說明跟報價，難怪客人沒有停過，評價那麼好"</p>
-            <footer class="blockquote-footer text-right mr-1">Ellisa Feng</footer>
+            <p>
+              "在這疫情時期，大家出國的機會變少，但國旅正起步，在幾分鐘之內，有人買新箱子，有人電話諮詢，有人來取件，台中行李箱維修專業可靠，價格公道。 同樣的換手把跟換拉桿曾經到別家維修，費用不僅是台中行李箱維修兩倍，也沒辦法當場取件，台中行李箱維修替顧客省了來回的車資與時間，搭配上有透明的報價，絕對值得！ 非常謝謝老闆，專業的技術與服務及詳細透明的說明跟報價，難怪客人沒有停過，評價那麼好"
+            </p>
+            <span class="blockquote-footer text-right mr-1">Ellisa Feng</span>
           </blockquote>
         </div>
         <div class="col-md-12 col-lg-4" data-aos="zoom-in-up" data-aos-duration="1000">
@@ -139,10 +141,9 @@
           <p></p>
           <blockquote class="blockquote">
             <p>
-              "給很專業的維修建議～而且速度很快❤️，現場取件!順便買了一個新箱子，超便宜的，cp值超高，超有質感，全新品，還有保固!
-              很有人情味的店家，老闆親切隨和，講解細心，服務專業！！
-              價格又很實在公道！真是不可多得的好店家！"</p>
-            <footer class="blockquote-footer text-right mr-1">王舜慧</footer>
+              "給很專業的維修建議～而且速度很快❤️，現場取件!順便買了一個新箱子，超便宜的，cp值超高，超有質感，全新品，還有保固! 很有人情味的店家，老闆親切隨和，講解細心，服務專業！！價格又很實在公道！真是不可多得的好店家！"
+            </p>
+            <span class="blockquote-footer text-right mr-1">王舜慧</span>
           </blockquote>
         </div>
         <div class="col-md-12 col-lg-4" data-aos="zoom-in-up" data-aos-duration="1000">
@@ -154,8 +155,10 @@
             <span class="material-icons icon__grade">grade</span>
           </div>
           <blockquote class="blockquote">
-            <p>"大黑陪我征戰多年，有感情糾葛捨不得丟，問了許多家，不是沒辦法修，就是叫你買新的，上網搜尋到台中行李箱維修，帶到現場給老闆看看，老闆看到此拉桿，輪子，手把，內裡都損壞，笑笑說，我幫你找回記憶，然後開始拆拉桿，拆輪子 ，修手把，縫內裡，每個工法都很到位，拉桿，輪子敲敲打打更換非常快，手把拆組速度也狠快，經驗非常老道，修理也不怕你看，細工部分，穿針引線也不馬虎，根本就是職人手工達人，非常感謝上天，讓我有機會遇到老闆，有種相見恨晚的感覺，老闆說只做有緣的人，合的來的人，維修就是這一回事而已。。。難怪老闆評價那麼好"</p>
-            <footer class="blockquote-footer text-right mr-1">May Chung</footer>
+            <p>
+              "大黑陪我征戰多年，有感情糾葛捨不得丟，問了許多家，不是沒辦法修，就是叫你買新的，上網搜尋到台中行李箱維修，帶到現場給老闆看看，老闆看到此拉桿，輪子，手把，內裡都損壞，笑笑說，我幫你找回記憶，然後開始拆拉桿，拆輪子 ，修手把，縫內裡，每個工法都很到位，拉桿，輪子敲敲打打更換非常快，手把拆組速度也狠快，經驗非常老道，修理也不怕你看，細工部分，穿針引線也不馬虎，根本就是職人手工達人，非常感謝上天，讓我有機會遇到老闆，有種相見恨晚的感覺，老闆說只做有緣的人，合的來的人，維修就是這一回事而已。。。難怪老闆評價那麼好"
+            </p>
+            <span class="blockquote-footer text-right mr-1">May Chung</span>
           </blockquote>
         </div>
       </div>

@@ -69,7 +69,7 @@
               </a>
               <!-- TODO:暫時忽略正確帳號 -->
               <a
-                href="https://line.me/ti/p/台中行李箱維修"
+                href="https://line.me/ti/p/0903017408"
                 class="h2 text-decoration-none text-white mb-0">
                 <i class="fab fa-line"></i>
               </a>

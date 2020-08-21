@@ -18,24 +18,24 @@
           </nav>
           <h2 class="font-weight-bold">{{ hexAPI.product.title }}</h2>
           <div class="mb-3" v-if="hexAPI.product.options">
-            <button type="button" v-for="(color, index) in hexAPI.product.options.colors" :key="index" class="btn btn-secondary mr-2 mb-2" @click.prevent="selectImg(hexAPI.product.imageUrl[index+1])">{{color}}</button>
+            <button type="button" v-for="(color, index) in hexAPI.product.options.colors" :key="index" class="btn btn-secondary mr-2 mb-2" @click.prevent="selectImg(hexAPI.product.imageUrl[index+1])">{{ color }}</button>
           </div>
           <div class="d-flex flex-column align-items-end mb-3">
             <small class="mb-0">
-              售價 : <del>{{hexAPI.product.origin_price}}</del>
+              售價 : <del>{{ hexAPI.product.origin_price }}</del>
             </small>
-            <p class="font-weight-bold mb-0">特價 : {{hexAPI.product.price}}</p>
+            <p class="font-weight-bold mb-0">特價 : {{ hexAPI.product.price }}</p>
           </div>
           <div class="row">
             <div class="col-6">
               <div class="btn-group btn-group-lg btn-block" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-outline-secondary text-dark" @click="productQuantity('reduce')"> - </button>
-                <button type="button" class="btn btn-outline-secondary text-dark"> {{ temporary.quantity }} </button>
-                <button type="button" class="btn btn-outline-secondary text-dark" @click="productQuantity('add')"> + </button>
+                <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('reduce')"> - </button>
+                <input type="button" class="btn btn-outline-secondary text-dark" :value="temporary.quantity" disabled>
+                <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('add')"> + </button>
               </div>
             </div>
             <div class="col-6">
-              <button type="button" class="btn btn-info btn-lg btn-block" @click="addShopping">加入購物車</button>
+              <button type="button" class="btn btn-info btn-lg btn-block" @click.prevent="addShopping">加入購物車</button>
             </div>
           </div>
         </div>
