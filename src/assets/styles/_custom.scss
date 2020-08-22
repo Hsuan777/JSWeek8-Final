@@ -41,14 +41,53 @@
   }
   &__home{
     background-image: 
-    linear-gradient(120deg, #fff 25%, transparent 50%),
-    url('https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80');
+    linear-gradient(120deg, #fff 45%, transparent 60%),
+    url('https://images.unsplash.com/photo-1509134072290-fffe152264c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80');
+    // background-image: 
+    // linear-gradient(120deg, #fff 25%, transparent 50%),
+    // url('https://images.unsplash.com/photo-1581553675306-743b47b3510a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80');
+    // background-image: 
+    // linear-gradient(120deg, #fff 25%, transparent 50%),
+    // url('https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80');
     background-size: 100% 100%, cover;
     background-position: center center, center center;
   }
 }
 
 .inner{
+  &__repairCase{
+    position: relative;
+    &__text{
+      position: absolute;
+      writing-mode: vertical-lr;
+      width: 100px;
+      height: 100px;
+      background-color: #fff;
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-100px);
+      left: 0;
+      right: 0;
+      z-index: 9;
+    }
+    &__status{
+      position: absolute;
+      &::before{
+        content:'';
+        position: absolute;
+        top: 22%;
+        right: 10%;
+        width: 25px;
+        height: 25px;
+        background-color: #fff;
+        border-radius: 50%;
+        z-index: -1;
+      }
+      top: 0;
+      right: 5%;
+      z-index: 9;
+    }
+  }
   &__repairImg {
     width: 100%;
     height: 250px;
@@ -85,5 +124,20 @@
   }
   &__grade{
     color:#FFD306;
+  }
+  &__cartNum {
+    position: absolute;
+    font-size: 8px;
+    top: 10px;
+    right: 15px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    line-height: 15px;
+    background-color: map-get($theme-colors, danger );
+  }
+  &__person{
+    width: 50px;
+    height: 50px;
   }
 }

@@ -7,7 +7,7 @@
         data-target="#shoppingModal"
       >
       <span class="material-icons">shopping_cart</span>
-      <sup class="text-danger ml-n1">{{ shopping.data.length }}</sup>
+      <span class="icon__cartNum text-white">{{ shopping.data.length }}</span>
     </button>
     <!-- shopping Modal -->
     <div
@@ -42,7 +42,7 @@
               <tbody>
                 <tr v-for="(item, index) in shopping.data" :key="index">
                   <td class="align-middle">{{ item.product.title }}</td>
-                  <td class="align-middle text-right">{{ item.product.price }}</td>
+                  <td class="align-middle text-right">{{ item.product.price|commaFormat }}</td>
                   <td class="align-middle text-center">
                     <div class="btn-group" role="group" aria-label="Basic example">
                       <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('reduce', item.product.id, item.quantity)"> - </button>
@@ -64,7 +64,7 @@
               </tbody>
             </table>
 
-            <h3 class="text-right mr-2 mb-2">總計金額 : NT.{{ shopping.moneyTotal }}</h3>
+            <h3 class="text-right mr-2 mb-2">總計金額 : {{ shopping.moneyTotal|commaFormat }}</h3>
             <div class="modal-footer d-flex justify-content-between border-0 p-1">
               <button type="button" class="btn btn-secondary btn-lg" @click="deleteAll">Clean</button>
               <button type="button" class="btn btn-info btn-lg" @click.prevent="pay">結帳</button>
@@ -78,7 +78,6 @@
 <script>
 import $ from 'jquery'
 export default {
-  name: 'Cart',
   data () {
     return {
       temporary: {},
@@ -88,6 +87,14 @@ export default {
   props: {
     shopping: {
       type: Object
+    }
+  },
+  filters: {
+    commaFormat (value) {
+      // 加上千分位符號
+      const parts = value.toString().split('.')
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      return 'NT. ' + parts.join('.')
     }
   },
   methods: {

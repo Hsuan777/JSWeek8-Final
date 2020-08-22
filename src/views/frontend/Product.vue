@@ -2,7 +2,7 @@
   <section  class="container mt-6 mb-5">
     <loading :active.sync="isLoading"></loading>
     <cart :shopping="apiShoppingData"></cart>
-    <notice :message="message"></notice>
+    <notice :message="message" jumpTo="/products"></notice>
     <div class="row flex-row-reverse">
       <div class="col-md-12 col-lg-5">
         <div class="p-3">

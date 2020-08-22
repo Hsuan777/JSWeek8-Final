@@ -22,20 +22,20 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav">
-            <li class="nav-item h3" @click="collapseHide">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item" @click="collapseHide">
               <router-link to="/products" class="nav-link d-none d-lg-block">行李箱</router-link>
               <router-link to="/products" class="nav-link border-bottom d-lg-none">行李箱</router-link>
             </li>
-            <li class="nav-item h3" @click="collapseHide">
-              <router-link to="/repair" class="nav-link d-none d-lg-block">聯絡維修</router-link>
-              <router-link to="/repair" class="nav-link border-bottom d-lg-none">聯絡維修</router-link>
+            <li class="nav-item" @click="collapseHide">
+              <router-link to="/about" class="nav-link d-none d-lg-block">關於我們</router-link>
+              <router-link to="/about" class="nav-link border-bottom d-lg-none">關於我們</router-link>
             </li>
-            <li class="nav-item h3" @click="collapseHide">
+            <li class="nav-item" @click="collapseHide">
               <router-link to="/questions" class="nav-link d-none d-lg-block">常見問題</router-link>
               <router-link to="/questions" class="nav-link border-bottom d-lg-none">常見問題</router-link>
             </li>
-            <li class="nav-item h3" @click="collapseHide">
+            <li class="nav-item" @click="collapseHide">
               <router-link to="/login" class="nav-link">Login</router-link>
             </li>
           </ul>
@@ -49,10 +49,10 @@
         <div class="row align-items-center">
           <div class="col">
             <div class="d-flex flex-column justify-content-center">
-              <a href="http://maps.google.com/maps?q=台中市西屯區黎明路三段477號" class="text-dark text-nowrap text-decoration">
+              <a href="http://maps.google.com/maps?q=台中市西屯區黎明路三段477號" class="text-white text-nowrap text-decoration">
                 台中市西屯區黎明路三段477號
               </a>
-              <p class="mb-0 text-nowrap">週一 ~ 週六 10:00~17:00</p>
+              <p class="mb-0 text-nowrap text-white">週一 ~ 週六 10:00~17:00</p>
             </div>
           </div>
           <div class="col">
@@ -76,7 +76,7 @@
             </div>
           </div>
           <div class="col-12 mt-1">
-            <h4 class="text-center font-weight-bold mb-0">
+            <h4 class="text-center font-weight-bold mb-0 text-secondary">
               <span>台中行李箱維修</span>
               <small class="d-block d-md-inline"> © 2020. All Rights Reserved.</small>
             </h4>

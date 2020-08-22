@@ -3,6 +3,7 @@
     <div class="d-flex align-items-center">
       <h2 class="font-weight-bold d-flex justify-content-between mr-3 my-5">優惠券列表</h2>
       <loading :active.sync="isLoading"></loading>
+      <notice :message="message"></notice>
     </div>
     <div class="d-flex justify-content-end mb-2">
       <button
@@ -129,6 +130,15 @@
                           id="deadline_at"
                           placeholder="到期日"
                           class="form-control"
+                          v-if="temporary.deadline"
+                          v-model="temporary.deadline.datetime"
+                        />
+                        <input
+                          type="text"
+                          id="deadline_at"
+                          placeholder="到期日"
+                          class="form-control"
+                          v-if="temporary.deadline_at"
                           v-model="temporary.deadline_at"
                         />
                       </div>
@@ -200,7 +210,11 @@
 
 <script>
 import $ from 'jquery'
+import Notice from '@/components/notice.vue'
 export default {
+  components: {
+    Notice
+  },
   data () {
     return {
       hexAPI: {
@@ -216,6 +230,7 @@ export default {
       },
       temporary: {},
       modalTitle: '',
+      message: '',
       isLoading: false
     }
   },
@@ -229,6 +244,7 @@ export default {
         )
         .then((response) => {
           vm.hexAPI.data = response.data.data
+          console.log(vm.hexAPI.data)
           vm.isLoading = false
         })
     },
@@ -238,13 +254,15 @@ export default {
       vm.axios
         .post(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon`, vm.temporary)
         .then(() => {
+          vm.message = '新增成功!'
+          $('#noticeModal').modal('show')
           vm.getData()
         })
     },
     /* 新建資料 */
     initData () {
       this.modalTitle = '新增優惠券'
-      this.temporary = Object.assign({}, this.coupon)
+      this.temporary = { ...this.coupon }
     },
     /* 複製資料 */
     copyData (action, item) {
@@ -253,8 +271,9 @@ export default {
       vm.axios
         .get(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${item.id}`)
         .then((res) => {
-          vm.temporary = Object.assign({}, res.data.data)
+          vm.temporary = { ...res.data.data }
           vm.modalTitle = vm.temporary.title
+          console.log(vm.temporary)
           vm.isLoading = false
           if (action === 'edit') {
             $('#addCouponModal').modal('show')
@@ -273,6 +292,8 @@ export default {
             vm.axios
               .patch(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${vm.temporary.id}`, vm.temporary)
               .then(() => {
+                vm.message = '修改成功!'
+                $('#noticeModal').modal('show')
                 vm.getData()
                 vm.cleanData()
                 vm.modalTitle = vm.temporary.title
@@ -293,6 +314,8 @@ export default {
           vm.axios
             .delete(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${vm.temporary.id}`)
             .then(() => {
+              vm.message = '刪除成功!'
+              $('#noticeModal').modal('show')
               vm.getData()
               vm.cleanData()
               vm.isLoading = false

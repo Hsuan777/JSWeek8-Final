@@ -32,9 +32,9 @@
                 <!-- 商品價格 -->
                 <div class="d-flex justify-content-between">
                   <small class="mb-0">
-                    售價 : <del>{{ item.origin_price }}</del>
+                    售價 : <del>{{ item.origin_price|commaFormat }}</del>
                   </small>
-                  <p class="font-weight-bold mb-0">特價 : {{ item.price }}</p>
+                  <p class="font-weight-bold mb-0">特價 : {{ item.price|commaFormat }}</p>
                 </div>
               </div>
             </div>
@@ -52,7 +52,6 @@
 import Pagination from '@/components/pagination.vue'
 import Cart from '@/components/cart.vue'
 export default {
-  title: '台中行李箱維修 | 行李箱列表',
   components: {
     Pagination,
     Cart
@@ -77,6 +76,14 @@ export default {
         list: ['全部分類'],
         data: []
       }
+    }
+  },
+  filters: {
+    commaFormat (value) {
+      // 加上千分位符號
+      const parts = value.toString().split('.')
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      return 'NT. ' + parts.join('.')
     }
   },
   methods: {

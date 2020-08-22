@@ -20,7 +20,7 @@
             <th scope="row" class="text-nowrap">產品分類</th>
             <th scope="row" width="150px">產品名稱</th>
             <th scope="row" width="300px">產品顏色</th>
-            <th scope="row" width="100px" class="text-right text-nowrap">售價</th>
+            <th scope="row" width="100px" class="text-right text-nowrap">原價</th>
             <th scope="row" width="100px" class="text-right text-nowrap">售價</th>
             <th scope="row" width="100px" class="text-center text-nowrap">是否開放</th>
             <th scope="row" class="text-nowrap">編輯</th>
@@ -35,8 +35,8 @@
                 。{{color}}
               </span>
             </td>
-            <td class="text-right align-middle">{{ item.origin_price }}</td>
-            <td class="text-right align-middle">{{ item.price }}</td>
+            <td class="text-right align-middle">{{ item.origin_price|commaFormat }}</td>
+            <td class="text-right align-middle">{{ item.price|commaFormat }}</td>
             <td class="text-center align-middle">
               <span v-if="item.enabled" class="text-success">已開放</span>
               <span v-else class="text-danger">未開放</span>
@@ -294,6 +294,14 @@ export default {
       isLoading: false
     }
   },
+  filters: {
+    commaFormat (value) {
+      // 加上千分位符號
+      const parts = value.toString().split('.')
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      return 'NT. ' + parts.join('.')
+    }
+  },
   methods: {
     /* 取得遠端 API資料 */
     // 預設為 1
@@ -329,8 +337,6 @@ export default {
     initData () {
       this.cleanData()
       this.modalTitle = '新增商品'
-      // Object.assign 為潛層拷貝，若需要 options，則必須使用深拷貝
-      // this.temporary = Object.assign({}, this.product)
       this.temporary = JSON.parse(JSON.stringify(this.product))
     },
     /* 複製資料 */
@@ -343,7 +349,6 @@ export default {
       vm.axios
         .get(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${item.id}`)
         .then((res) => {
-          // this.temporary = Object.assign({}, res.data.data)
           vm.temporary = JSON.parse(JSON.stringify(res.data.data))
           vm.modalTitle = vm.temporary.title
           vm.isLoading = false

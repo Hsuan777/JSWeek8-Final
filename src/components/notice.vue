@@ -17,7 +17,7 @@
           </div>
           <div class="modal-body d-flex flex-column align-items-center">
             <h3 class="mb-3">{{ message }}</h3>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close" @click="jump">確定</button>
+            <button type="button" class="btn btn-secondary" aria-label="Close" @click="jump(jumpTo)">確定</button>
           </div>
         </div>
       </div>
@@ -26,16 +26,18 @@
 <script>
 import $ from 'jquery'
 export default {
-  name: 'Notice',
   data () {
     return {
     }
   },
-  props: ['message'],
+  props: ['message', 'jumpTo'],
   methods: {
-    jump () {
-      this.$router.push('/products')
+    jump (jumpTo) {
+      this.$router.push(jumpTo)
       $('#noticeModal').modal('hide')
+      setTimeout(() => {
+        $('#noticeModal').modal('hide')
+      }, 1000)
     }
   }
 }

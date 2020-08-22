@@ -41,7 +41,6 @@
         </div>
       </div>
     </nav>
-    <!-- <router-view :token="token" v-if="checkSucces" /> -->
     <router-view v-if="checkSucces" />
 
     <!-- signout Modal -->

@@ -4,74 +4,64 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-  /* 前後台分開 */
   {
     path: '/',
-    component: () => import('../views/layout/Layout.vue'), // APP.vue的 router-view顯示 Layout.vue的內容
+    component: () => import('../views/frontend/layout/Layout.vue'),
     children: [
-      // 當回到首頁時，Home.vue的內容也會經由 router-view顯示
       {
         path: '/',
-        component: () => import('../views/layout/Home.vue')
+        component: () => import('../views/frontend/Home.vue')
       },
       {
         path: 'products',
-        component: () => import('../views/layout/Products.vue')
+        component: () => import('../views/frontend/Products.vue')
       },
       {
         path: 'product/:id',
-        component: () => import('../views/layout/Product.vue')
+        component: () => import('../views/frontend/Product.vue')
       },
       {
-        path: 'repair',
-        component: () => import('../views/layout/Repair.vue')
+        path: 'about',
+        component: () => import('../views/frontend/About.vue')
       },
       {
         path: 'questions',
-        component: () => import('../views/layout/Questions.vue')
+        component: () => import('../views/frontend/Questions.vue')
       },
       {
         path: 'payment',
-        component: () => import('../views/layout/Payment.vue')
+        component: () => import('../views/frontend/Payment.vue')
       },
       {
         path: 'login',
-        component: () => import('../views/layout/Login.vue')
+        component: () => import('../views/frontend/Login.vue')
       }
-      // { path: '/*', redirect: '/' }
     ]
   },
   {
     path: '/admin',
-    component: () => import('../views/dashboard/Dashboard.vue'), // APP.vue的 router-view顯示 Dashboard.vue的內容
+    component: () => import('../views/backend/layout/Dashboard.vue'),
     children: [
-      // {
-      //   path: '/',
-      //   component: () => import('../views/dashboard/admin.vue') // 管理總覽、頁面導航
-      // },
       {
         path: 'products',
-        component: () => import('../views/dashboard/Products.vue'),
+        component: () => import('../views/backend/Products.vue'),
         meta: { requiresAuth: true }
       },
       {
         path: 'order',
-        component: () => import('../views/dashboard/Order.vue')
-        // meta: { requiresAuth: true }
+        component: () => import('../views/backend/Order.vue')
       },
       {
         path: 'coupon',
-        component: () => import('../views/dashboard/Coupon.vue')
-        // meta: { requiresAuth: true }
+        component: () => import('../views/backend/Coupon.vue')
       },
       {
         path: 'storages',
-        component: () => import('../views/dashboard/Storages.vue')
-        // meta: { requiresAuth: true }
+        component: () => import('../views/backend/Storages.vue')
       }
-      // { path: '/*', redirect: '/' }
     ]
-  }
+  },
+  { path: '/*', redirect: '/' }
 ]
 
 const router = new VueRouter({

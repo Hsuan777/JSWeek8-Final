@@ -133,7 +133,7 @@ export default {
       vm.axios
         .get(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders/${item.id}`)
         .then((res) => {
-          vm.temporary = Object.assign({}, res.data.data)
+          vm.temporary = { ...res.data.data }
           vm.modalTitle = vm.temporary.user.name
           vm.isLoading = false
           $('#editOrderModal').modal('show')
