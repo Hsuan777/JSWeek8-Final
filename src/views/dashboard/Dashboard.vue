@@ -41,7 +41,8 @@
         </div>
       </div>
     </nav>
-    <router-view :token="token.api_token" v-if="checkSucces" />
+    <!-- <router-view :token="token" v-if="checkSucces" /> -->
+    <router-view v-if="checkSucces" />
 
     <!-- signout Modal -->
     <div
@@ -83,9 +84,7 @@
 export default {
   data () {
     return {
-      token: {
-        api_token: ''
-      },
+      token: '',
       checkSucces: false
     }
   },
@@ -96,13 +95,13 @@ export default {
     },
     checkToken () {
       const vm = this
-      vm.token.api_token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
+      vm.token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
       if (vm.token.api_token === '') {
         vm.$router.push('/')
       } else {
         vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
         vm.axios
-          .post(`${process.env.VUE_APP_APIPATH}auth/check`, vm.token)
+          .post(`${process.env.VUE_APP_APIPATH}auth/check`, { api_token: vm.token })
           .then((res) => {
             vm.checkSucces = true
           })
@@ -111,9 +110,6 @@ export default {
     }
   },
   created () {
-    this.checkToken()
-  },
-  mounted () {
     this.checkToken()
   }
 }

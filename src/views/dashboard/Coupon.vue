@@ -219,12 +219,10 @@ export default {
       isLoading: false
     }
   },
-  props: ['token'],
   methods: {
     getData () {
       const vm = this
       vm.isLoading = true
-      vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
       vm.axios
         .get(
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupons`
@@ -237,7 +235,6 @@ export default {
     /* 新增資料 */
     addData () {
       const vm = this
-      vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
       vm.axios
         .post(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon`, vm.temporary)
         .then(() => {
@@ -253,7 +250,6 @@ export default {
     copyData (action, item) {
       const vm = this
       vm.isLoading = true
-      vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
       vm.axios
         .get(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${item.id}`)
         .then((res) => {
@@ -274,7 +270,6 @@ export default {
       if (vm.temporary.id) {
         vm.hexAPI.data.forEach((item) => {
           if (vm.temporary.id === item.id) {
-            vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
             vm.axios
               .patch(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${vm.temporary.id}`, vm.temporary)
               .then(() => {
@@ -295,7 +290,6 @@ export default {
       vm.isLoading = true
       vm.hexAPI.data.forEach((item) => {
         if (vm.temporary.id === item.id) {
-          vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
           vm.axios
             .delete(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${vm.temporary.id}`)
             .then(() => {

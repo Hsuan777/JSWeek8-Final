@@ -22,8 +22,8 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header bg-secondary">
-            <h5 class="modal-title font-weight-bold">購物車列表</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title font-weight-bold ml-1">購物車列表</h5>
+            <button type="button" class="close mr-1 pr-0" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -36,7 +36,7 @@
                   <th>商品名稱</th>
                   <th class="text-right">價格</th>
                   <th class="text-center">數量</th>
-                  <th class="text-center"></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -46,23 +46,26 @@
                   <td class="align-middle text-center">
                     <div class="btn-group" role="group" aria-label="Basic example">
                       <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('reduce', item.product.id, item.quantity)"> - </button>
-                      <button type="button" class="btn btn-outline-secondary text-dark"> {{ item.quantity }} </button>
+                      <input type="button" class="btn btn-outline-secondary text-dark" :value="item.quantity">
                       <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('add', item.product.id, item.quantity)"> + </button>
                     </div>
                   </td>
-                  <td class="align-middle text-center">
+                  <td class="align-middle text-right pr-0">
                     <button
                       type="button"
-                      class="btn btn-white border-0 btn-lg"
+                      class="close mr-1"
                       @click="deleteShopping( item.product.id )"
-                    ><span aria-hidden="true">&times;</span></button>
+                    >
+                      <!-- <span aria-hidden="true">&times;</span> -->
+                      <span class="material-icons">delete_forever</span>
+                    </button>
                   </td>
                 </tr>
               </tbody>
             </table>
 
-            <h3 class="text-right mr-4">總計金額 : NT.{{ shopping.moneyTotal }}</h3>
-            <div class="modal-footer d-flex justify-content-around border-0">
+            <h3 class="text-right mr-2 mb-2">總計金額 : NT.{{ shopping.moneyTotal }}</h3>
+            <div class="modal-footer d-flex justify-content-between border-0 p-1">
               <button type="button" class="btn btn-secondary btn-lg" @click="deleteAll">Clean</button>
               <button type="button" class="btn btn-info btn-lg" @click.prevent="pay">結帳</button>
             </div>

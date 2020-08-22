@@ -142,12 +142,11 @@ export default {
       isLoading: false
     }
   },
-  props: ['token'],
+  // props: ['token'],
   methods: {
     getData (page = 1) {
       const vm = this
       vm.isLoading = true
-      vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
       vm.axios
         .get(
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage?page=${page}`
@@ -178,7 +177,6 @@ export default {
         vm.isLoading = true
         $('#addStorageModal').modal('hide')
         formData.append('file', vm.previewTemporary.file)
-        vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
         vm.axios
           .post(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage`, formData)
           .then(() => {
@@ -210,7 +208,6 @@ export default {
       vm.isLoading = true
       vm.hexAPI.data.forEach((item) => {
         if (vm.temporary.id === item.id) {
-          vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
           vm.axios
             .delete(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage/${vm.temporary.id}`)
             .then(() => {

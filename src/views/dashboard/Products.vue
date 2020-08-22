@@ -294,7 +294,6 @@ export default {
       isLoading: false
     }
   },
-  props: ['token'],
   methods: {
     /* 取得遠端 API資料 */
     // 預設為 1
@@ -302,7 +301,7 @@ export default {
       const vm = this
       // vm.axios的驗證指令，Bearer是後端用的
       vm.isLoading = true
-      vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
+      // vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
       vm.axios
         // 原本是 products ->最終結果是取得所有資料
         // 改成 products?page=${page} -> 由後端給第一頁資料
@@ -318,7 +317,7 @@ export default {
     /* 新增資料 */
     addData () {
       const vm = this
-      vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
+      // vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
       vm.axios
         .post(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product`, vm.temporary)
         .then(() => {
@@ -340,7 +339,7 @@ export default {
       const vm = this
       vm.cleanData()
       vm.isLoading = true
-      vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
+      // vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
       vm.axios
         .get(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${item.id}`)
         .then((res) => {
@@ -363,8 +362,7 @@ export default {
       if (vm.temporary.id) {
         vm.hexAPI.data.forEach((item) => {
           if (vm.temporary.id === item.id) {
-            vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
-            // patch跟 post一樣需要兩個參數 patch(`API網址`, 單一物件資料)，否則不會變更
+            // vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
             vm.axios
               .patch(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${vm.temporary.id}`, vm.temporary)
               .then(() => {
@@ -384,7 +382,7 @@ export default {
       vm.isLoading = true
       vm.hexAPI.data.forEach((item) => {
         if (vm.temporary.id === item.id) {
-          vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
+          // vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
           vm.axios
             .delete(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${vm.temporary.id}`)
             .then(() => {

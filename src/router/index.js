@@ -38,6 +38,7 @@ const routes = [
         path: 'login',
         component: () => import('../views/layout/Login.vue')
       }
+      // { path: '/*', redirect: '/' }
     ]
   },
   {
@@ -50,20 +51,25 @@ const routes = [
       // },
       {
         path: 'products',
-        component: () => import('../views/dashboard/Products.vue')
+        component: () => import('../views/dashboard/Products.vue'),
+        meta: { requiresAuth: true }
       },
       {
         path: 'order',
         component: () => import('../views/dashboard/Order.vue')
+        // meta: { requiresAuth: true }
       },
       {
         path: 'coupon',
         component: () => import('../views/dashboard/Coupon.vue')
+        // meta: { requiresAuth: true }
       },
       {
         path: 'storages',
         component: () => import('../views/dashboard/Storages.vue')
+        // meta: { requiresAuth: true }
       }
+      // { path: '/*', redirect: '/' }
     ]
   }
 ]

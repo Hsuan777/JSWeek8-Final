@@ -112,12 +112,11 @@ export default {
       isLoading: false
     }
   },
-  props: ['token'],
   methods: {
     getData () {
       const vm = this
       vm.isLoading = true
-      vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
+      // vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
       vm.axios
         .get(
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders`
@@ -131,7 +130,6 @@ export default {
     copyData (item) {
       const vm = this
       vm.isLoading = true
-      vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
       vm.axios
         .get(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders/${item.id}`)
         .then((res) => {
@@ -153,7 +151,6 @@ export default {
       if (vm.temporary.id) {
         vm.hexAPI.data.forEach((item) => {
           if (vm.temporary.id === item.id) {
-            vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
             vm.axios
               .patch(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders/${vm.temporary.id}/${paid}`, vm.temporary.id)
               .then(() => {
