@@ -17,11 +17,11 @@
           <div class="mb-3" v-if="hexAPI.product.options">
             <button type="button" v-for="(color, index) in hexAPI.product.options.colors" :key="index" class="btn btn-secondary mr-2 mb-2" @click.prevent="selectImg(hexAPI.product.imageUrl[index+1])">{{ color }}</button>
           </div>
-          <div class="d-flex flex-column align-items-end mb-3">
+          <div class="d-flex flex-column align-items-end mb-3" v-if=" hexAPI.product.origin_price">
             <small class="mb-0">
-              售價 : <del>{{ hexAPI.product.origin_price }}</del>
+              售價 : <del>{{ hexAPI.product.origin_price|commaFormat }}</del>
             </small>
-            <p class="font-weight-bold mb-0">特價 : {{ hexAPI.product.price }}</p>
+            <p class="font-weight-bold mb-0">特價 : {{ hexAPI.product.price|commaFormat }}</p>
           </div>
           <div class="row">
             <div class="col-6">
@@ -43,9 +43,6 @@
             <img :src="selectImage" class="img-fluid rounded-top">
           </div>
           <div class="card-body" v-if="hexAPI.product.imageUrl">
-            <!-- 圖片列表 : 方案一 右側 -->
-            <!-- 圖片列表 : 方案二 下方 -->
-            <!-- TODO:左右滑動 loop -->
             <swiper class="swiper" :options="swiperOption" v-if="hexAPI.product.imageUrl[1]">
               <swiper-slide v-for="(item, index) in hexAPI.product.imageUrl" :key="index">
                 <img :src="item" class="inner__iconImg" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
@@ -108,6 +105,14 @@ export default {
           clickable: true
         }
       }
+    }
+  },
+  filters: {
+    commaFormat (value) {
+      // 加上千分位符號
+      const parts = value.toString().split('.')
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      return 'NT. ' + parts.join('.')
     }
   },
   methods: {
