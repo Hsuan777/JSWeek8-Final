@@ -2,7 +2,7 @@
   <aside>
     <button
         type="button"
-        class="top top__shoppingCart btn btn-primary btn-lg text-decoration-none d-flex p-2"
+        class="top top__shoppingCart btn btn-secondary btn-lg text-decoration-none d-flex p-2"
         data-toggle="modal"
         data-target="#shoppingModal"
       >
@@ -29,7 +29,11 @@
           </div>
           <div class="modal-body">
             <!-- 元件內要使用 loading，必須放在該元件樣板的元素中 -->
-            <loading :active.sync="isLoading"></loading>
+             <loading :active.sync="isLoading">
+              <template slot="default">
+                <img src="../assets/30.gif" alt="">
+              </template>
+            </loading>
             <table class="table table-borderless">
               <thead>
                 <tr>
@@ -63,7 +67,6 @@
                 </tr>
               </tbody>
             </table>
-
             <h3 class="text-right mr-2 mb-2">總計金額 : {{ shopping.moneyTotal|commaFormat }}</h3>
             <div class="modal-footer d-flex justify-content-between border-0 p-1">
               <button type="button" class="btn btn-secondary btn-lg" @click="deleteAll">Clean</button>

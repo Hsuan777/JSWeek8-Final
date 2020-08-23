@@ -8,37 +8,34 @@
       aria-labelledby="noticeModal"
       aria-hidden="true"
     >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header bg-primary">
-            <h3 class="d-flex align-items-center">
-              通知<span class="material-icons ml-1">notification_important</span>
-            </h3>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body d-flex flex-column align-items-center">
+          <div class="icon__notice d-flex justify-content-center align-items-center">
+            <span class="material-icons h2 text-primary">notification_important</span>
           </div>
-          <div class="modal-body d-flex flex-column align-items-center">
-            <h3 class="mb-3">{{ message }}</h3>
-            <button type="button" class="btn btn-secondary" aria-label="Close" @click="jump(jumpTo)">確定</button>
-          </div>
+          <h3 class="d-flex align-items-center mb-5">
+            {{ message }}
+          </h3>
+          <!-- <button type="button" class="btn btn-secondary" aria-label="Close" @click="jump">確定</button> -->
         </div>
       </div>
     </div>
+  </div>
 </template>
 <script>
-import $ from 'jquery'
+// import $ from 'jquery'
 export default {
   data () {
     return {
     }
   },
-  props: ['message', 'jumpTo'],
-  methods: {
-    jump (jumpTo) {
-      this.$router.push(jumpTo)
-      $('#noticeModal').modal('hide')
-      setTimeout(() => {
-        $('#noticeModal').modal('hide')
-      }, 1000)
-    }
-  }
+  props: ['message']
+  // methods: {
+  //   jump () {
+  //     this.$router.push(jumpTo)
+  //     $('#noticeModal').modal('hide')
+  //   }
+  // }
 }
 </script>

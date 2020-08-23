@@ -2,7 +2,6 @@
   <section class="container">
     <div class="d-flex align-items-center">
       <h2 class="font-weight-bold d-flex justify-content-between mr-3 my-5">產品列表 (後臺管理)</h2>
-      <loading :active.sync="isLoading"></loading>
     </div>
     <div class="d-flex justify-content-end mb-2">
       <button
@@ -253,14 +252,24 @@
         </div>
       </div>
     </div>
+   <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="../../assets/30.gif" alt="">
+      </template>
+    </loading>
+    <notice :message="message"></notice>
   </section>
 </template>
 
 <script>
 import $ from 'jquery'
 import Pagination from '@/components/pagination.vue'
+import Notice from '@/components/notice.vue'
 export default {
-  components: { Pagination },
+  components: {
+    Pagination,
+    Notice
+  },
   data () {
     return {
       product: {
@@ -291,7 +300,8 @@ export default {
       },
       modalTitle: '',
       viewImageSrc: '',
-      isLoading: false
+      isLoading: false,
+      message: ''
     }
   },
   filters: {
@@ -307,45 +317,48 @@ export default {
     // 預設為 1
     getData (page = 1) {
       const vm = this
-      // vm.axios的驗證指令，Bearer是後端用的
-      vm.isLoading = true
-      // vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
+      setTimeout(() => {
+        vm.isLoading = true
+      }, 1000)
       vm.axios
-        // 原本是 products ->最終結果是取得所有資料
-        // 改成 products?page=${page} -> 由後端給第一頁資料
         .get(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/products?page=${page}`)
         .then((res) => {
           // 取得該頁資料
           vm.hexAPI.data = res.data.data
           // 取得分頁資訊
           vm.pagination = res.data.meta.pagination
-          vm.isLoading = false
+          setTimeout(() => {
+            vm.isLoading = false
+          }, 0)
         })
     },
     /* 新增資料 */
     addData () {
       const vm = this
-      // vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
+      vm.isLoading = true
       vm.axios
         .post(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product`, vm.temporary)
         .then(() => {
+          vm.isLoading = false
+          vm.message = '新增成功!'
+          $('#noticeModal').modal('show')
+          setTimeout(() => {
+            $('#noticeModal').modal('hide')
+          }, 1500)
           vm.getData()
         })
     },
     /* 新建資料 */
-    // 將 this.product的屬性值複製到暫存
     initData () {
       this.cleanData()
       this.modalTitle = '新增商品'
       this.temporary = JSON.parse(JSON.stringify(this.product))
     },
     /* 複製資料 */
-    // 將 v-for所取出的 item放入暫存
     copyData (action, item) {
       const vm = this
       vm.cleanData()
       vm.isLoading = true
-      // vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
       vm.axios
         .get(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${item.id}`)
         .then((res) => {
@@ -363,7 +376,6 @@ export default {
     updateData () {
       const vm = this
       vm.isLoading = true
-      // if判斷，若有值則為 true
       if (vm.temporary.id) {
         vm.hexAPI.data.forEach((item) => {
           if (vm.temporary.id === item.id) {
@@ -371,6 +383,12 @@ export default {
             vm.axios
               .patch(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${vm.temporary.id}`, vm.temporary)
               .then(() => {
+                vm.isLoading = false
+                vm.message = '修改成功!'
+                $('#noticeModal').modal('show')
+                setTimeout(() => {
+                  $('#noticeModal').modal('hide')
+                }, 1500)
                 vm.getData()
                 vm.cleanData()
               })
@@ -391,14 +409,19 @@ export default {
           vm.axios
             .delete(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/product/${vm.temporary.id}`)
             .then(() => {
+              vm.isLoading = false
+              $('#deleteProductModal').modal('hide')
+              vm.message = '刪除成功!'
+              $('#noticeModal').modal('show')
+              setTimeout(() => {
+                $('#noticeModal').modal('hide')
+              }, 1500)
               vm.getData()
               vm.cleanData()
-              $('#deleteProductModal').modal('hide')
             })
         }
       })
     },
-    // 工具類 //
     cleanData () {
       this.temporary = {
         imageUrl: [],

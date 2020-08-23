@@ -1,14 +1,12 @@
 <template>
-  <section class="container">
-    <loading :active.sync="isLoading"></loading>
-    <cart :shopping="apiShoppingData"></cart>
+  <section class="height--100vh container">
     <h2 class="mb-5 font-weight-bold">行李箱</h2>
     <div class="row">
       <!-- 商品分類 -->
       <div class="col-2 d-none d-lg-block">
         <h3 class="font-weight-bold">分類</h3>
-        <div class="cursor--pointer list-group list-group-flush">
-          <a v-for="(item, index) in category.list" :key="index" class="list-group-item list-group-item-action" @click.prevent="categoryData(item)">{{ item }}</a>
+        <div class="custom__category cursor--pointer list-group list-group-flush">
+          <a v-for="(item, index) in category.list" :key="index" class="list-group-item list-group-item-action rounded" :class="{'active':categoryIndex === index}" @click.prevent="categoryData(item, index)">{{ item }}</a>
         </div>
       </div>
       <div class="col-12 d-lg-none">
@@ -45,6 +43,12 @@
     <div class="d-flex justify-content-center ">
       <pagination :pages="pagination" @emit-pages="getData"></pagination>
     </div>
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="../../assets/30.gif" alt="">
+      </template>
+    </loading>
+    <cart :shopping="apiShoppingData"></cart>
   </section>
 </template>
 
@@ -75,7 +79,8 @@ export default {
       category: {
         list: ['全部分類'],
         data: []
-      }
+      },
+      categoryIndex: ''
     }
   },
   filters: {
@@ -105,10 +110,10 @@ export default {
           vm.isLoading = false
         })
     },
-    categoryData (categoryName) {
+    categoryData (categoryName, index = 0) {
       const vm = this
+      vm.categoryIndex = index
       vm.category.data = []
-      console.log(categoryName)
       if (categoryName === '全部分類') {
         vm.category.data = vm.hexAPI.data
       } else {

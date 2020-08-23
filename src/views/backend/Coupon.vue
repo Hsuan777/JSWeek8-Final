@@ -2,8 +2,6 @@
   <section class="container">
     <div class="d-flex align-items-center">
       <h2 class="font-weight-bold d-flex justify-content-between mr-3 my-5">優惠券列表</h2>
-      <loading :active.sync="isLoading"></loading>
-      <notice :message="message"></notice>
     </div>
     <div class="d-flex justify-content-end mb-2">
       <button
@@ -205,6 +203,12 @@
         </div>
       </div>
     </div>
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="../../assets/30.gif" alt="">
+      </template>
+    </loading>
+    <notice :message="message"></notice>
   </section>
 </template>
 
@@ -237,25 +241,33 @@ export default {
   methods: {
     getData () {
       const vm = this
-      vm.isLoading = true
+      setTimeout(() => {
+        vm.isLoading = true
+      }, 1000)
       vm.axios
         .get(
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupons`
         )
         .then((response) => {
           vm.hexAPI.data = response.data.data
-          console.log(vm.hexAPI.data)
-          vm.isLoading = false
+          setTimeout(() => {
+            vm.isLoading = false
+          }, 0)
         })
     },
     /* 新增資料 */
     addData () {
       const vm = this
+      vm.isLoading = true
       vm.axios
         .post(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon`, vm.temporary)
         .then(() => {
+          vm.isLoading = false
           vm.message = '新增成功!'
           $('#noticeModal').modal('show')
+          setTimeout(() => {
+            $('#noticeModal').modal('hide')
+          }, 1500)
           vm.getData()
         })
     },
@@ -273,7 +285,6 @@ export default {
         .then((res) => {
           vm.temporary = { ...res.data.data }
           vm.modalTitle = vm.temporary.title
-          console.log(vm.temporary)
           vm.isLoading = false
           if (action === 'edit') {
             $('#addCouponModal').modal('show')
@@ -292,8 +303,12 @@ export default {
             vm.axios
               .patch(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${vm.temporary.id}`, vm.temporary)
               .then(() => {
+                vm.isLoading = false
                 vm.message = '修改成功!'
                 $('#noticeModal').modal('show')
+                setTimeout(() => {
+                  $('#noticeModal').modal('hide')
+                }, 1500)
                 vm.getData()
                 vm.cleanData()
                 vm.modalTitle = vm.temporary.title
@@ -314,8 +329,12 @@ export default {
           vm.axios
             .delete(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${vm.temporary.id}`)
             .then(() => {
+              vm.isLoading = false
               vm.message = '刪除成功!'
               $('#noticeModal').modal('show')
+              setTimeout(() => {
+                $('#noticeModal').modal('hide')
+              }, 1500)
               vm.getData()
               vm.cleanData()
               vm.isLoading = false
@@ -323,7 +342,6 @@ export default {
         }
       })
     },
-    // 工具類 //
     cleanData () {
       this.temporary = {}
     }

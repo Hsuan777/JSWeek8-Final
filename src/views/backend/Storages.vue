@@ -2,7 +2,6 @@
   <section class="container">
     <div class="d-flex align-items-center">
       <h2 class="font-weight-bold d-flex justify-content-between mr-3 my-5">檔案列表</h2>
-      <loading :active.sync="isLoading"></loading>
     </div>
     <div class="d-flex justify-content-end mb-2">
       <button
@@ -122,12 +121,22 @@
         </div>
       </div>
     </div>
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="../../assets/30.gif" alt="">
+      </template>
+    </loading>
+    <notice :message="message"></notice>
   </section>
 </template>
 
 <script>
 import $ from 'jquery'
+import Notice from '@/components/notice.vue'
 export default {
+  components: {
+    Notice
+  },
   data () {
     return {
       hexAPI: {
@@ -139,21 +148,25 @@ export default {
         src: ''
       },
       modalTitle: '',
-      isLoading: false
+      isLoading: false,
+      message: ''
     }
   },
-  // props: ['token'],
   methods: {
     getData (page = 1) {
       const vm = this
-      vm.isLoading = true
+      setTimeout(() => {
+        vm.isLoading = true
+      }, 1000)
       vm.axios
         .get(
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage?page=${page}`
         )
         .then((response) => {
           vm.hexAPI.data = response.data.data
-          vm.isLoading = false
+          setTimeout(() => {
+            vm.isLoading = false
+          }, 0)
         })
     },
     previewFile () {
@@ -172,6 +185,7 @@ export default {
     /* 新增資料 */
     addData () {
       const vm = this
+      vm.isLoading = false
       if (vm.previewTemporary.file) {
         const formData = new FormData()
         vm.isLoading = true
@@ -184,7 +198,12 @@ export default {
             vm.cleanData()
           })
       } else {
-        alert('請選擇檔案~')
+        $('#addStorageModal').modal('hide')
+        vm.message = '請先加入檔案!'
+        $('#noticeModal').modal('show')
+        setTimeout(() => {
+          $('#noticeModal').modal('hide')
+        }, 1500)
       }
     },
     /* 新建檔案 */
@@ -217,7 +236,6 @@ export default {
         }
       })
     },
-    // 工具類 //
     cleanData () {
       this.temporary = {}
     }

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-primary font-weight-bold">
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-secondary font-weight-bold">
       <div class="container">
         <router-link to="/" class="navbar-brand text-primary">
           <h1 class="h2 d-flex align-items-center">

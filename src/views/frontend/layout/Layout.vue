@@ -22,20 +22,20 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item" @click="collapseHide">
+          <ul class="custom__nav navbar-nav ml-auto">
+            <li class="nav-item custom__nav--hover" :class="{'active':navIndex === 0}" @click="collapseHide(0)">
               <router-link to="/products" class="nav-link d-none d-lg-block">行李箱</router-link>
               <router-link to="/products" class="nav-link border-bottom d-lg-none">行李箱</router-link>
             </li>
-            <li class="nav-item" @click="collapseHide">
+            <li class="nav-item custom__nav--hover" :class="{'active':navIndex === 1}" @click="collapseHide(1)">
               <router-link to="/about" class="nav-link d-none d-lg-block">關於我們</router-link>
               <router-link to="/about" class="nav-link border-bottom d-lg-none">關於我們</router-link>
             </li>
-            <li class="nav-item" @click="collapseHide">
+            <li class="nav-item custom__nav--hover" :class="{'active':navIndex === 2}" @click="collapseHide(2)">
               <router-link to="/questions" class="nav-link d-none d-lg-block">常見問題</router-link>
               <router-link to="/questions" class="nav-link border-bottom d-lg-none">常見問題</router-link>
             </li>
-            <li class="nav-item" @click="collapseHide">
+            <li class="nav-item custom__nav--hover" :class="{'active':navIndex === 3}" @click="collapseHide(3)">
               <router-link to="/login" class="nav-link">Login</router-link>
             </li>
           </ul>
@@ -67,7 +67,6 @@
                 class="h2 text-decoration-none text-white mb-0 mr-2">
                 <i class="fab fa-facebook-square"></i>
               </a>
-              <!-- TODO:暫時忽略正確帳號 -->
               <a
                 href="https://line.me/ti/p/0903017408"
                 class="h2 text-decoration-none text-white mb-0">
@@ -94,8 +93,14 @@ export default {
   components: {
     Top
   },
+  data () {
+    return {
+      navIndex: ''
+    }
+  },
   methods: {
-    collapseHide () {
+    collapseHide (index) {
+      this.navIndex = index
       $('#navbarSupportedContent').collapse('hide')
     }
   }

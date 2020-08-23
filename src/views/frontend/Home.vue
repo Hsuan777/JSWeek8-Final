@@ -4,30 +4,22 @@
     <section class="container-fluid mb-5 banner__img banner__home" data-aos="zoom-in" data-aos-duration="1000">
       <div class="row ">
         <div class="container banner__title">
-          <div class="row h-100 align-items-center">
+          <div class="row h-100 d-flex align-items-center">
             <div class="col">
               <h2 class="font-weight-bold mb-3" data-aos="fade-down" data-aos-delay="300">台中行李箱維修</h2>
-              <h4 class="font-weight-bold text-dark mb-3" data-aos="fade-down" data-aos-delay="300">不分廠牌。現場維修。快速取件</h4>
-              <!-- <ul class="list-unstyled row ml-0">
-                <li class="d-flex align-items-center mb-2">
-                  <span class="material-icons">arrow_right</span>
-                  提手
-                </li>
-                <li class="d-flex align-items-center mb-2">
-                  <span class="material-icons">arrow_right</span>
-                  輪子
-                </li>
-                <li class="d-flex align-items-center mb-2">
-                  <span class="material-icons">arrow_right</span>
-                  箱體
-                </li>
-                <li class="d-flex align-items-center mb-2">
-                  <span class="material-icons">arrow_right</span>
-                  拉桿
-                </li>
-              </ul> -->
+              <h4 class="font-weight-bold mb-3 d-flex flex-column flex-md-row">
+                <span class="d-flex align-items-center" data-aos="fade-up" data-aos-delay="600">
+                  <span class="material-icons">arrow_right</span>不分廠牌
+                </span>
+                <span class="d-flex align-items-center" data-aos="fade-up" data-aos-delay="900">
+                  <span class="material-icons">arrow_right</span>現場維修
+                </span>
+                <span class="d-flex align-items-center" data-aos="fade-up" data-aos-delay="1200">
+                  <span class="material-icons">arrow_right</span>快速取件
+                </span>
+              </h4>
               <div class="col-12 col-md-6 mb-5">
-                <ul class="list-unstyled row ml-3">
+                <!-- <ul class="list-unstyled row">
                   <li class="">
                     <a href="tel:0903017408" class="h2">
                       <i class="fas fa-phone-square-alt text-primary mr-3"></i>
@@ -45,11 +37,11 @@
                       <i class="fab fa-line h2"></i>
                     </a>
                   </li>
-                </ul>
+                </ul> -->
               </div>
               <div class="btn-group">
                 <a href="#repair" class="btn btn-primary btn-lg font-weight-bold" data-aos="zoom-in" data-aos-delay="500">快速維修</a>
-                <router-link to="/products" class="btn btn-secondary btn-lg font-weight-bold" data-aos="zoom-in" data-aos-delay="800">行李箱</router-link>
+                <!-- <router-link to="/products" class="btn btn-secondary btn-lg font-weight-bold" data-aos="zoom-in" data-aos-delay="800">行李箱</router-link> -->
               </div>
             </div>
           </div>
@@ -58,8 +50,8 @@
       </div>
     </section>
     <!-- 服務 -->
-    <section class="container mb-5 pt-5">
-      <h2 class="font-weight-bold text-center">優質服務</h2>
+    <section class="container mb-5">
+      <h2 class="font-weight-bold text-center mb-3">優質服務</h2>
       <div class="row">
         <div class="col-6 col-lg-3 mb-3 mb-md-0" data-aos="zoom-in-up">
           <h3 class="d-flex flex-column align-items-center font-weight-bold">

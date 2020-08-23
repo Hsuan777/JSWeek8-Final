@@ -1,8 +1,5 @@
 <template>
-  <section  class="container mt-6 mb-5">
-    <loading :active.sync="isLoading"></loading>
-    <cart :shopping="apiShoppingData"></cart>
-    <notice :message="message" jumpTo="/products"></notice>
+  <section  class="height--100vh container mt-6 mb-5">
     <div class="row flex-row-reverse">
       <div class="col-md-12 col-lg-5">
         <div class="p-3">
@@ -61,6 +58,13 @@
         </div>
       </div>
     </div>
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="../../assets/30.gif" alt="">
+      </template>
+    </loading>
+    <cart :shopping="apiShoppingData"></cart>
+    <notice :message="message"></notice>
   </section>
 </template>
 
@@ -136,10 +140,13 @@ export default {
           vm.getShopping()
           vm.message = '成功加入購物車!'
           $('#noticeModal').modal('show')
+          setTimeout(() => {
+            $('#noticeModal').modal('hide')
+          }, 3000)
           vm.isLoading = false
         })
         .catch(() => {
-          vm.message = '商品已存在，請購物車修改數量即可~'
+          vm.message = '商品已存在，請在購物車修改數量即可~'
           $('#noticeModal').modal('show')
           setTimeout(() => {
             $('#noticeModal').modal('hide')

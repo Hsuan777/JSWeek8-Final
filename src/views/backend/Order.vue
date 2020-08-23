@@ -2,7 +2,6 @@
   <section class="container">
     <div class="d-flex align-items-center">
       <h2 class="font-weight-bold d-flex justify-content-between mr-3 my-5">訂單</h2>
-      <loading :active.sync="isLoading"></loading>
     </div>
     <div class="table-responsive">
       <table class="table border-bottom">
@@ -11,9 +10,9 @@
             <th scope="row" class="text-nowrap">訂單時間</th>
             <th scope="row" width="300px">訂購產品</th>
             <th scope="row" class="text-nowrap text-right">訂單金額</th>
-            <th scope="row" class="text-nowrap">出貨狀態</th>
+            <th scope="row" class="text-nowrap">付款狀態</th>
             <!-- 編輯訂單，出貨狀態、維修狀態 -> 只能修改是否結帳 -->
-            <th scope="row" class="text-nowrap">編輯訂單</th>
+            <th scope="row" class="text-nowrap">查看訂單</th>
           </tr>
         </thead>
         <tbody class="p-0">
@@ -97,11 +96,21 @@
         </div>
       </div>
     </div>
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="../../assets/30.gif" alt="">
+      </template>
+    </loading>
+    <notice :message="message"></notice>
   </section>
 </template>
 <script>
 import $ from 'jquery'
+import Notice from '@/components/notice.vue'
 export default {
+  components: {
+    Notice
+  },
   data () {
     return {
       hexAPI: {
@@ -109,6 +118,7 @@ export default {
       },
       temporary: {},
       modalTitle: '',
+      message: '',
       isLoading: false
     }
   },
@@ -116,7 +126,6 @@ export default {
     getData () {
       const vm = this
       vm.isLoading = true
-      // vm.axios.defaults.headers.common.Authorization = `Bearer ${vm.token}`
       vm.axios
         .get(
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders`
@@ -141,7 +150,6 @@ export default {
     },
     isPaid (item) {
       const vm = this
-      vm.isLoading = true
       let paid = ''
       if (item) {
         paid = 'paid'
@@ -155,6 +163,11 @@ export default {
               .patch(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders/${vm.temporary.id}/${paid}`, vm.temporary.id)
               .then(() => {
                 $('#editOrderModal').modal('hide')
+                vm.message = '修改成功!'
+                $('#noticeModal').modal('show')
+                setTimeout(() => {
+                  $('#noticeModal').modal('hide')
+                }, 1500)
                 vm.getData()
                 vm.cleanData()
               })

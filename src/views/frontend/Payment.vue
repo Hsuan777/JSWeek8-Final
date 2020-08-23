@@ -1,7 +1,5 @@
 <template>
   <section class="container">
-    <loading :active.sync="isLoading"></loading>
-    <notice :message="message"></notice>
     <h2 id="peopleData" class="mt-2 mb-5 font-weight-bold">顧客資訊</h2>
     <div class="row">
       <div class="col-12 col-lg-6">
@@ -147,6 +145,12 @@
         <h3 class="text-right mr-3">總計金額 : NT.{{ shopping.moneyTotal }}</h3>
       </div>
     </div>
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="../../assets/30.gif" alt="">
+      </template>
+    </loading>
+    <notice :message="message"></notice>
   </section>
 </template>
 
@@ -211,9 +215,13 @@ export default {
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/orders`, vm.person
         )
         .then((response) => {
+          vm.isLoading = false
           vm.message = '感謝您的訂購~'
           $('#noticeModal').modal('show')
-          vm.isLoading = false
+          setTimeout(() => {
+            $('#noticeModal').modal('hide')
+            vm.$router.push('/products')
+          }, 3000)
         })
     }
   },
