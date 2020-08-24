@@ -2,7 +2,7 @@
 <template>
   <section class="container height--100vh">
     <loading :active.sync="isLoading"></loading>
-    <h2 class="text-center pt-5 my-5">Login</h2>
+    <h2 class="text-center">Login</h2>
     <p class="text-center text-danger" v-if="isError">帳密有誤</p>
     <div class="row">
       <div class="col-12 col-md-6 col-lg-3 mx-auto">

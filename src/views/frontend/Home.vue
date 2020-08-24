@@ -89,7 +89,7 @@
       <div class="row">
           <!-- 箱輪更換 -->
         <div class="col-md-12 col-lg-4 mb-3 mb-lg-0">
-          <h3 class="font-weight-bold">箱輪損壞</h3>
+          <h3>箱輪損壞</h3>
           <div class="form-row">
             <div class="inner__repairCase col-6">
               <span class="inner__repairCase__status material-icons text-danger h2">
@@ -107,7 +107,7 @@
         </div>
         <!-- 把手更換 -->
         <div class="col-md-12 col-lg-4 mb-3 mb-lg-0">
-          <h3 class="font-weight-bold">提手斷裂</h3>
+          <h3>提手斷裂</h3>
           <div class="form-row">
             <div class="inner__repairCase col-6">
               <span class="inner__repairCase__status material-icons text-danger h2">
@@ -125,7 +125,7 @@
         </div>
         <!-- 拉桿更換 -->
         <div class="col-md-12 col-lg-4">
-          <h3 class="font-weight-bold">拉桿損壞</h3>
+          <h3>拉桿損壞</h3>
           <div class="form-row">
             <div class="inner__repairCase col-6">
               <span class="inner__repairCase__status material-icons text-danger h2">

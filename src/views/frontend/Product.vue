@@ -1,5 +1,5 @@
 <template>
-  <section  class="height--100vh container mt-6 mb-5">
+  <section  class="height--100vh container mb-5">
     <div class="row flex-row-reverse">
       <div class="col-md-12 col-lg-5">
         <div class="p-3">
@@ -13,10 +13,14 @@
               </li>
             </ol>
           </nav>
-          <h2 class="font-weight-bold">{{ hexAPI.product.title }}</h2>
+          <h2 class="font-weight-bold">
+            {{ hexAPI.product.title }}
+          </h2>
           <div class="mb-3" v-if="hexAPI.product.options">
             <button type="button" v-for="(color, index) in hexAPI.product.options.colors" :key="index" class="btn btn-secondary mr-2 mb-2" @click.prevent="selectImg(hexAPI.product.imageUrl[index+1])">{{ color }}</button>
           </div>
+           <!-- 商品內容，描述作為 v-html -->
+          <div v-html="hexAPI.product.description"></div>
           <div class="d-flex flex-column align-items-end mb-3" v-if=" hexAPI.product.origin_price">
             <small class="mb-0">
               售價 : <del>{{ hexAPI.product.origin_price|commaFormat }}</del>
@@ -40,17 +44,16 @@
       <div class="col-md-12 col-lg-6">
         <div class="card border-0">
           <div class="card-head p-0">
-            <img :src="selectImage" class="img-fluid rounded-top">
+            <img :src="selectImage" class="inner__producImg object-fit rounded-top">
           </div>
           <div class="card-body" v-if="hexAPI.product.imageUrl">
-            <swiper class="swiper" :options="swiperOption" v-if="hexAPI.product.imageUrl[1]">
+            <swiper class="swiper" ref="mySwiperRef" :options="swiperOption" v-if="hexAPI.product.imageUrl[1]">
               <swiper-slide v-for="(item, index) in hexAPI.product.imageUrl" :key="index">
                 <img :src="item" class="inner__iconImg" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
               </swiper-slide>
-              <div class="swiper-pagination" slot="pagination"></div>
+              <div class="swiper-button-prev" slot="button-prev" @click="swiperNavigation"></div>
+              <div class="swiper-button-next" slot="button-next" @click="swiperNavigation('next')"></div>
             </swiper>
-            <!-- 商品內容，描述作為 v-html -->
-            <div v-html="hexAPI.product.description"></div>
           </div>
         </div>
       </div>
@@ -99,10 +102,11 @@ export default {
       message: '',
       swiperOption: {
         slidesPerView: 4,
-        spaceBetween: 30,
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true
+        spaceBetween: 10,
+        grabCursor: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
         }
       }
     }
@@ -190,6 +194,13 @@ export default {
             break
           }
       }
+    },
+    swiperNavigation (action) {
+      if (action === 'next') {
+        this.$refs.mySwiperRef.$swiper.slideNext()
+      } else {
+        this.$refs.mySwiperRef.$swiper.slidePrev()
+      }
     }
   },
   created () {
@@ -197,3 +208,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  .swiper-button-prev, .swiper-button-next {
+    color: #9bdfe9;
+  }
+  .swiper-button-prev {
+    margin-left: -10px;
+  }
+  .swiper-button-next {
+    margin-right: -10px;
+  }
+</style>

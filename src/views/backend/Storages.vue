@@ -37,6 +37,9 @@
           </tr>
         </tbody>
       </table>
+      <div class="d-flex justify-content-center">
+        <pagination :pages="pagination" @emit-pages="getData"></pagination>
+      </div>
     </div>
 
     <!-- add/edit Modal -->
@@ -133,9 +136,11 @@
 <script>
 import $ from 'jquery'
 import Notice from '@/components/notice.vue'
+import Pagination from '@/components/pagination.vue'
 export default {
   components: {
-    Notice
+    Notice,
+    Pagination
   },
   data () {
     return {
@@ -149,7 +154,8 @@ export default {
       },
       modalTitle: '',
       isLoading: false,
-      message: ''
+      message: '',
+      pagination: {}
     }
   },
   methods: {
@@ -164,6 +170,7 @@ export default {
         )
         .then((response) => {
           vm.hexAPI.data = response.data.data
+          vm.pagination = response.data.meta.pagination
           setTimeout(() => {
             vm.isLoading = false
           }, 0)

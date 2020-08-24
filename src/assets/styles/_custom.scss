@@ -97,10 +97,17 @@
     }
   }
   // 商品清單縮圖
-  &__productListImg{
+  &__productListImg {
     width: 100%;
     height: 285px;
   }
+  // 商品內頁大圖
+  &__producImg {
+    width: 100%;
+    height: 540px;
+    object-fit: contain;
+  }
+
   // 商品內頁縮圖
   &__iconImg {
     width: 100%;
@@ -122,6 +129,9 @@
   }
   &__LINE {
     color:#009f4d;
+  }
+  &__grade{
+    color:#FFD306;
   }
   &__notice{
     width: 100px;

@@ -18,11 +18,11 @@
       <div class="col-md-12 col-lg-10">
         <ul class="list__products row list-unstyled mb-5">
           <li class="col-12 col-md-6 col-lg-4" v-for="item in category.data" :key="item.id">
-            <div class="card mb-3">
+            <div class="card border-0 mb-3">
               <router-link :to="`/product/${item.id}`">
-                <img :src="item.imageUrl[0]" class="inner__productListImg object-fit rounded-top">
+                <img :src="item.imageUrl[0]" class="inner__productListImg object-fit rounded">
               </router-link>
-              <div class="card-body">
+              <div class="card-body pl-0">
                 <!-- 商品標題 -->
                 <h5 class="font-weight-bold">{{ item.title }}</h5>
                 <!-- 商品內容，描述作為 v-html -->

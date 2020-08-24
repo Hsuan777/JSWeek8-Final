@@ -41,6 +41,6 @@ h1, h2, h3, h4{
 // TODO:可以扣掉上下高度
 .height{
   &--100vh {
-    min-height: 100vh;
+    min-height: calc(100vh - (82px + 112px));;
   }
 }
