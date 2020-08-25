@@ -70,8 +70,8 @@
 
 <script>
 import $ from 'jquery'
-import Cart from '@/components/cart.vue'
-import Notice from '@/components/notice.vue'
+import Cart from '@/components/Cart.vue'
+import Notice from '@/components/Notice.vue'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 export default {

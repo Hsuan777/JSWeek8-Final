@@ -18,30 +18,8 @@
                   <span class="material-icons">arrow_right</span>快速取件
                 </span>
               </h4>
-              <div class="col-12 col-md-6 mb-5">
-                <!-- <ul class="list-unstyled row">
-                  <li class="">
-                    <a href="tel:0903017408" class="h2">
-                      <i class="fas fa-phone-square-alt text-primary mr-3"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.facebook.com/%E5%8F%B0%E4%B8%AD%E8%A1%8C%E6%9D%8E%E7%AE%B1%E7%B6%AD%E4%BF%AE-2188614921350371/"
-                      class="h3 text-decoration-none icon__FB">
-                        <i class="fab fa-facebook-square h2 mr-3"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://line.me/ti/p/0903017408" class="h3 text-decoration-none icon__LINE">
-                      <i class="fab fa-line h2"></i>
-                    </a>
-                  </li>
-                </ul> -->
-              </div>
               <div class="btn-group">
                 <a href="#repair" class="btn btn-primary btn-lg font-weight-bold" data-aos="zoom-in" data-aos-delay="500">快速維修</a>
-                <!-- <router-link to="/products" class="btn btn-secondary btn-lg font-weight-bold" data-aos="zoom-in" data-aos-delay="800">行李箱</router-link> -->
               </div>
             </div>
           </div>
@@ -54,32 +32,32 @@
       <h2 class="font-weight-bold text-center mb-3">優質服務</h2>
       <div class="row">
         <div class="col-6 col-lg-3 mb-3 mb-md-0" data-aos="zoom-in-up">
-          <h3 class="d-flex flex-column align-items-center font-weight-bold">
+          <h3 class="d-flex flex-column align-items-center">
             <span class="material-icons h2 text-info">trip_origin</span>
             不分品牌
           </h3>
           <p class="text-center">各式行李箱問題皆可維修</p>
         </div>
         <div class="col-6 col-lg-3 mb-3 mb-md-0" data-aos="zoom-in-up" data-aos-delay="300">
-          <h3 class="d-flex flex-column align-items-center font-weight-bold">
+          <h3 class="d-flex flex-column align-items-center">
             <span class="material-icons h2 text-info">monetization_on</span>
             維修報價
           </h3>
           <p class="text-center"><span class="d-none d-md-block">上傳行李箱需維修處照片<br></span>專人確認可否維修及報價</p>
         </div>
         <div class="col-6 col-lg-3 mb-3 mb-md-0" data-aos="zoom-in-up" data-aos-delay="600">
-          <h3 class="d-flex flex-column align-items-center font-weight-bold">
+          <h3 class="d-flex flex-column align-items-center">
             <span class="material-icons h2 text-info">shutter_speed</span>
             精選零件
             </h3>
           <p class="text-center">維修選用高品質零件</p>
         </div>
         <div class="col-6 col-lg-3" data-aos="zoom-in-up" data-aos-delay="900">
-          <h3 class="d-flex flex-column align-items-center font-weight-bold">
+          <h3 class="d-flex flex-column align-items-center">
             <span class="material-icons h2 text-info">filter_1</span>
             一年保固
           </h3>
-          <p class="text-center">一年維修保固</p>
+          <p class="text-center">一年零件維修保固</p>
         </div>
       </div>
     </section>
@@ -87,7 +65,7 @@
     <section class="container mb-5 pt-5">
       <h2 class="font-weight-bold text-center mb-3">維修案例</h2>
       <div class="row">
-          <!-- 箱輪更換 -->
+        <!-- 箱輪更換 -->
         <div class="col-md-12 col-lg-4 mb-3 mb-lg-0">
           <h3>箱輪損壞</h3>
           <div class="form-row">
@@ -146,7 +124,7 @@
     <!-- 五星評價 -->
     <section class="container mb-5 pt-5">
       <h2 class="font-weight-bold text-center">五星評價</h2>
-      <h3 class="font-weight-bold text-center mb-3">感謝曾經來維修的各位給予肯定!</h3>
+      <h3 class="text-center mb-3">感謝曾經來維修的各位給予肯定!</h3>
       <div class="row">
         <div class="col-md-12 col-lg-4" data-aos="zoom-in-up" data-aos-duration="1000">
           <div class="form-row">

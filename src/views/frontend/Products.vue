@@ -53,8 +53,8 @@
 </template>
 
 <script type="module">
-import Pagination from '@/components/pagination.vue'
-import Cart from '@/components/cart.vue'
+import Pagination from '@/components/Pagination.vue'
+import Cart from '@/components/Cart.vue'
 export default {
   components: {
     Pagination,

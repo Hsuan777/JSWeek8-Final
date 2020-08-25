@@ -156,7 +156,7 @@
 
 <script>
 import $ from 'jquery'
-import Notice from '@/components/notice.vue'
+import Notice from '@/components/Notice.vue'
 export default {
   components: {
     Notice

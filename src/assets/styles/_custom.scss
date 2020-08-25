@@ -7,7 +7,7 @@
   }
   z-index: 9;
   &__scroll{
-    bottom: 15vh;
+    bottom: 20vh;
   }
   &__shoppingCart {
     top: 20vh;
@@ -56,6 +56,7 @@
 }
 
 .inner{
+  // 維修案例縮圖
   &__repairCase{
     position: relative;
     &__text{
@@ -116,10 +117,15 @@
     cursor: pointer;
     object-fit: contain;
   }
-  &__cartImg{
+  // 購物車縮圖
+  &__cartImg {
     width: 100px;
     height: auto;
     object-fit: contain;
+  }
+  &__aboutImg {
+    width: 100%;
+    height: 360px;
   }
 }
 

@@ -135,8 +135,8 @@
 
 <script>
 import $ from 'jquery'
-import Notice from '@/components/notice.vue'
-import Pagination from '@/components/pagination.vue'
+import Notice from '@/components/Notice.vue'
+import Pagination from '@/components/Pagination.vue'
 export default {
   components: {
     Notice,

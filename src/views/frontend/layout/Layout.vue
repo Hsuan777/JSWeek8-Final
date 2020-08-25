@@ -88,7 +88,7 @@
 
 <script>
 import $ from 'jquery'
-import Top from '@/components/top.vue'
+import Top from '@/components/Top.vue'
 export default {
   components: {
     Top

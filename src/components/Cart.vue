@@ -6,7 +6,7 @@
         data-toggle="modal"
         data-target="#shoppingModal"
       >
-      <span class="material-icons">shopping_cart</span>
+      <span class="material-icons text-white">shopping_cart</span>
       <span class="icon__cartNum text-white">{{ shopping.data.length }}</span>
     </button>
     <!-- shopping Modal -->
