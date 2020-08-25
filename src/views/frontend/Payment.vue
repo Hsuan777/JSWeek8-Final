@@ -11,7 +11,7 @@
               tag="div"
               class="form-group"
             >
-              <label for="inputName" class="h3 font-weight-bold">
+              <label for="inputName" class="h3">
                 姓名
                 <sup class="text-danger">*</sup>
               </label>
@@ -32,7 +32,7 @@
               tag="div"
               class="form-group"
             >
-              <label for="inputEmail" class="h3 font-weight-bold">
+              <label for="inputEmail" class="h3">
                 信箱
                 <sup class="text-danger">*</sup>
               </label>
@@ -53,7 +53,7 @@
               tag="div"
               class="form-group"
             >
-              <label for="inputTel" class="h3 font-weight-bold">
+              <label for="inputTel" class="h3">
                 電話
                 <sup class="text-danger">*</sup>
               </label>
@@ -74,7 +74,7 @@
               tag="div"
               class="form-group"
             >
-              <label for="inputAddress" class="h3 font-weight-bold">
+              <label for="inputAddress" class="h3">
                 地址
                 <sup class="text-danger">*</sup>
               </label>
@@ -95,7 +95,7 @@
               tag="div"
               class="form-group"
             >
-              <label for="selectPay" class="h3 font-weight-bold">
+              <label for="selectPay" class="h3">
                 付款方式
                 <sup class="text-danger">*</sup>
               </label>
@@ -106,7 +106,7 @@
               <small class="invalid-feedback">{{ errors[0] }}</small>
             </validation-provider>
             <div class="form-group">
-              <label for="inputRemarks" class="h3 font-weight-bold">留言</label>
+              <label for="inputRemarks" class="h3">留言</label>
               <textarea name="remarks" id="inputRemarks" cols="30" rows="10" class="form-control"></textarea>
             </div>
             <div class="d-flex justify-content-center mb-5">
@@ -147,7 +147,7 @@
     </div>
     <loading :active.sync="isLoading">
       <template slot="default">
-        <img src="../../assets/30.gif" alt="">
+        <img src="../../assets/Spinner-1s-177px.gif" alt="">
       </template>
     </loading>
     <notice :message="message"></notice>

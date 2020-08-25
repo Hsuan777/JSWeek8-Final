@@ -13,7 +13,7 @@
               </li>
             </ol>
           </nav>
-          <h2 class="font-weight-bold">
+          <h2 class="font-weight-bold text-primary">
             {{ hexAPI.product.title }}
           </h2>
           <div class="mb-3" v-if="hexAPI.product.options">
@@ -36,7 +36,10 @@
               </div>
             </div>
             <div class="col-6">
-              <button type="button" class="btn btn-info btn-lg btn-block" @click.prevent="addShopping">加入購物車</button>
+              <button type="button" class="btn btn-info btn-lg btn-block h-100" @click.prevent="addShopping">
+                <span class="d-none d-md-block">加入購物車</span>
+                <span class="material-icons d-flex justify-content-center d-md-none">add_shopping_cart</span>
+                </button>
             </div>
           </div>
         </div>
@@ -60,7 +63,7 @@
     </div>
     <loading :active.sync="isLoading">
       <template slot="default">
-        <img src="../../assets/30.gif" alt="">
+        <img src="../../assets/Spinner-1s-177px.gif" alt="">
       </template>
     </loading>
     <cart :shopping="apiShoppingData"></cart>
@@ -187,8 +190,11 @@ export default {
           break
         case 'reduce':
           if (vm.temporary.quantity - 1 === 0) {
-            alert('最低為 1!')
-            vm.isLoading = false
+            vm.message = '數量最低為 1 !'
+            $('#noticeModal').modal('show')
+            setTimeout(() => {
+              $('#noticeModal').modal('hide')
+            }, 3000)
           } else {
             vm.temporary.quantity -= 1
             break

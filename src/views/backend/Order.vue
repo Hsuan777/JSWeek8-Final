@@ -98,7 +98,7 @@
     </div>
     <loading :active.sync="isLoading">
       <template slot="default">
-        <img src="../../assets/30.gif" alt="">
+        <img src="../../assets/Spinner-1s-177px.gif" alt="">
       </template>
     </loading>
     <notice :message="message"></notice>

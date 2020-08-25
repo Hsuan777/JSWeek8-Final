@@ -180,7 +180,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header bg-danger">
-            <h5 class="modal-title text-white font-weight-bold">刪除優惠券</h5>
+            <h5 class="modal-title text-white">刪除優惠券</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -205,7 +205,7 @@
     </div>
     <loading :active.sync="isLoading">
       <template slot="default">
-        <img src="../../assets/30.gif" alt="">
+        <img src="../../assets/Spinner-1s-177px.gif" alt="">
       </template>
     </loading>
     <notice :message="message"></notice>

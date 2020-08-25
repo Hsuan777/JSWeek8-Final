@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-secondary font-weight-bold">
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-secondary">
       <div class="container">
         <router-link to="/" class="navbar-brand text-primary">
           <h1 class="h2 d-flex align-items-center">
@@ -55,7 +55,7 @@
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header bg-primary">
-            <h5 class="modal-title font-weight-bold">是否登出 ?</h5>
+            <h5 class="modal-title">是否登出 ?</h5>
             <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

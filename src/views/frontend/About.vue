@@ -40,17 +40,6 @@
             因為我們了解價值在於信任！<br>
             相信我們的專業維修服務，讓您心愛的行李箱可以再繼續陪您更多的旅程。
           </p>
-          <!-- <ul class="list-unstyled mr-3">
-            <li class="d-flex align-items-center mb-2">
-              <span class="material-icons text-primary mr-1">thumb_up_alt</span>
-              基礎保養維修
-            </li>
-            <li class="d-flex align-items-center">
-              <span class="material-icons text-primary mr-1">thumb_up_alt</span>
-              高品質零件
-            </li>
-            <li></li>
-          </ul> -->
         </div>
       </div>
       <div class="col-12 col-md-6">
@@ -58,13 +47,11 @@
       </div>
     </div>
     <h2 class="font-weight-bold mb-5">聯絡我們</h2>
-    <!-- TODO:FB框架，暫時保留 -->
     <div class="row">
       <div class="col-md-12 col-lg-6">
-        <ul class="list-unstyled row flex-column justify-content-center">
+        <ul class="list-unstyled d-flex flex-column justify-content-center">
           <li class="">
             <a href="tel:0903017408" class="d-flex align-items-center h3 text-decoration-none">
-              <!-- <i class="fas fa-phone-square-alt  mr-3"></i> -->
               <span class="material-icons h2 mb-0 mr-3">phone_in_talk</span>
               0903017408
             </a>
@@ -98,12 +85,14 @@
         </ul>
       </div>
       <div class="col-md-12 col-lg-6">
-        <div id="fb-root"></div>
-        <div class="fb-page mb-5" data-href="https://www.facebook.com/pages/category/Local-Business/%E5%8F%B0%E4%B8%AD%E8%A1%8C%E6%9D%8E%E7%AE%B1%E7%B6%AD%E4%BF%AE-2188614921350371/" data-tabs="timeline" data-width="500" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false">
-        <blockquote cite="https://www.facebook.com/pages/category/Local-Business/%E5%8F%B0%E4%B8%AD%E8%A1%8C%E6%9D%8E%E7%AE%B1%E7%B6%AD%E4%BF%AE-2188614921350371/" class="fb-xfbml-parse-ignore">
-        <a href="https://www.facebook.com/pages/category/Local-Business/%E5%8F%B0%E4%B8%AD%E8%A1%8C%E6%9D%8E%E7%AE%B1%E7%B6%AD%E4%BF%AE-2188614921350371/">
-        </a>
-        </blockquote>
+        <div class="d-flex justify-content-center">
+          <div id="fb-root"></div>
+          <div class="fb-page mb-5" data-href="https://www.facebook.com/pages/category/Local-Business/%E5%8F%B0%E4%B8%AD%E8%A1%8C%E6%9D%8E%E7%AE%B1%E7%B6%AD%E4%BF%AE-2188614921350371/" data-tabs="timeline" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false" data-lazy="false">
+          <blockquote cite="https://www.facebook.com/pages/category/Local-Business/%E5%8F%B0%E4%B8%AD%E8%A1%8C%E6%9D%8E%E7%AE%B1%E7%B6%AD%E4%BF%AE-2188614921350371/" class="fb-xfbml-parse-ignore">
+            <a href="https://www.facebook.com/pages/category/Local-Business/%E5%8F%B0%E4%B8%AD%E8%A1%8C%E6%9D%8E%E7%AE%B1%E7%B6%AD%E4%BF%AE-2188614921350371/">
+            </a>
+          </blockquote>
+          </div>
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@
           <div class="row h-100 d-flex align-items-center">
             <div class="col">
               <h2 class="font-weight-bold mb-3" data-aos="fade-down" data-aos-delay="300">台中行李箱維修</h2>
-              <h4 class="font-weight-bold mb-3 d-flex flex-column flex-md-row">
+              <h4 class="d-flex flex-column flex-md-row mb-3">
                 <span class="d-flex align-items-center" data-aos="fade-up" data-aos-delay="600">
                   <span class="material-icons">arrow_right</span>不分廠牌
                 </span>
@@ -19,7 +19,7 @@
                 </span>
               </h4>
               <div class="btn-group">
-                <a href="#repair" class="btn btn-primary btn-lg font-weight-bold" data-aos="zoom-in" data-aos-delay="500">快速維修</a>
+                <a href="#repair" class="btn btn-primary btn-lg" data-aos="zoom-in" data-aos-delay="500">快速維修</a>
               </div>
             </div>
           </div>
@@ -91,31 +91,31 @@
               <span class="inner__repairCase__status material-icons text-danger h2">
                 unpublished
               </span>
-              <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/jKCz3yyHkmAWPgzTASm4PWYYMUs2FYQ8ZQGpXUgHdgtizuYHxEd0wYlKqnCJCQvMK4980NcyNkmnNmMAxZz6lqv04Pm3vO5wiWosqxOGkyrZI2rGznCCAJapYRAKvnwW.jpg" alt="" class="inner__repairImg rounded object-fit border border-danger">
+              <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/Zh6SsbjyVJagkGo4UyplU6yVmqYLpoEgxc8TmVnlPUHH6ImyT4B6xyhmkGrT3pKAikyBU4nrAiTPS5dLjV8qeOuoNJRH5PJIj3XsDHhr7bB9dXqQN9uuseP3Nywd3INR.jpg" alt="" class="inner__repairImg rounded object-fit border border-danger">
             </div>
             <div class="inner__repairCase col-6">
               <span class="inner__repairCase__status material-icons text-primary h2">
                 check_circle
               </span>
-              <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/CkpGFLxVQpCP6Fwm863aknR2uXksKQ2Gu1Q85RsDn76pwaJ6YHqwPV8UftsufPFs1oPFZ1W9xNGiEWiYS0ilcZ6OFHqgd5Dl9Cd10L86T0gZNLWIzFI5wl8QECh1zrul.jpg" alt="" class="inner__repairImg rounded object-fit border border-primary">
+              <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/CiuawjYvDHdjIyfxrbG0iQAGNgxfM5ClEJCTlEFbHeToyXelYCs7fyxRwIapGyv96LTjMYzZ1tCirK8KHsWppbja1kHIRb4V5EOjVsk5o4H8iQDMU5PY7fyesn1m4TPe.jpg" alt="" class="inner__repairImg rounded object-fit border border-primary">
             </div>
           </div>
         </div>
         <!-- 拉桿更換 -->
         <div class="col-md-12 col-lg-4">
-          <h3>拉桿損壞</h3>
+          <h3>箱體破裂</h3>
           <div class="form-row">
             <div class="inner__repairCase col-6">
               <span class="inner__repairCase__status material-icons text-danger h2">
                 unpublished
               </span>
-              <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/V79YBmsQRreHBX4ShMSnFPtOM6Bpm392V3lH1DjDwxjjUTZBpQlHc8DdcJNbFrXkC9MYjiaA6COKuh8wUK3noUJFlvyjJTai8IrDGPu9kp8IH5oMTsGgQ181bJabOItK.jpg" alt="" class="inner__repairImg rounded object-fit border border-danger">
+              <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/t1HxcdAdxyncrpKDRB7XyKc5fwM8KfhWRqluF1UBDlq8KPWqP0NickErYOlBdL7aS08QLkVaKlaf9jSDNOd9Knr8VzPrO4uGTAPesxdPWXChonouNv1DVnkWkhLqFIW9.jpg" alt="" class="inner__repairImg rounded object-fit border border-danger">
             </div>
             <div class="inner__repairCase col-6">
               <span class="inner__repairCase__status material-icons text-primary h2">
                 check_circle
               </span>
-              <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/e7F1OgJw8amdvaASZ3y9DgHvbzLdKvMZVnTdZOIn8Zx7f41bIPCkYJCOtHzuC9TkDBnWDqntSqI8IVcX0we25lLmZZc5zudi40L4XXibBUclPeKSVlMmXZnb7OrHAb5r.jpg" alt="" class="inner__repairImg rounded object-fit border border-primary">
+              <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/sw64cTtBe3Y80o1QLorIBnANV3cMfkT5ILW15DjHEXszpIrTzE8eD8qORa0ThzMtcRnKT9v0KFRt6EqJTJl0zKECXrojV1azEjm4DU0JjpmDrmgJQy0nkcg4GPM3PNzp.jpg" alt="" class="inner__repairImg rounded object-fit border border-primary">
             </div>
           </div>
         </div>

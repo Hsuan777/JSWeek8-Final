@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- TODO: 要不要固定 nav? -->
-    <nav id="nav" class="navbar navbar-expand-lg navbar-light font-weight-bold bg-white">
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container">
         <router-link to="/" class="navbar-brand text-primary">
           <h1 class="h2 d-flex align-items-center" @click="collapseHide">
@@ -35,9 +35,9 @@
               <router-link to="/questions" class="nav-link d-none d-lg-block">常見問題</router-link>
               <router-link to="/questions" class="nav-link border-bottom d-lg-none">常見問題</router-link>
             </li>
-            <li class="nav-item custom__nav--hover" :class="{'active':navIndex === 3}" @click="collapseHide(3)">
+            <!-- <li class="nav-item custom__nav--hover" :class="{'active':navIndex === 3}" @click="collapseHide(3)">
               <router-link to="/login" class="nav-link">Login</router-link>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
@@ -75,10 +75,10 @@
             </div>
           </div>
           <div class="col-12 mt-1">
-            <h4 class="text-center font-weight-bold mb-0 text-secondary">
+            <p class="text-center text-secondary mb-0">
               <span>台中行李箱維修</span>
               <small class="d-block d-md-inline"> © 2020. All Rights Reserved.</small>
-            </h4>
+            </p>
           </div>
         </div>
       </div>

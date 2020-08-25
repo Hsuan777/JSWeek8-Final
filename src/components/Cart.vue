@@ -31,7 +31,7 @@
             <!-- 元件內要使用 loading，必須放在該元件樣板的元素中 -->
              <loading :active.sync="isLoading">
               <template slot="default">
-                <img src="../assets/30.gif" alt="">
+                <img src="../assets/Spinner-1s-177px.gif" alt="">
               </template>
             </loading>
             <table class="table table-borderless">
@@ -129,8 +129,8 @@ export default {
           break
         case 'reduce':
           if (vm.temporary.quantity - 1 === 0) {
-            alert('最低為 1!')
             vm.isLoading = false
+            return
           } else {
             vm.temporary.quantity -= 1
             break
