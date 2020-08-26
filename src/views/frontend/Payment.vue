@@ -228,6 +228,7 @@ export default {
           vm.isLoading = false
           vm.message = '感謝您的訂購~'
           $('#noticeModal').modal('show')
+          $('#navbarSupportedContent').collapse('hide')
           setTimeout(() => {
             $('#noticeModal').modal('hide')
             vm.$router.push('/products')
