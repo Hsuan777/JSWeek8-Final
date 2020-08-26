@@ -1,6 +1,11 @@
 
 <template>
   <section class="container height--100vh">
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="../../assets/Spinner-1s-177px.gif" alt="">
+      </template>
+    </loading>
     <h2 class="text-center">Login</h2>
     <p class="text-center text-danger" v-if="isError">帳密有誤</p>
     <div class="row">
@@ -44,11 +49,6 @@
         </validation-observer>
       </div>
     </div>
-    <loading :active.sync="isLoading">
-      <template slot="default">
-        <img src="../../assets/Spinner-1s-177px.gif" alt="">
-      </template>
-    </loading>
   </section>
 </template>
 

@@ -1,8 +1,12 @@
 <template>
   <section class="container">
-    <div class="d-flex align-items-center">
-      <h2 class="font-weight-bold d-flex justify-content-between mr-3 my-5">訂單</h2>
-    </div>
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="../../assets/Spinner-1s-177px.gif" alt="">
+      </template>
+    </loading>
+    <notice :message="message"></notice>
+    <h2 class="font-weight-bold my-5">訂單</h2>
     <div class="table-responsive">
       <table class="table border-bottom">
         <thead>
@@ -82,7 +86,6 @@
                       id="isUp"
                       class="form-check-input"
                       v-model="temporary.paid"
-                      @change="isPaid(temporary.paid)"
                     />
                     <label for="isUp" class="form-check-label">付款狀態</label>
                   </div>
@@ -91,17 +94,12 @@
             </form>
           </div>
           <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" @click.prevent="isPaid(temporary.paid)">更新付款</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
     </div>
-    <loading :active.sync="isLoading">
-      <template slot="default">
-        <img src="../../assets/Spinner-1s-177px.gif" alt="">
-      </template>
-    </loading>
-    <notice :message="message"></notice>
   </section>
 </template>
 <script>
@@ -125,14 +123,18 @@ export default {
   methods: {
     getData () {
       const vm = this
-      vm.isLoading = true
+      setTimeout(() => {
+        vm.isLoading = true
+      }, 1000)
       vm.axios
         .get(
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders`
         )
         .then((response) => {
           vm.hexAPI.data = response.data.data
-          vm.isLoading = false
+          setTimeout(() => {
+            vm.isLoading = false
+          }, 0)
         })
     },
     /* 複製資料 */
@@ -150,6 +152,7 @@ export default {
     },
     isPaid (item) {
       const vm = this
+      $('#editOrderModal').modal('hide')
       let paid = ''
       if (item) {
         paid = 'paid'
@@ -162,7 +165,6 @@ export default {
             vm.axios
               .patch(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders/${vm.temporary.id}/${paid}`, vm.temporary.id)
               .then(() => {
-                $('#editOrderModal').modal('hide')
                 vm.message = '修改成功!'
                 $('#noticeModal').modal('show')
                 setTimeout(() => {

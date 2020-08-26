@@ -1,5 +1,11 @@
 <template>
   <section  class="height--100vh container mb-5">
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="../../assets/Spinner-1s-177px.gif" alt="">
+      </template>
+    </loading>
+    <notice :message="message"></notice>
     <div class="row flex-row-reverse">
       <div class="col-md-12 col-lg-5">
         <div class="p-3">

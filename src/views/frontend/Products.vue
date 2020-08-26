@@ -1,5 +1,11 @@
 <template>
   <section class="height--100vh container">
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="../../assets/Spinner-1s-177px.gif" alt="">
+      </template>
+    </loading>
+    <cart :shopping="apiShoppingData"></cart>
     <h2 class="mb-5 font-weight-bold">行李箱</h2>
     <div class="row">
       <!-- 商品分類 -->
@@ -43,12 +49,6 @@
     <div class="d-flex justify-content-center ">
       <pagination :pages="pagination" @emit-pages="getData"></pagination>
     </div>
-    <loading :active.sync="isLoading">
-      <template slot="default">
-        <img src="../../assets/Spinner-1s-177px.gif" alt="">
-      </template>
-    </loading>
-    <cart :shopping="apiShoppingData"></cart>
   </section>
 </template>
 

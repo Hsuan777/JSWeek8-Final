@@ -1,8 +1,12 @@
 <template>
   <section class="container">
-    <div class="d-flex align-items-center">
-      <h2 class="font-weight-bold d-flex justify-content-between mr-3 my-5">產品列表 (後臺管理)</h2>
-    </div>
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="../../assets/Spinner-1s-177px.gif" alt="">
+      </template>
+    </loading>
+    <notice :message="message"></notice>
+    <h2 class="font-weight-bold my-5">產品列表 (後臺管理)</h2>
     <div class="d-flex justify-content-end mb-2">
       <button
         type="button"
@@ -251,12 +255,6 @@
         </div>
       </div>
     </div>
-   <loading :active.sync="isLoading">
-      <template slot="default">
-        <img src="../../assets/Spinner-1s-177px.gif" alt="">
-      </template>
-    </loading>
-    <notice :message="message"></notice>
   </section>
 </template>
 

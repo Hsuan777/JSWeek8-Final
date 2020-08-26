@@ -1,5 +1,11 @@
 <template>
   <section class="container">
+    <loading :active.sync="isLoading">
+      <template slot="default">
+        <img src="../../assets/Spinner-1s-177px.gif" alt="">
+      </template>
+    </loading>
+    <notice :message="message"></notice>
     <h2 id="peopleData" class="mt-2 mb-5 font-weight-bold">顧客資訊</h2>
     <div class="row">
       <div class="col-12 col-lg-6">
@@ -127,30 +133,27 @@
             <tr>
               <th>商品名稱</th>
               <th>商品預覽</th>
-              <th class="text-right">單價</th>
-              <th class="text-center">數量</th>
+              <th class="text-center d-none d-md-block">數量</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(item, index) in shopping.data" :key="index" class="border-top">
-              <td class="align-middle">{{ item.product.title }}</td>
+              <td class="align-middle text-nowrap">
+                <span class="text-primary">{{ item.product.title }}</span>
+                <span class="d-block">
+                  {{ item.product.price|commaFormat }} <span class="d-md-none">* {{ item.quantity }}</span>
+                </span>
+              </td>
               <td class="align-middle">
                 <img :src="item.product.imageUrl[0]" alt class="inner__cartImg rounded" />
               </td>
-              <td class="align-middle text-right">{{ item.product.price|commaFormat }}</td>
-              <td class="align-middle text-center">{{ item.quantity }}</td>
+              <td class="align-middle text-center d-none d-md-block mt-4">{{ item.quantity }}</td>
             </tr>
           </tbody>
         </table>
         <h3 class="text-right mr-3">總計金額 : NT.{{ shopping.moneyTotal|commaFormat }}</h3>
       </div>
     </div>
-    <loading :active.sync="isLoading">
-      <template slot="default">
-        <img src="../../assets/Spinner-1s-177px.gif" alt="">
-      </template>
-    </loading>
-    <notice :message="message"></notice>
   </section>
 </template>
 

@@ -38,7 +38,6 @@
               <thead>
                 <tr>
                   <th>商品</th>
-                  <!-- <th class="text-right d-none d-lg-block">單價</th> -->
                   <th class="text-center d-none d-md-block">數量</th>
                   <th></th>
                 </tr>
@@ -54,7 +53,6 @@
                       <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('add', item.product.id, item.quantity)"> + </button>
                     </div>
                   </td>
-                  <!-- <td class="align-middle text-right d-none d-lg-block mt-1">{{ item.product.price|commaFormat }}</td> -->
                   <td class="align-middle text-center d-none d-md-block">
                     <div class="btn-group" role="group" aria-label="Basic example">
                       <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('reduce', item.product.id, item.quantity)"> - </button>
