@@ -9,7 +9,7 @@
         class="btn btn-primary btn-lg px-3"
         data-toggle="modal"
         data-target="#addProductModal"
-        @click="initData"
+        @click.prevent="initData"
       >新增產品</button>
     </div>
     <div class="table-responsive">
@@ -44,11 +44,11 @@
               <div class="btn-group">
                 <button
                   class="btn btn-secondary"
-                  @click="copyData('edit', item)"
+                  @click.prevent="copyData('edit', item)"
                 >修改</button>
                 <button
                   class="btn btn-outline-danger"
-                  @click="copyData('delete', item)"
+                  @click.prevent="copyData('delete', item)"
                 >刪除</button>
               </div>
             </td>
@@ -174,7 +174,6 @@
                     ></textarea>
                   </div>
                   <!-- 若沒有 value，預設會是布林值 -->
-                  <!-- TODO: 接收資料回來時，options的 color屬性所對應的圖片顏色如何隨著購物車走 ? -->
                   <div class="form-group" >
                     <label class="form-label">商品顏色
                       <button type="button" class="btn btn-secondary btn-sm mr-2" @click.prevent="addCell(temporary.options.colors)">增加顏色</button>
@@ -209,7 +208,7 @@
             <button
               type="button"
               class="btn btn-primary"
-              @click="updateData"
+              @click.prevent="updateData"
               data-dismiss="modal"
             >Save</button>
           </div>
@@ -244,7 +243,7 @@
             <button
               type="button"
               class="btn btn-outline-danger"
-              @click="deleteData"
+              @click.prevent="deleteData"
               data-dismiss="modal"
             >Delete</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

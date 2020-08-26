@@ -28,7 +28,7 @@
               <div class="btn-group">
                 <button
                   class="btn btn-secondary"
-                  @click="copyData(item)"
+                  @click.prevent="copyData(item)"
                 >編輯</button>
               </div>
             </td>

@@ -9,7 +9,7 @@
         class="btn btn-primary btn-lg px-3"
         data-toggle="modal"
         data-target="#addCouponModal"
-        @click="initData"
+        @click.prevent="initData"
       >新增優惠券</button>
     </div>
     <div class="table-responsive">
@@ -34,29 +34,15 @@
               <span v-if="item.enabled" class="text-success">已開放</span>
               <span v-else class="text-danger">未開放</span>
             </td>
-            <!-- <td class="pr-0">
-              <button
-                class="btn btn-secondary mr-2"
-                @click="copyData(item)"
-                data-toggle="modal"
-                data-target="#addProductModal"
-              >修改</button>
-              <button
-                class="btn btn-outline-danger mr-0"
-                @click="copyData(item)"
-                data-toggle="modal"
-                data-target="#deleteProductModal"
-              >刪除</button>
-            </td> -->
             <td class="pr-0">
               <div class="btn-group">
                 <button
                   class="btn btn-secondary"
-                  @click="copyData('edit', item)"
+                  @click.prevent="copyData('edit', item)"
                 >修改</button>
                 <button
                   class="btn btn-outline-danger"
-                  @click="copyData('delete', item)"
+                  @click.prevent="copyData('delete', item)"
                 >刪除</button>
               </div>
              </td>
@@ -160,7 +146,7 @@
             <button
               type="button"
               class="btn btn-primary"
-              @click="updateData"
+              @click.prevent="updateData"
               data-dismiss="modal"
             >Save</button>
           </div>
@@ -195,7 +181,7 @@
             <button
               type="button"
               class="btn btn-primary"
-              @click="deleteData"
+              @click.prevent="deleteData"
               data-dismiss="modal"
             >Delete</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

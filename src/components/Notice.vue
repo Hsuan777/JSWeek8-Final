@@ -17,25 +17,17 @@
           <h3 class="d-flex align-items-center mb-5">
             {{ message }}
           </h3>
-          <!-- <button type="button" class="btn btn-secondary" aria-label="Close" @click="jump">確定</button> -->
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-// import $ from 'jquery'
 export default {
   data () {
     return {
     }
   },
   props: ['message']
-  // methods: {
-  //   jump () {
-  //     this.$router.push(jumpTo)
-  //     $('#noticeModal').modal('hide')
-  //   }
-  // }
 }
 </script>

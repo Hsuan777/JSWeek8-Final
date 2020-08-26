@@ -9,7 +9,7 @@
         class="btn btn-primary btn-lg px-3"
         data-toggle="modal"
         data-target="#addStorageModal"
-        @click="initData"
+        @click.prevent="initData"
       >新增檔案</button>
     </div>
     <div class="table-responsive">
@@ -30,7 +30,7 @@
             <td class="pr-0">
               <button
                 class="btn btn-outline-danger mr-0"
-                @click="copyData(item)"
+                @click.prevent="copyData(item)"
                 data-target="#deleteStorageModal"
               >刪除</button>
             </td>
@@ -82,7 +82,7 @@
             <button
               type="button"
               class="btn btn-primary"
-              @click="addData"
+              @click.prevent="addData"
             >Save</button>
           </div>
         </div>
@@ -116,7 +116,7 @@
             <button
               type="button"
               class="btn btn-primary"
-              @click="deleteData"
+              @click.prevent="deleteData"
               data-dismiss="modal"
             >Delete</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

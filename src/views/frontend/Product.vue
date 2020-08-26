@@ -31,7 +31,7 @@
             <div class="col-6">
               <div class="btn-group btn-group-lg btn-block" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('reduce')"> - </button>
-                <input type="button" class="btn btn-outline-secondary text-dark" :value="temporary.quantity" disabled>
+                <input type="button" class="btn btn-outline-secondary text-dark" :value="temporary.quantity">
                 <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('add')"> + </button>
               </div>
             </div>
@@ -39,7 +39,7 @@
               <button type="button" class="btn btn-info btn-lg btn-block h-100" @click.prevent="addShopping">
                 <span class="d-none d-md-block">加入購物車</span>
                 <span class="material-icons d-flex justify-content-center d-md-none">add_shopping_cart</span>
-                </button>
+              </button>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
           <div class="card-body" v-if="hexAPI.product.imageUrl">
             <swiper class="swiper" ref="mySwiperRef" :options="swiperOption" v-if="hexAPI.product.imageUrl[1]">
               <swiper-slide v-for="(item, index) in hexAPI.product.imageUrl" :key="index">
-                <img :src="item" class="inner__iconImg" @click.prevent="selectImg(hexAPI.product.imageUrl[index])">
+                <img :src="item" class="inner__iconImg" @click="selectImg(hexAPI.product.imageUrl[index])">
               </swiper-slide>
               <div class="swiper-button-prev" slot="button-prev" @click="swiperNavigation"></div>
               <div class="swiper-button-next" slot="button-next" @click="swiperNavigation('next')"></div>
@@ -116,7 +116,6 @@ export default {
   },
   filters: {
     commaFormat (value) {
-      // 加上千分位符號
       const parts = value.toString().split('.')
       parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
       return 'NT. ' + parts.join('.')

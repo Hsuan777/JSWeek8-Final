@@ -127,7 +127,7 @@
             <tr>
               <th>商品名稱</th>
               <th>商品預覽</th>
-              <th class="text-right">價格</th>
+              <th class="text-right">單價</th>
               <th class="text-center">數量</th>
             </tr>
           </thead>
@@ -137,12 +137,12 @@
               <td class="align-middle">
                 <img :src="item.product.imageUrl[0]" alt class="inner__cartImg rounded" />
               </td>
-              <td class="align-middle text-right">{{ item.product.price }}</td>
+              <td class="align-middle text-right">{{ item.product.price|commaFormat }}</td>
               <td class="align-middle text-center">{{ item.quantity }}</td>
             </tr>
           </tbody>
         </table>
-        <h3 class="text-right mr-3">總計金額 : NT.{{ shopping.moneyTotal }}</h3>
+        <h3 class="text-right mr-3">總計金額 : NT.{{ shopping.moneyTotal|commaFormat }}</h3>
       </div>
     </div>
     <loading :active.sync="isLoading">
@@ -187,6 +187,13 @@ export default {
       },
       isLoading: false,
       message: ''
+    }
+  },
+  filters: {
+    commaFormat (value) {
+      const parts = value.toString().split('.')
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      return 'NT. ' + parts.join('.')
     }
   },
   methods: {

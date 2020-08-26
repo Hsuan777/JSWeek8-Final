@@ -22,7 +22,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header bg-secondary">
-            <h5 class="modal-title font-weight-bold ml-1">購物車列表</h5>
+            <h5 class="modal-title font-weight-bold ml-1">您的購物清單</h5>
             <button type="button" class="close mr-1 pr-0" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -37,17 +37,25 @@
             <table class="table table-borderless">
               <thead>
                 <tr>
-                  <th>商品名稱</th>
-                  <th class="text-right">價格</th>
-                  <th class="text-center">數量</th>
+                  <th>商品</th>
+                  <!-- <th class="text-right d-none d-lg-block">單價</th> -->
+                  <th class="text-center d-none d-md-block">數量</th>
                   <th></th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="(item, index) in shopping.data" :key="index">
-                  <td class="align-middle">{{ item.product.title }}</td>
-                  <td class="align-middle text-right">{{ item.product.price|commaFormat }}</td>
-                  <td class="align-middle text-center">
+                  <td class="align-middle">
+                    <span class="text-primary">{{ item.product.title }}</span>
+                    <span class="d-block">{{ item.product.price|commaFormat }}</span>
+                    <div class="btn-group d-md-none" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('reduce', item.product.id, item.quantity)"> - </button>
+                      <input type="button" class="btn btn-outline-secondary text-dark" :value="item.quantity">
+                      <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('add', item.product.id, item.quantity)"> + </button>
+                    </div>
+                  </td>
+                  <!-- <td class="align-middle text-right d-none d-lg-block mt-1">{{ item.product.price|commaFormat }}</td> -->
+                  <td class="align-middle text-center d-none d-md-block">
                     <div class="btn-group" role="group" aria-label="Basic example">
                       <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('reduce', item.product.id, item.quantity)"> - </button>
                       <input type="button" class="btn btn-outline-secondary text-dark" :value="item.quantity">
@@ -60,7 +68,6 @@
                       class="close mr-1"
                       @click="deleteShopping( item.product.id )"
                     >
-                      <!-- <span aria-hidden="true">&times;</span> -->
                       <span class="material-icons">delete_forever</span>
                     </button>
                   </td>
@@ -94,7 +101,6 @@ export default {
   },
   filters: {
     commaFormat (value) {
-      // 加上千分位符號
       const parts = value.toString().split('.')
       parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
       return 'NT. ' + parts.join('.')
@@ -117,7 +123,6 @@ export default {
           vm.isLoading = false
         })
     },
-    // 相同產品，但不同數量，如何更新? -> 改為購物車修正
     productQuantity (action, pid, quantity) {
       const vm = this
       vm.isLoading = true
@@ -172,7 +177,6 @@ export default {
           vm.getShopping()
           vm.isLoading = false
           $('#shoppingModal').modal('hide')
-          // this.$refs.shoppingModal.modal('hide')
         })
     },
     pay () {

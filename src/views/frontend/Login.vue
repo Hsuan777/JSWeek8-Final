@@ -74,7 +74,6 @@ export default {
           const token = res.data.token
           const expired = res.data.expired
           document.cookie = `hexToken=${token}; expires=${new Date(expired * 1000)}; path=/`
-          // 清空
           vm.user.email = ''
           vm.user.password = ''
           vm.isError = false

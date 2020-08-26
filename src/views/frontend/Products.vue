@@ -28,7 +28,7 @@
                 <!-- 商品內容，描述作為 v-html -->
                 <p class="mt-2 text-truncate">{{ item.content }}</p>
                 <!-- 商品價格 -->
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between align-items-center">
                   <small class="mb-0">
                     售價 : <del>{{ item.origin_price|commaFormat }}</del>
                   </small>
@@ -85,7 +85,6 @@ export default {
   },
   filters: {
     commaFormat (value) {
-      // 加上千分位符號
       const parts = value.toString().split('.')
       parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
       return 'NT. ' + parts.join('.')
