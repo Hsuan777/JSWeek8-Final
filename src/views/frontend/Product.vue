@@ -2,13 +2,14 @@
   <section  class="height--100vh container mb-5">
     <loading :active.sync="isLoading">
       <template slot="default">
-        <img src="../../assets/Spinner-1s-177px.gif" alt="">
+        <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/lVFaRgYrO5dCfyEBJqB9Jz9OVpximp3hFlU1Wa1FxK0vEbkNMPzyoCR70gJhz7j3As6yvoJtJ3oceAGtWCv5rSTXleOyQqUed4vAYzX8e5ElrwIgukry35YQJVzDkdki.gif" alt="">
       </template>
     </loading>
+    <cart :shopping="apiShoppingData"></cart>
     <notice :message="message"></notice>
     <div class="row flex-row-reverse">
-      <div class="col-md-12 col-lg-5">
-        <div class="p-3">
+      <div class="col-lg-6 mb-3 mb-lg-0">
+        <div class="p-lg-4 p-xl-3">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-white pl-0">
               <li class="breadcrumb-item">
@@ -35,11 +36,24 @@
           </div>
           <div class="row">
             <div class="col-6">
-              <div class="btn-group btn-group-lg btn-block" role="group" aria-label="Basic example">
+              <!-- <div class="btn-group btn-group-lg btn-block" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('reduce')"> - </button>
-                <input type="button" class="btn btn-outline-secondary text-dark" :value="temporary.quantity">
+                <input type="text" class="btn btn-outline-secondary text-dark" :value="temporary.quantity">
                 <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('add')"> + </button>
-              </div>
+              </div> -->
+              <nav aria-label="Quantity navigation">
+                <ul class="pagination pagination-lg mb-0">
+                  <li class="page-item">
+                    <button type="button" class="page-link border border-secondary text-dark" @click.prevent="productQuantity('reduce')"> - </button>
+                  </li>
+                  <li class="page-item">
+                    <div class="page-link text-primary border border-secondary">{{ temporary.quantity }}</div>
+                  </li>
+                  <li class="page-item">
+                    <button type="button" class="page-link border border-secondary text-dark" @click.prevent="productQuantity('add')"> + </button>
+                  </li>
+                </ul>
+              </nav>
             </div>
             <div class="col-6">
               <button type="button" class="btn btn-info btn-lg btn-block h-100" @click.prevent="addShopping">
@@ -50,7 +64,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-12 col-lg-6">
+      <div class="col-lg-6">
         <div class="card border-0">
           <div class="card-head p-0">
             <img :src="selectImage" class="inner__producImg object-fit rounded-top">
@@ -67,13 +81,6 @@
         </div>
       </div>
     </div>
-    <loading :active.sync="isLoading">
-      <template slot="default">
-        <img src="../../assets/Spinner-1s-177px.gif" alt="">
-      </template>
-    </loading>
-    <cart :shopping="apiShoppingData"></cart>
-    <notice :message="message"></notice>
   </section>
 </template>
 
@@ -118,13 +125,6 @@ export default {
           prevEl: '.swiper-button-prev'
         }
       }
-    }
-  },
-  filters: {
-    commaFormat (value) {
-      const parts = value.toString().split('.')
-      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-      return 'NT. ' + parts.join('.')
     }
   },
   methods: {

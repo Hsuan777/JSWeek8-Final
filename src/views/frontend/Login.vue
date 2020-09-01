@@ -3,13 +3,13 @@
   <section class="container height--100vh">
     <loading :active.sync="isLoading">
       <template slot="default">
-        <img src="../../assets/Spinner-1s-177px.gif" alt="">
+        <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/lVFaRgYrO5dCfyEBJqB9Jz9OVpximp3hFlU1Wa1FxK0vEbkNMPzyoCR70gJhz7j3As6yvoJtJ3oceAGtWCv5rSTXleOyQqUed4vAYzX8e5ElrwIgukry35YQJVzDkdki.gif" alt="">
       </template>
     </loading>
     <h2 class="text-center">Login</h2>
     <p class="text-center text-danger" v-if="isError">帳密有誤</p>
     <div class="row">
-      <div class="col-12 col-md-6 col-lg-3 mx-auto">
+      <div class="col-md-6 col-lg-3 mx-auto">
         <validation-observer v-slot="{ invalid }">
           <form @submit.prevent="submitForm" class="mb-5">
             <validation-provider rules="email|required" v-slot="{ errors, classes }" tag="div" class="form-group">

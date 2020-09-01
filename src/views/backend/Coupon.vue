@@ -2,7 +2,7 @@
   <section class="container">
     <loading :active.sync="isLoading">
       <template slot="default">
-        <img src="../../assets/Spinner-1s-177px.gif" alt="">
+        <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/lVFaRgYrO5dCfyEBJqB9Jz9OVpximp3hFlU1Wa1FxK0vEbkNMPzyoCR70gJhz7j3As6yvoJtJ3oceAGtWCv5rSTXleOyQqUed4vAYzX8e5ElrwIgukry35YQJVzDkdki.gif" alt="">
       </template>
     </loading>
     <notice :message="message"></notice>

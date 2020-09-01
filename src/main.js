@@ -26,7 +26,20 @@ Vue.use(Validate)
 
 Vue.component('loading', Loading)
 
+Vue.filter('commaFormat', function (value) {
+  const parts = value.toString().split('.')
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  return 'NT. ' + parts.join('.')
+})
+
 new Vue({
+  Filters: {
+    commaFormat (value) {
+      const parts = value.toString().split('.')
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+      return 'NT. ' + parts.join('.')
+    }
+  },
   created () {
     AOS.init()
   },

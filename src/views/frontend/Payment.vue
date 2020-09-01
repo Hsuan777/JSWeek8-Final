@@ -2,13 +2,13 @@
   <section class="container">
     <loading :active.sync="isLoading">
       <template slot="default">
-        <img src="../../assets/Spinner-1s-177px.gif" alt="">
+        <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/lVFaRgYrO5dCfyEBJqB9Jz9OVpximp3hFlU1Wa1FxK0vEbkNMPzyoCR70gJhz7j3As6yvoJtJ3oceAGtWCv5rSTXleOyQqUed4vAYzX8e5ElrwIgukry35YQJVzDkdki.gif" alt="">
       </template>
     </loading>
     <notice :message="message"></notice>
     <h2 id="peopleData" class="mt-2 mb-5 font-weight-bold">顧客資訊</h2>
     <div class="row">
-      <div class="col-12 col-lg-6">
+      <div class="col-lg-6">
         <validation-observer v-slot="{ invalid }">
           <form @submit.prevent="submitForm">
             <validation-provider
@@ -127,31 +127,33 @@
           </form>
         </validation-observer>
       </div>
-      <div class="col-12 col-lg-6">
-        <table class="table table-borderless">
-          <thead>
-            <tr>
-              <th>商品名稱</th>
-              <th>商品預覽</th>
-              <th class="text-center d-none d-md-block">數量</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item, index) in shopping.data" :key="index" class="border-top">
-              <td class="align-middle text-nowrap">
-                <span class="text-primary">{{ item.product.title }}</span>
-                <span class="d-block">
-                  {{ item.product.price|commaFormat }} <span class="d-md-none">* {{ item.quantity }}</span>
-                </span>
-              </td>
-              <td class="align-middle">
-                <img :src="item.product.imageUrl[0]" alt class="inner__cartImg rounded" />
-              </td>
-              <td class="align-middle text-center d-none d-md-block mt-4">{{ item.quantity }}</td>
-            </tr>
-          </tbody>
-        </table>
-        <h3 class="text-right mr-3">總計金額 : NT.{{ shopping.moneyTotal|commaFormat }}</h3>
+      <div class="col-lg-6">
+        <div class="sticky-top">
+          <table class="table table-borderless sticky-top">
+            <thead>
+              <tr>
+                <th>商品名稱</th>
+                <th>商品預覽</th>
+                <th class="text-center d-none d-md-block">數量</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(item, index) in shopping.data" :key="index" class="border-top">
+                <td class="align-middle text-nowrap">
+                  <span class="text-primary">{{ item.product.title }}</span>
+                  <span class="d-block">
+                    {{ item.product.price|commaFormat }} <span class="d-md-none">* {{ item.quantity }}</span>
+                  </span>
+                </td>
+                <td class="align-middle">
+                  <img :src="item.product.imageUrl[0]" alt class="inner__cartImg rounded" />
+                </td>
+                <td class="align-middle text-center d-none d-md-block mt-4">{{ item.quantity }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3 class="text-right mr-3">總計金額 : {{ shopping.moneyTotal|commaFormat }}</h3>
+        </div>
       </div>
     </div>
   </section>
@@ -190,13 +192,6 @@ export default {
       },
       isLoading: false,
       message: ''
-    }
-  },
-  filters: {
-    commaFormat (value) {
-      const parts = value.toString().split('.')
-      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-      return 'NT. ' + parts.join('.')
     }
   },
   methods: {

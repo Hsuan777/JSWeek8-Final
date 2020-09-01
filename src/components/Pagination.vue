@@ -1,6 +1,6 @@
 <template>
   <nav aria-label="Page navigation example">
-    <ul class="pagination mx-auto">
+    <ul class="pagination mx-auto" v-if="pages.total_pages != 1">
       <li class="page-item" v-if="pages.current_page != 1">
         <a class="page-link" href="#" aria-label="Previous" @click.prevent="emitPages(pages.current_page - 1)">
           <span aria-hidden="true">&laquo;</span>

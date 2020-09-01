@@ -2,8 +2,8 @@
   <section class="height--100vh container mb-5">
     <h2 class="font-weight-bold mb-5">關於我們</h2>
     <div class="row flex-md-row-reverse">
-      <div class="col-12 col-md-6">
-        <div class="d-flex flex-column justify-content-start h-100">
+      <div class="col-md-6">
+        <div class="d-flex flex-column">
           <h3 class="text-primary mb-3">專業維修師傅</h3>
           <p class="d-flex align-items-center">
             <span class="material-icons text-primary mr-1">home_repair_service</span>
@@ -18,13 +18,13 @@
           </p>
         </div>
       </div>
-      <div class="col-12 col-md-6 mb-5">
+      <div class="col-md-6 mb-5">
         <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/X1sZ50S9dCdiAWg3KDGVbVMBvwcQbGQevmFaZLvlIdNd82eq741FK8naJ2NJhBzddOo9T5O8UmU9QWbkX7xIguA4MAbsnD9tTQII611yXPmpn0FoWICzy9yu4ANrFXxO.jpg" alt="" class="inner__aboutImg object-fit rounded">
       </div>
     </div>
     <div class="row mb-5">
-      <div class="col-12 col-md-6">
-        <div class="d-flex flex-column justify-content-end h-100">
+      <div class="col-md-6">
+        <div class="d-flex flex-column">
           <h3 class="text-primary mb-3">
             我們修的是旅行的回憶~
           </h3>
@@ -42,7 +42,7 @@
           </p>
         </div>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-md-6">
         <img src="https://images.unsplash.com/photo-1479888230021-c24f136d849f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="" class="img-fluid rounded">
       </div>
     </div>

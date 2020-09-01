@@ -75,7 +75,7 @@
               </a>
             </div>
           </div>
-          <div class="col-12 mt-1">
+          <div class="col-12">
             <p class="text-center text-secondary mb-0">
               <span>台中行李箱維修</span>
               <small class="d-block d-md-inline"> © 2020. All Rights Reserved.</small>

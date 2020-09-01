@@ -38,21 +38,21 @@
           </h3>
           <p class="text-center">各式行李箱問題皆可維修</p>
         </div>
-        <div class="col-6 col-lg-3 mb-3 mb-md-0" data-aos="zoom-in-up" data-aos-delay="300">
+        <div class="col-6 col-lg-3 mb-3 mb-md-0" data-aos="zoom-in-up">
           <h3 class="d-flex flex-column align-items-center">
             <span class="material-icons h2 text-info">monetization_on</span>
             維修報價
           </h3>
           <p class="text-center"><span class="d-none d-md-block">上傳行李箱需維修處照片<br></span>專人確認可否維修及報價</p>
         </div>
-        <div class="col-6 col-lg-3 mb-3 mb-md-0" data-aos="zoom-in-up" data-aos-delay="600">
+        <div class="col-6 col-lg-3 mb-3 mb-md-0" data-aos="zoom-in-up">
           <h3 class="d-flex flex-column align-items-center">
             <span class="material-icons h2 text-info">shutter_speed</span>
             精選零件
             </h3>
           <p class="text-center">維修選用高品質零件</p>
         </div>
-        <div class="col-6 col-lg-3" data-aos="zoom-in-up" data-aos-delay="900">
+        <div class="col-6 col-lg-3" data-aos="zoom-in-up">
           <h3 class="d-flex flex-column align-items-center">
             <span class="material-icons h2 text-info">filter_1</span>
             一年保固
@@ -186,7 +186,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 pt-5">
+        <div class="col pt-5">
           <h2 id="repair" class="d-flex justify-content-center align-items-center font-weight-bold">
             現場維修
             <span class="material-icons text-primary d-none d-md-block mx-2 h2 mb-0">
