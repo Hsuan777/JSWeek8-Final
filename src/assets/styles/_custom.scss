@@ -208,6 +208,9 @@
     }
   }
   &__category {
+    &--top{
+      top: 58px;
+    }
     .active {
       color: #fff;
     }

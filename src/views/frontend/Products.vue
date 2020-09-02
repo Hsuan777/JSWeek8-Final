@@ -10,7 +10,7 @@
     <div class="row">
       <!-- 商品分類 -->
       <div class="col-2 d-none d-lg-block">
-        <div class="sticky-top">
+        <div class="custom__category--top sticky-top">
           <h3 class="font-weight-bold">分類</h3>
           <div class="custom__category cursor--pointer list-group list-group-flush">
             <a v-for="(item, index) in category.list" :key="index" class="list-group-item list-group-item-action rounded" :class="{'active':categoryIndex === index}" @click.prevent="categoryData(item, index)">{{ item }}</a>

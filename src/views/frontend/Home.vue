@@ -62,7 +62,7 @@
       </div>
     </section>
     <!-- 維修案例 -->
-    <section class="container mb-5 pt-5">
+    <section class="container mb-5">
       <h2 class="font-weight-bold text-center mb-3">維修案例</h2>
       <div class="row">
         <!-- 箱輪更換 -->
@@ -122,7 +122,7 @@
       </div>
     </section>
     <!-- 五星評價 -->
-    <section class="container mb-5 pt-5">
+    <section class="container mb-5">
       <h2 class="font-weight-bold text-center">五星評價</h2>
       <h3 class="text-center mb-3">感謝曾經來維修的各位給予肯定!</h3>
       <div class="row">

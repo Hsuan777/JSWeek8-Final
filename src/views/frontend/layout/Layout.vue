@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-white sticky-top transition" :class="{'py-0':isPadding}">
       <div class="container">
         <router-link to="/" class="navbar-brand text-primary">
-          <h1 class="h2 d-flex align-items-center" @click="collapseHide">
+          <h1 class="h2 d-flex align-items-center mb-0" @click="collapseHide">
             <span>Suitcase</span>
             <span class="material-icons">construction</span>
           </h1>
@@ -96,14 +96,27 @@ export default {
   },
   data () {
     return {
-      navIndex: ''
+      navIndex: '',
+      isPadding: false
     }
   },
   methods: {
     collapseHide (index) {
       this.navIndex = index
       $('#navbarSupportedContent').collapse('hide')
+    },
+    scrollToNav () {
+      const vm = this
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      if (scrollTop > 60) {
+        vm.isPadding = true
+      } else {
+        vm.isPadding = false
+      }
     }
+  },
+  mounted () {
+    window.addEventListener('scroll', this.scrollToNav)
   }
 }
 </script>

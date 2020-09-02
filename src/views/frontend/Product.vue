@@ -6,7 +6,6 @@
       </template>
     </loading>
     <cart :shopping="apiShoppingData"></cart>
-    <notice :message="message"></notice>
     <div class="row flex-row-reverse">
       <div class="col-lg-6 mb-3 mb-lg-0">
         <div class="p-lg-4 p-xl-3">
@@ -80,15 +79,12 @@
 </template>
 
 <script>
-import $ from 'jquery'
 import Cart from '@/components/Cart.vue'
-import Notice from '@/components/Notice.vue'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 import 'swiper/swiper-bundle.css'
 export default {
   components: {
     Cart,
-    Notice,
     Swiper,
     SwiperSlide
   },
@@ -194,11 +190,7 @@ export default {
           break
         case 'reduce':
           if (vm.temporary.quantity - 1 === 0) {
-            vm.message = '數量最低為 1 !'
-            $('#noticeModal').modal('show')
-            setTimeout(() => {
-              $('#noticeModal').modal('hide')
-            }, 3000)
+            break
           } else {
             vm.temporary.quantity -= 1
             break
