@@ -36,11 +36,6 @@
           </div>
           <div class="row">
             <div class="col-6">
-              <!-- <div class="btn-group btn-group-lg btn-block" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('reduce')"> - </button>
-                <input type="text" class="btn btn-outline-secondary text-dark" :value="temporary.quantity">
-                <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('add')"> + </button>
-              </div> -->
               <nav aria-label="Quantity navigation">
                 <ul class="pagination pagination-lg mb-0">
                   <li class="page-item">
@@ -155,14 +150,8 @@ export default {
         )
         .then(() => {
           vm.getShopping()
-          // vm.message = '成功加入購物車!'
-          // $('#noticeModal').modal('show')
-          // setTimeout(() => {
-          //   $('#noticeModal').modal('hide')
-          // }, 1500)
           vm.$swal({
             icon: 'success',
-            // iconHtml: '<span class="material-icons h2 mb-0">add_shopping_cart</span>',
             iconHtml: '<span class="material-icons h2 mb-0">done_outline</span>',
             title: '成功加入購物車!!',
             showConfirmButton: false,
@@ -171,11 +160,6 @@ export default {
           vm.isLoading = false
         })
         .catch(() => {
-          // vm.message = '商品已存在，請在購物車修改數量即可~'
-          // $('#noticeModal').modal('show')
-          // setTimeout(() => {
-          //   $('#noticeModal').modal('hide')
-          // }, 3000)
           vm.$swal({
             icon: 'error',
             iconHtml: '<span class="material-icons h2 mb-0">priority_high</span>',

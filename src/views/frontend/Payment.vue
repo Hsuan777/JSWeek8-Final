@@ -5,7 +5,6 @@
         <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/lVFaRgYrO5dCfyEBJqB9Jz9OVpximp3hFlU1Wa1FxK0vEbkNMPzyoCR70gJhz7j3As6yvoJtJ3oceAGtWCv5rSTXleOyQqUed4vAYzX8e5ElrwIgukry35YQJVzDkdki.gif" alt="">
       </template>
     </loading>
-    <notice :message="message"></notice>
     <h2 id="peopleData" class="mt-2 mb-5 font-weight-bold">顧客資訊</h2>
     <div class="row">
       <div class="col-lg-6">
@@ -160,12 +159,7 @@
 </template>
 
 <script>
-import $ from 'jquery'
-import Notice from '@/components/Notice.vue'
 export default {
-  components: {
-    Notice
-  },
   data () {
     return {
       hexAPI: {
@@ -221,13 +215,17 @@ export default {
         )
         .then((response) => {
           vm.isLoading = false
-          vm.message = '感謝您的訂購~'
-          $('#noticeModal').modal('show')
-          $('#navbarSupportedContent').collapse('hide')
-          setTimeout(() => {
-            $('#noticeModal').modal('hide')
-            vm.$router.push('/products')
-          }, 3000)
+          vm.$swal({
+            icon: 'success',
+            iconHtml: '<span class="material-icons h2 mb-0">flight_takeoff</span>',
+            title: '感謝您的訂購!',
+            text: '預祝您旅途愉快~',
+            confirmButtonText: '確定'
+          }).then((result) => {
+            if (result.value) {
+              vm.$router.push('/products')
+            }
+          })
         })
     }
   },
