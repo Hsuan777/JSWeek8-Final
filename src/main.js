@@ -16,6 +16,8 @@ import Validate from './assets/js/validate.js'
 // Aos
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+// sweetalert2
+import VueSweetalert2 from 'vue-sweetalert2'
 
 Vue.config.productionTip = false
 
@@ -26,6 +28,11 @@ Vue.use(Validate)
 
 Vue.component('loading', Loading)
 
+const options = {
+  confirmButtonColor: '#349baa'
+}
+Vue.use(VueSweetalert2, options)
+
 Vue.filter('commaFormat', function (value) {
   const parts = value.toString().split('.')
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
@@ -33,13 +40,6 @@ Vue.filter('commaFormat', function (value) {
 })
 
 new Vue({
-  Filters: {
-    commaFormat (value) {
-      const parts = value.toString().split('.')
-      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-      return 'NT. ' + parts.join('.')
-    }
-  },
   created () {
     AOS.init()
   },

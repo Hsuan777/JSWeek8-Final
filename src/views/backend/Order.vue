@@ -5,7 +5,6 @@
         <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/lVFaRgYrO5dCfyEBJqB9Jz9OVpximp3hFlU1Wa1FxK0vEbkNMPzyoCR70gJhz7j3As6yvoJtJ3oceAGtWCv5rSTXleOyQqUed4vAYzX8e5ElrwIgukry35YQJVzDkdki.gif" alt="">
       </template>
     </loading>
-    <notice :message="message"></notice>
     <h2 class="font-weight-bold my-5">訂單</h2>
     <div class="table-responsive">
       <table class="table border-bottom">
@@ -94,7 +93,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" @click.prevent="isPaid(temporary.paid)">更新付款</button>
+            <button type="button" class="btn btn-outline-secondary text-danger" @click.prevent="isPaid(temporary.paid)">更新付款</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
@@ -104,11 +103,7 @@
 </template>
 <script>
 import $ from 'jquery'
-import Notice from '@/components/Notice.vue'
 export default {
-  components: {
-    Notice
-  },
   data () {
     return {
       hexAPI: {
@@ -123,18 +118,14 @@ export default {
   methods: {
     getData () {
       const vm = this
-      setTimeout(() => {
-        vm.isLoading = true
-      }, 1000)
+      vm.isLoading = true
       vm.axios
         .get(
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders`
         )
         .then((response) => {
           vm.hexAPI.data = response.data.data
-          setTimeout(() => {
-            vm.isLoading = false
-          }, 0)
+          vm.isLoading = false
         })
     },
     /* 複製資料 */
@@ -165,20 +156,35 @@ export default {
             vm.axios
               .patch(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/orders/${vm.temporary.id}/${paid}`, vm.temporary.id)
               .then(() => {
-                vm.message = '修改成功!'
-                $('#noticeModal').modal('show')
-                setTimeout(() => {
-                  $('#noticeModal').modal('hide')
-                }, 1500)
-                vm.getData()
-                vm.cleanData()
+                vm.isLoading = false
+                vm.$swal({
+                  icon: 'success',
+                  title: '修改成功',
+                  showConfirmButton: false,
+                  timer: 1500
+                }).then((result) => {
+                  if (!result.value) {
+                    vm.getData()
+                    vm.temporary = {}
+                  }
+                })
+              })
+              .catch((error) => {
+                vm.isLoading = false
+                vm.$swal({
+                  icon: 'error',
+                  title: '修改失敗',
+                  text: `${error.message}`,
+                  confirmButtonText: '確定'
+                }).then((result) => {
+                  if (result.value) {
+                    vm.getData()
+                  }
+                })
               })
           }
         })
       }
-    },
-    cleanData () {
-      this.temporary = {}
     }
   },
   created () {

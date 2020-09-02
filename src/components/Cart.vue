@@ -49,11 +49,6 @@
                     <span class="d-block">{{ item.product.price|commaFormat }}</span>
                   </td>
                   <td class="align-middle text-center">
-                    <!-- <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('reduce', item.product.id, item.quantity)"> - </button>
-                      <input type="button" class="btn btn-outline-secondary text-dark" :value="item.quantity">
-                      <button type="button" class="btn btn-outline-secondary text-dark" @click.prevent="productQuantity('add', item.product.id, item.quantity)"> + </button>
-                    </div> -->
                     <nav aria-label="Quantity navigation">
                       <ul class="pagination mb-0">
                         <li class="page-item">
@@ -81,13 +76,18 @@
               </tbody>
             </table>
             <h3 class="text-right mr-2 mb-2">總計金額 : {{ shopping.moneyTotal|commaFormat }}</h3>
-            <div class="modal-footer d-flex justify-content-between border-0 p-1">
-              <button type="button" class="btn btn-secondary btn-lg" @click="deleteAll">Clean</button>
+            <div class="d-flex justify-content-between border-0 p-1">
+              <button type="button" class="btn btn-outline-secondary btn-lg text-primary" @click="deleteAll">Clean</button>
               <button type="button" class="btn btn-info btn-lg" @click.prevent="pay">結帳</button>
             </div>
           </div>
           <div class="modal-body" v-else>
-            <h4 class="text-center">您還沒有購物喔~請快挑選吧!</h4>
+            <h4 class="text-center mb-3">您還沒有購物喔~請快挑選吧!</h4>
+            <div class="d-flex justify-content-center border-0">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">
+                確定
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -184,8 +184,15 @@ export default {
         )
         .then(() => {
           vm.getShopping()
-          vm.isLoading = false
           $('#shoppingModal').modal('hide')
+          vm.isLoading = false
+          vm.$swal({
+            icon: 'success',
+            iconHtml: '<span class="material-icons h2 mb-0 text-primary">remove_shopping_cart</span>',
+            title: '已清除購物車!',
+            showConfirmButton: false,
+            timer: 2000
+          })
         })
     },
     pay () {

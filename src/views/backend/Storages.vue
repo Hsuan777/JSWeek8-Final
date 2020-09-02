@@ -5,7 +5,6 @@
         <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/lVFaRgYrO5dCfyEBJqB9Jz9OVpximp3hFlU1Wa1FxK0vEbkNMPzyoCR70gJhz7j3As6yvoJtJ3oceAGtWCv5rSTXleOyQqUed4vAYzX8e5ElrwIgukry35YQJVzDkdki.gif" alt="">
       </template>
     </loading>
-    <notice :message="message"></notice>
     <h2 class="font-weight-bold my-5">檔案列表</h2>
     <div class="d-flex justify-content-end mb-2">
       <button
@@ -57,8 +56,8 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header bg-dark">
-            <h5 class="modal-title text-white font-weight-bold">{{ modalTitle }}</h5>
+          <div class="modal-header bg-secondary">
+            <h5 class="modal-title font-weight-bold">{{ modalTitle }}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -83,11 +82,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              @click.prevent="addData"
-            >Save</button>
+            <button type="button" class="btn btn-primary" @click.prevent="addData">Save</button>
           </div>
         </div>
       </div>
@@ -104,8 +99,8 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header bg-danger">
-            <h5 class="modal-title text-white">刪除檔案</h5>
+          <div class="modal-header bg-secondary">
+            <h5 class="modal-title text-danger">刪除檔案</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -119,11 +114,11 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-primary"
+              class="btn btn-outline-danger"
               @click.prevent="deleteData"
               data-dismiss="modal"
             >Delete</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -133,11 +128,9 @@
 
 <script>
 import $ from 'jquery'
-import Notice from '@/components/Notice.vue'
 import Pagination from '@/components/Pagination.vue'
 export default {
   components: {
-    Notice,
     Pagination
   },
   data () {
@@ -159,9 +152,7 @@ export default {
   methods: {
     getData (page = 1) {
       const vm = this
-      setTimeout(() => {
-        vm.isLoading = true
-      }, 1000)
+      vm.isLoading = true
       vm.axios
         .get(
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage?page=${page}`
@@ -169,9 +160,7 @@ export default {
         .then((response) => {
           vm.hexAPI.data = response.data.data
           vm.pagination = response.data.meta.pagination
-          setTimeout(() => {
-            vm.isLoading = false
-          }, 0)
+          vm.isLoading = false
         })
     },
     previewFile () {
@@ -191,7 +180,8 @@ export default {
     addData () {
       const vm = this
       vm.isLoading = false
-      if (vm.previewTemporary.file) {
+      if (vm.previewTemporary.src) {
+        console.log(vm.previewTemporary)
         const formData = new FormData()
         vm.isLoading = true
         $('#addStorageModal').modal('hide')
@@ -199,24 +189,48 @@ export default {
         vm.axios
           .post(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage`, formData)
           .then(() => {
-            vm.getData()
-            vm.cleanData()
+            vm.isLoading = false
+            vm.$swal({
+              icon: 'success',
+              title: '新增成功',
+              showConfirmButton: false,
+              timer: 1500
+            }).then((result) => {
+              if (!result.value) {
+                vm.getData()
+              }
+            })
           })
+          .catch((error) => {
+            vm.isLoading = false
+            vm.$swal({
+              icon: 'error',
+              title: '新增失敗',
+              text: `${error.message}`,
+              confirmButtonText: '確定'
+            }).then((result) => {
+              if (result.value) {
+                vm.getData()
+              }
+            })
+          })
+        vm.cleanImage()
       } else {
         $('#addStorageModal').modal('hide')
-        vm.message = '請先加入檔案!'
-        $('#noticeModal').modal('show')
-        setTimeout(() => {
-          $('#noticeModal').modal('hide')
-        }, 1500)
+        vm.$swal({
+          icon: 'info',
+          title: '請先加入檔案',
+          confirmButtonText: '確定'
+        }).then((result) => {
+          if (result.value) {
+            $('#addStorageModal').modal('show')
+          }
+        })
       }
     },
     /* 新建檔案 */
     initData () {
-      this.previewTemporary = {
-        file: '',
-        src: ''
-      }
+      this.cleanImage()
       this.modalTitle = '新增檔案'
     },
     /* 複製資料 */
@@ -235,14 +249,43 @@ export default {
           vm.axios
             .delete(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/storage/${vm.temporary.id}`)
             .then(() => {
-              vm.getData()
-              vm.cleanData()
+              vm.isLoading = false
+              vm.$swal({
+                icon: 'success',
+                title: '刪除成功',
+                showConfirmButton: false,
+                timer: 1500
+              }).then((result) => {
+                if (!result.value) {
+                  vm.getData()
+                  vm.temporary = {}
+                }
+              })
+            })
+            .catch((error) => {
+              vm.isLoading = false
+              vm.$swal({
+                icon: 'error',
+                title: '刪除失敗',
+                text: `${error.message}`,
+                confirmButtonText: '確定'
+              }).then((result) => {
+                if (result.value) {
+                  vm.getData()
+                  vm.temporary = {}
+                }
+              })
             })
         }
       })
     },
-    cleanData () {
-      this.temporary = {}
+    cleanImage () {
+      this.previewTemporary = {
+        file: '',
+        src: ''
+      }
+      this.$refs.updataFile.value = ''
+      this.$set(this.$refs.previewImg, 'src', '')
     }
   },
   created () {

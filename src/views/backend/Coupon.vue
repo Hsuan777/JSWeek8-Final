@@ -5,7 +5,6 @@
         <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/lVFaRgYrO5dCfyEBJqB9Jz9OVpximp3hFlU1Wa1FxK0vEbkNMPzyoCR70gJhz7j3As6yvoJtJ3oceAGtWCv5rSTXleOyQqUed4vAYzX8e5ElrwIgukry35YQJVzDkdki.gif" alt="">
       </template>
     </loading>
-    <notice :message="message"></notice>
     <h2 class="font-weight-bold my-5">優惠券列表</h2>
     <div class="d-flex justify-content-end mb-2">
       <button
@@ -169,8 +168,8 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header bg-danger">
-            <h5 class="modal-title text-white">刪除優惠券</h5>
+          <div class="modal-header bg-secondary">
+            <h5 class="modal-title text-danger">刪除優惠券</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -184,11 +183,11 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-primary"
+              class="btn btn-outline-danger"
               @click.prevent="deleteData"
               data-dismiss="modal"
             >Delete</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -198,11 +197,7 @@
 
 <script>
 import $ from 'jquery'
-import Notice from '@/components/Notice.vue'
 export default {
-  components: {
-    Notice
-  },
   data () {
     return {
       hexAPI: {
@@ -225,18 +220,14 @@ export default {
   methods: {
     getData () {
       const vm = this
-      setTimeout(() => {
-        vm.isLoading = true
-      }, 1000)
+      vm.isLoading = true
       vm.axios
         .get(
           `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupons`
         )
         .then((response) => {
           vm.hexAPI.data = response.data.data
-          setTimeout(() => {
-            vm.isLoading = false
-          }, 0)
+          vm.isLoading = false
         })
     },
     /* 新增資料 */
@@ -247,12 +238,29 @@ export default {
         .post(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon`, vm.temporary)
         .then(() => {
           vm.isLoading = false
-          vm.message = '新增成功!'
-          $('#noticeModal').modal('show')
-          setTimeout(() => {
-            $('#noticeModal').modal('hide')
-          }, 1500)
-          vm.getData()
+          vm.$swal({
+            icon: 'success',
+            title: '新增成功',
+            showConfirmButton: false,
+            timer: 1500
+          }).then((result) => {
+            if (!result.value) {
+              vm.getData()
+            }
+          })
+        })
+        .catch((error) => {
+          vm.isLoading = false
+          vm.$swal({
+            icon: 'error',
+            title: '新增失敗',
+            text: `${error.message}`,
+            confirmButtonText: '確定'
+          }).then((result) => {
+            if (result.value) {
+              vm.getData()
+            }
+          })
         })
     },
     /* 新建資料 */
@@ -288,21 +296,36 @@ export default {
               .patch(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${vm.temporary.id}`, vm.temporary)
               .then(() => {
                 vm.isLoading = false
-                vm.message = '修改成功!'
-                $('#noticeModal').modal('show')
-                setTimeout(() => {
-                  $('#noticeModal').modal('hide')
-                }, 1500)
-                vm.getData()
-                vm.cleanData()
-                vm.modalTitle = vm.temporary.title
+                vm.$swal({
+                  icon: 'success',
+                  title: '修改成功',
+                  showConfirmButton: false,
+                  timer: 1500
+                }).then((result) => {
+                  if (!result.value) {
+                    vm.getData()
+                  }
+                })
+              })
+              .catch((error) => {
+                vm.isLoading = false
+                vm.$swal({
+                  icon: 'error',
+                  title: '修改失敗',
+                  text: `${error.message}`,
+                  confirmButtonText: '確定'
+                }).then((result) => {
+                  if (result.value) {
+                    vm.getData()
+                  }
+                })
               })
           }
         })
       } else {
         vm.addData()
       }
-      vm.cleanData()
+      vm.temporary = {}
     },
     /* 刪除資料 */
     deleteData () {
@@ -314,20 +337,33 @@ export default {
             .delete(`${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/admin/ec/coupon/${vm.temporary.id}`)
             .then(() => {
               vm.isLoading = false
-              vm.message = '刪除成功!'
-              $('#noticeModal').modal('show')
-              setTimeout(() => {
-                $('#noticeModal').modal('hide')
-              }, 1500)
-              vm.getData()
-              vm.cleanData()
+              vm.$swal({
+                icon: 'success',
+                title: '刪除成功',
+                showConfirmButton: false,
+                timer: 1500
+              }).then((result) => {
+                if (!result.value) {
+                  vm.getData()
+                }
+              })
+            })
+            .catch((error) => {
               vm.isLoading = false
+              vm.$swal({
+                icon: 'error',
+                title: '刪除失敗',
+                text: `${error.message}`,
+                confirmButtonText: '確定'
+              }).then((result) => {
+                if (result.value) {
+                  vm.getData()
+                }
+              })
             })
         }
       })
-    },
-    cleanData () {
-      this.temporary = {}
+      vm.temporary = {}
     }
   },
   created () {
