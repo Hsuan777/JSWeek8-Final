@@ -6,7 +6,7 @@
         <div class="container banner__title">
           <div class="row h-100 d-flex align-items-center">
             <div class="col">
-              <h2 class="font-weight-bold mb-3" data-aos="fade-down" data-aos-delay="300">台中行李箱維修</h2>
+              <h2 class="font-weight-bold h1 mb-3" data-aos="fade-down" data-aos-delay="300">台中行李箱維修</h2>
               <h4 class="d-flex flex-column flex-md-row mb-3">
                 <span class="d-flex align-items-center" data-aos="fade-up" data-aos-delay="600">
                   <span class="material-icons">arrow_right</span>不分廠牌
@@ -18,9 +18,7 @@
                   <span class="material-icons">arrow_right</span>快速取件
                 </span>
               </h4>
-              <div class="btn-group">
-                <a href="#repair" class="btn btn-primary btn-lg" data-aos="zoom-in" data-aos-delay="500">快速維修</a>
-              </div>
+              <a href="#repair" class="btn btn-primary btn-lg ml-1" data-aos="zoom-in" data-aos-delay="500">快速維修</a>
             </div>
           </div>
         </div>

@@ -17,9 +17,8 @@
           </div>
         </div>
       </div>
-      <div class="col d-lg-none">
-        <!-- TODO:RWD時無法使用 sticky-top-->
-        <select class="form-control mb-3" @change="categoryData($event.target.value)" v-if="category.list">
+      <div class="custom__category--top col d-lg-none sticky-top">
+        <select class=" form-control mb-3" @change="categoryData($event.target.value)" v-if="category.list">
           <option :value="item" v-for="(item, index) in category.list" :key="index">{{ item }}</option>
         </select>
       </div>

@@ -127,7 +127,7 @@
         </validation-observer>
       </div>
       <div class="col-lg-6">
-        <div class="sticky-top">
+        <div class="custom__category--top sticky-top">
           <table class="table table-borderless sticky-top">
             <thead>
               <tr>
