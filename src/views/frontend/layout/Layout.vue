@@ -22,15 +22,15 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="custom__nav navbar-nav ml-auto">
-            <li class="nav-item custom__nav--hover" :class="{'active':navIndex === 0}" @click="collapseHide(0)">
+            <li class="nav-item custom__nav--hover" :class="{'active':navIndex === '0'}" @click="collapseHide('0')">
               <router-link to="/products" class="nav-link d-none d-lg-block">行李箱</router-link>
               <router-link to="/products" class="nav-link border-bottom d-lg-none">行李箱</router-link>
             </li>
-            <li class="nav-item custom__nav--hover" :class="{'active':navIndex === 1}" @click="collapseHide(1)">
+            <li class="nav-item custom__nav--hover" :class="{'active':navIndex === '1'}" @click="collapseHide('1')">
               <router-link to="/about" class="nav-link d-none d-lg-block">關於我們</router-link>
               <router-link to="/about" class="nav-link border-bottom d-lg-none">關於我們</router-link>
             </li>
-            <li class="nav-item custom__nav--hover" :class="{'active':navIndex === 2}" @click="collapseHide(2)">
+            <li class="nav-item custom__nav--hover" :class="{'active':navIndex === '2'}" @click="collapseHide('2')">
               <router-link to="/questions" class="nav-link d-none d-lg-block">常見問題</router-link>
               <router-link to="/questions" class="nav-link border-bottom d-lg-none">常見問題</router-link>
             </li>
@@ -79,6 +79,7 @@
             <p class="text-center text-secondary mb-0">
               <span>台中行李箱維修</span>
               <small class="d-block d-md-inline"> © 2020. All Rights Reserved.</small>
+              <small class="d-block"> 商品價格為參考，實際價格更加優惠，歡迎來電詢問~</small>
             </p>
           </div>
         </div>

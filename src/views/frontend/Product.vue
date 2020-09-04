@@ -68,6 +68,7 @@
               <swiper-slide v-for="(item, index) in hexAPI.product.imageUrl" :key="index">
                 <img :src="item" class="inner__iconImg" @click="selectImg(hexAPI.product.imageUrl[index])">
               </swiper-slide>
+              <div class="swiper-pagination" slot="pagination"></div>
               <div class="swiper-button-prev" slot="button-prev" @click="swiperNavigation"></div>
               <div class="swiper-button-next" slot="button-next" @click="swiperNavigation('next')"></div>
             </swiper>
@@ -111,6 +112,10 @@ export default {
         slidesPerView: 4,
         spaceBetween: 10,
         grabCursor: true,
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'fraction'
+        },
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'

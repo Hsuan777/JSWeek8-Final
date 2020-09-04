@@ -9,7 +9,7 @@
     <div class="row">
       <div class="col-lg-6">
         <validation-observer v-slot="{ invalid }">
-          <form @submit.prevent="submitForm">
+          <form>
             <validation-provider
               rules="required"
               v-slot="{ errors, classes }"

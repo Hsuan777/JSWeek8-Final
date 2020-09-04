@@ -82,7 +82,7 @@ export default {
         list: ['全部分類'],
         data: []
       },
-      categoryIndex: ''
+      categoryIndex: 0
     }
   },
   methods: {
