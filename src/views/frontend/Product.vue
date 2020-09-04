@@ -70,8 +70,8 @@
               </swiper-slide>
               <div class="swiper-pagination" slot="pagination"></div>
             </swiper>
-            <div class="swiper-button-prev p-2" slot="button-prev"></div>
-            <div class="swiper-button-next p-2" slot="button-next"></div>
+            <div class="swiper-button-prev p-2" slot="button-prev" v-if="hexAPI.product.imageUrl[1]"></div>
+            <div class="swiper-button-next p-2" slot="button-next" v-if="hexAPI.product.imageUrl[1]"></div>
           </div>
         </div>
       </div>
