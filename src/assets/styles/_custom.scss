@@ -42,15 +42,11 @@
   &__home{
     position: relative;
     background-image: 
-    linear-gradient(120deg, rgb(247, 244, 244) 45%, transparent 60%),
-    url('https://images.unsplash.com/photo-1509134072290-fffe152264c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80');
-    // 圖片保留區
+    linear-gradient(120deg, rgba(247, 244, 244, 0.8) 50%, transparent 60%),
+    url('https://cdn.pixabay.com/photo/2014/11/06/10/56/airport-519020_1280.jpg');
     // background-image: 
-    // linear-gradient(120deg, #fff 25%, transparent 50%),
-    // url('https://images.unsplash.com/photo-1581553675306-743b47b3510a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80');
-    // background-image: 
-    // linear-gradient(120deg, #fff 25%, transparent 50%),
-    // url('https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80');
+    // linear-gradient(120deg, rgb(247, 244, 244) 45%, transparent 60%),
+    // url('https://images.unsplash.com/photo-1509134072290-fffe152264c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80');
     background-size: 100% 100%, cover;
     background-position: center center, center center;
   }

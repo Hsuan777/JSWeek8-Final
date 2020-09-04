@@ -63,15 +63,15 @@
           <div class="card-head p-0">
             <img :src="selectImage" class="inner__producImg object-fit rounded-top">
           </div>
-          <div class="card-body" v-if="hexAPI.product.imageUrl">
-            <swiper class="swiper" ref="mySwiperRef" :options="swiperOption" v-if="hexAPI.product.imageUrl[1]">
+          <div class="card-body position-relative" v-if="hexAPI.product.imageUrl">
+            <swiper class="swiper" :options="swiperOption" v-if="hexAPI.product.imageUrl[1]">
               <swiper-slide v-for="(item, index) in hexAPI.product.imageUrl" :key="index">
                 <img :src="item" class="inner__iconImg" @click="selectImg(hexAPI.product.imageUrl[index])">
               </swiper-slide>
               <div class="swiper-pagination" slot="pagination"></div>
-              <div class="swiper-button-prev" slot="button-prev" @click="swiperNavigation"></div>
-              <div class="swiper-button-next" slot="button-next" @click="swiperNavigation('next')"></div>
             </swiper>
+            <div class="swiper-button-prev p-2" slot="button-prev"></div>
+            <div class="swiper-button-next p-2" slot="button-next"></div>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
 <script>
 import Cart from '@/components/Cart.vue'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import 'swiper/swiper-bundle.css'
+import 'swiper/css/swiper.css'
 export default {
   components: {
     Cart,
@@ -111,10 +111,12 @@ export default {
       swiperOption: {
         slidesPerView: 4,
         spaceBetween: 10,
+        centeredSlides: true,
         grabCursor: true,
         pagination: {
           el: '.swiper-pagination',
-          type: 'fraction'
+          type: 'bullets',
+          clickable: true
         },
         navigation: {
           nextEl: '.swiper-button-next',
@@ -201,13 +203,6 @@ export default {
             break
           }
       }
-    },
-    swiperNavigation (action) {
-      if (action === 'next') {
-        this.$refs.mySwiperRef.$swiper.slideNext()
-      } else {
-        this.$refs.mySwiperRef.$swiper.slidePrev()
-      }
     }
   },
   created () {
@@ -221,9 +216,12 @@ export default {
     color: #9bdfe9;
   }
   .swiper-button-prev {
-    margin-left: -10px;
+    margin-left: -18px;
   }
   .swiper-button-next {
-    margin-right: -10px;
+    margin-right: -18px;
+  }
+  .swiper-pagination-bullets{
+    bottom:-5px;
   }
 </style>
