@@ -108,13 +108,6 @@ export default {
       type: Object
     }
   },
-  filters: {
-    commaFormat (value) {
-      const parts = value.toString().split('.')
-      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-      return 'NT. ' + parts.join('.')
-    }
-  },
   methods: {
     getShopping () {
       const vm = this

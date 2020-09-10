@@ -101,6 +101,7 @@
     </div>
   </section>
 </template>
+
 <script>
 import $ from 'jquery'
 export default {

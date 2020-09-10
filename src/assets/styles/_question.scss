@@ -13,8 +13,6 @@
           display: block;
         }
         &__title__icon {
-          // background-image: url("../public/ic_keyboard_arrow_down_24px.svg");
-          // background-image: url("../public/ic_keyboard_arrow_down_24px.svg");
           width: 40px;
           height: 24px;
           display: block;
@@ -32,16 +30,9 @@
       padding:22px;
     }
     &__icon {
-      // background-image: url("../public/ic_keyboard_arrow_up_24px.svg");
       width: 40px;
       height: 26px;
       display: block;
     }
-  }
-  &__text {
-    // padding: 22px 38px;
-    // background-color: #f2f2f2;
-    // border-bottom: 1px solid #000;
-    // display: none;
   }
 }

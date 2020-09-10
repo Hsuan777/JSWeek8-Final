@@ -112,22 +112,24 @@
                     <div class="col-6">
                       <div class="form-group">
                         <label for="deadline_at" class>到期日</label>
-                        <input
+                        <!-- <input
                           type="text"
                           id="deadline_at"
                           placeholder="到期日"
                           class="form-control"
                           v-if="temporary.deadline"
                           v-model="temporary.deadline.datetime"
-                        />
-                        <input
+                        /> -->
+                        <date-picker v-model="temporary.deadline_at" type="datetime" value-type="format" format="YYYY-MM-DD HH:mm:ss" placeholder="到期時間" v-if="temporary" ref="testTime"></date-picker>
+                        <!-- <date-picker v-model="temporary.deadline_at" type="datetime" :placeholder="temporary.deadline_at" v-if="temporary.deadline_at"></date-picker> -->
+                        <!-- <input
                           type="text"
                           id="deadline_at"
                           placeholder="到期日"
                           class="form-control"
                           v-if="temporary.deadline_at"
                           v-model="temporary.deadline_at"
-                        />
+                        /> -->
                       </div>
                     </div>
                   </div>
@@ -197,23 +199,26 @@
 
 <script>
 import $ from 'jquery'
+import DatePicker from 'vue2-datepicker'
+import 'vue2-datepicker/index.css'
 export default {
+  components: { DatePicker },
   data () {
     return {
       hexAPI: {
         data: {}
       },
+      dateTimeline: '',
       coupon: {
         title: '振興三倍速',
         code: 'code871',
         percent: 10,
         enabled: true,
         // TODO: 格式化時間
-        deadline_at: '2020-12-31 23:23:59'
+        deadline_at: '2020-12-31 23:59:59'
       },
       temporary: {},
       modalTitle: '',
-      message: '',
       isLoading: false
     }
   },
@@ -267,6 +272,8 @@ export default {
     initData () {
       this.modalTitle = '新增優惠券'
       this.temporary = { ...this.coupon }
+      this.temporary.deadline_at = this.$refs.testTime.$el
+      console.log(this.$refs.testTime)
     },
     /* 複製資料 */
     copyData (action, item) {
