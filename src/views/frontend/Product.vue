@@ -58,7 +58,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6 mb-5">
         <div class="card border-0">
           <div class="card-head p-0">
             <img :src="selectImage" class="inner__producImg object-fit rounded-top">
@@ -74,6 +74,17 @@
             <div class="swiper-button-next p-2" slot="button-next" v-if="hexAPI.product.imageUrl[1]"></div>
           </div>
         </div>
+      </div>
+      <div class="col d-none d-md-block">
+         <h3 class="mb-3">更多商品</h3>
+         <swiper class="swiper" :options="otherProductSwiperOption">
+          <swiper-slide v-for="(item, index) in hexAPI.data" :key="index">
+            <router-link :to="`/product/${item.id}`" target="_blank">
+              <img :src="item.imageUrl[0]" class="inner__iconImg" >
+              <p class="text-center">{{ item.title }}</p>
+            </router-link>
+          </swiper-slide>
+        </swiper>
       </div>
     </div>
   </section>
@@ -92,6 +103,7 @@ export default {
   data () {
     return {
       hexAPI: {
+        data: {},
         product: {}
       },
       product: {
@@ -115,17 +127,40 @@ export default {
         grabCursor: true,
         pagination: {
           el: '.swiper-pagination',
-          type: 'bullets',
           clickable: true
         },
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
         }
+      },
+      otherProductSwiperOption: {
+        slidesPerView: 5,
+        spaceBetween: 20,
+        grabCursor: true,
+        loop: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false
+        }
       }
+
     }
   },
   methods: {
+    getData (page = 1) {
+      const vm = this
+      vm.isLoading = true
+      vm.axios
+        .get(
+          `${process.env.VUE_APP_APIPATH}${process.env.VUE_APP_UUID}/ec/products?page=${page}`
+        )
+        .then((response) => {
+          vm.hexAPI.data = response.data.data
+          vm.shuffleSelf(vm.hexAPI.data, 19)
+          vm.isLoading = false
+        })
+    },
     getProduct (pid) {
       const vm = this
       vm.isLoading = true
@@ -203,10 +238,26 @@ export default {
             break
           }
       }
+    },
+    shuffleSelf (array, size) {
+      let index = -1
+      const length = array.length
+      const lastIndex = length - 1
+
+      size = size === undefined ? length : size
+      while (++index < size) {
+        const rand = index + Math.floor(Math.random() * (lastIndex - index + 1))
+        const value = array[rand]
+        array[rand] = array[index]
+        array[index] = value
+      }
+      array.length = size
+      return array
     }
   },
   created () {
     this.getProduct(this.$route.params.id)
+    this.getData()
   }
 }
 </script>
