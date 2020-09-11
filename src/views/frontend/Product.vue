@@ -58,7 +58,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6 mb-5">
+      <div class="col-lg-6 mb-3 mb-lg-5">
         <div class="card border-0">
           <div class="card-head p-0">
             <img :src="selectImage" class="inner__producImg object-fit rounded-top">
@@ -78,6 +78,17 @@
       <div class="col d-none d-md-block">
          <h3 class="mb-3">更多商品</h3>
          <swiper class="swiper" :options="otherProductSwiperOption">
+          <swiper-slide v-for="(item, index) in hexAPI.data" :key="index">
+            <router-link :to="`/product/${item.id}`" target="_blank">
+              <img :src="item.imageUrl[0]" class="inner__iconImg" >
+              <p class="text-center">{{ item.title }}</p>
+            </router-link>
+          </swiper-slide>
+        </swiper>
+      </div>
+      <div class="col d-md-none">
+         <h3 class="mb-3">更多商品</h3>
+         <swiper class="swiper" :options="otherProductSwiperOptionSM">
           <swiper-slide v-for="(item, index) in hexAPI.data" :key="index">
             <router-link :to="`/product/${item.id}`" target="_blank">
               <img :src="item.imageUrl[0]" class="inner__iconImg" >
@@ -137,6 +148,16 @@ export default {
       otherProductSwiperOption: {
         slidesPerView: 5,
         spaceBetween: 20,
+        grabCursor: true,
+        loop: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false
+        }
+      },
+      otherProductSwiperOptionSM: {
+        slidesPerView: 2,
+        spaceBetween: 10,
         grabCursor: true,
         loop: true,
         autoplay: {
