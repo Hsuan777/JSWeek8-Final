@@ -112,8 +112,18 @@
                     <div class="col-6">
                       <div class="form-group">
                         <label for="deadline_at">到期日</label>
-                        <date-picker v-model="temporary.deadline_at" type="datetime" value-type="format" format="YYYY-MM-DD HH:mm:ss" v-if="temporary.deadline_at" id="deadline_at" class="w-100"></date-picker>
-                        <date-picker v-model="temporary.deadline.datetime" type="datetime" value-type="format" format="YYYY-MM-DD HH:mm:ss" v-if="temporary.deadline" id="deadline_at" class="w-100"></date-picker>
+                        <date-picker
+                          v-model="temporary.deadline_at"
+                          type="datetime" value-type="format" :disabled-date="disabledBeforeToday"
+                          format="YYYY-MM-DD HH:mm:ss" v-if="temporary.deadline_at"
+                          id="deadline_at" class="w-100">
+                        </date-picker>
+                        <date-picker
+                          v-model="temporary.deadline.datetime"
+                          type="datetime" value-type="format" :disabled-date="disabledBeforeToday"
+                          format="YYYY-MM-DD HH:mm:ss" v-if="temporary.deadline"
+                          id="deadline_at" class="w-100">
+                        </date-picker>
                       </div>
                     </div>
                   </div>
@@ -185,6 +195,7 @@
 import $ from 'jquery'
 import DatePicker from 'vue2-datepicker'
 import 'vue2-datepicker/index.css'
+import 'vue2-datepicker/locale/zh-tw'
 export default {
   components: { DatePicker },
   data () {
@@ -198,7 +209,6 @@ export default {
         code: 'code871',
         percent: 10,
         enabled: true,
-        // TODO: 格式化時間
         deadline_at: '2020-12-31 23:59:59'
       },
       temporary: {
@@ -356,6 +366,9 @@ export default {
         }
       })
       vm.temporary = {}
+    },
+    disabledBeforeToday (date) {
+      return date < new Date(new Date().setHours(0, 0, 0, 0))
     }
   },
   created () {
@@ -363,3 +376,13 @@ export default {
   }
 }
 </script>
+<style>
+  .mx-input {
+    height: calc(1.5em + 0.75rem + 2px);
+    font-size: 1rem;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    box-shadow:0;
+  }
+</style>

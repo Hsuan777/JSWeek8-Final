@@ -60,16 +60,16 @@
               </a>
               <a
                 href="https://www.facebook.com/%E5%8F%B0%E4%B8%AD%E8%A1%8C%E6%9D%8E%E7%AE%B1%E7%B6%AD%E4%BF%AE-2188614921350371/"
-                class="h2 text-decoration-none text-white mb-0 mr-2">
+                class="h2 text-decoration-none text-white mb-0 mr-2" target="_blank">
                 <i class="fab fa-facebook-square"></i>
               </a>
               <a
-                href="line://ti/p/@0903017408"
+                href="line://ti/p/@0903017408" target="_blank"
                 class="h2 text-decoration-none text-white mb-0 d-lg-none">
                 <i class="fab fa-line"></i>
               </a>
               <a
-                href="https://line.me/R/ti/p/0903017408"
+                href="https://line.me/R/ti/p/0903017408" target="_blank"
                 class="h2 text-decoration-none text-white mb-0 d-none d-lg-block">
                 <i class="fab fa-line"></i>
               </a>
