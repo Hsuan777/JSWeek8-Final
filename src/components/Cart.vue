@@ -38,7 +38,7 @@
               <thead>
                 <tr>
                   <th>商品</th>
-                  <th class="text-center">數量</th>
+                  <th class="text-right">數量</th>
                   <th></th>
                 </tr>
               </thead>
@@ -48,9 +48,9 @@
                     <span class="text-primary">{{ item.product.title }}</span>
                     <span class="d-block">{{ item.product.price|commaFormat }}</span>
                   </td>
-                  <td class="align-middle text-center">
+                  <td class="align-middle">
                     <nav aria-label="Quantity navigation">
-                      <ul class="pagination mb-0">
+                      <ul class="pagination mb-0 d-flex justify-content-end">
                         <li class="page-item">
                           <button type="button" class="page-link border border-secondary text-dark" @click.prevent="productQuantity('reduce', item.product.id, item.quantity)"> - </button>
                         </li>
@@ -94,6 +94,7 @@
     </div>
   </aside>
 </template>
+
 <script>
 import $ from 'jquery'
 export default {

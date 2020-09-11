@@ -3,6 +3,7 @@
     <span class="material-icons">arrow_upward</span>
   </button>
 </template>
+
 <script>
 export default {
   data () {

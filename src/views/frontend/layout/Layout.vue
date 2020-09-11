@@ -45,7 +45,7 @@
         <div class="row align-items-center">
           <div class="col">
             <div class="d-flex flex-column justify-content-center">
-              <a href="http://maps.google.com/maps?q=台中市西屯區黎明路三段477號" class="text-white text-nowrap text-decoration">
+              <a href="https://maps.google.com/maps?q=台中市西屯區黎明路三段477號" target="_blank" class="text-white text-nowrap text-decoration">
                 台中市西屯區黎明路三段477號
               </a>
               <p class="mb-0 text-nowrap text-white">週一 ~ 週六 10:00~17:00</p>

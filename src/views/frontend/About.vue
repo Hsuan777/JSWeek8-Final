@@ -58,27 +58,27 @@
           </li>
           <li>
             <a
-              href="https://www.facebook.com/%E5%8F%B0%E4%B8%AD%E8%A1%8C%E6%9D%8E%E7%AE%B1%E7%B6%AD%E4%BF%AE-2188614921350371/"
-              class="icon__FB d-flex align-items-center h3 text-decoration-none ">
+              href="https://www.facebook.com/%E5%8F%B0%E4%B8%AD%E8%A1%8C%E6%9D%8E%E7%AE%B1%E7%B6%AD%E4%BF%AE-2188614921350371/" target="_blank"
+              class="icon__FB d-flex align-items-center h3 text-decoration-none">
                 <i class="fab fa-facebook-square h2 mb-0 mr-3"></i>
                 <span class="text-decoration">台中行李箱維修</span>
             </a>
           </li>
           <li>
-            <a href="https://line.me/ti/p/0903017408" class="icon__LINE d-flex align-items-center h3 text-decoration-none ">
+            <a href="https://line.me/ti/p/0903017408" target="_blank" class="icon__LINE d-flex align-items-center h3 text-decoration-none ">
               <i class="fab fa-line h2 mb-0 mr-3"></i>
               <span class="text-decoration">ID 0903017408</span>
             </a>
           </li>
           <li>
-            <a href="http://maps.google.com/maps?q=台中市西屯區黎明路三段477號" class="d-flex align-items-center h3 text-decoration-none">
+            <a href="http://maps.google.com/maps?q=台中市西屯區黎明路三段477號" target="_blank" class="d-flex align-items-center h3 text-decoration-none">
               <span class="material-icons h2 mb-0 mr-2">location_on</span>
               <span class="text-decoration">台中市西屯區黎明路三段477號</span>
             </a>
           </li>
           <li>
             <p class="d-flex align-items-center h3 text-primary">
-              <span class="material-icons text-primary h2 mb-0 mr-2 ">event_available</span>
+              <span class="material-icons text-primary h2 mb-0 mr-2">event_available</span>
               週一 ~ 週六 10:00 ~ 17:00
             </p>
           </li>

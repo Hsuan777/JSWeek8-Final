@@ -243,7 +243,6 @@ export default {
       let index = -1
       const length = array.length
       const lastIndex = length - 1
-
       size = size === undefined ? length : size
       while (++index < size) {
         const rand = index + Math.floor(Math.random() * (lastIndex - index + 1))
