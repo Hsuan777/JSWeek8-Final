@@ -45,8 +45,8 @@
         <div class="row align-items-center">
           <div class="col">
             <div class="d-flex flex-column justify-content-center">
-              <a href="https://maps.google.com/maps?q=台中市西屯區黎明路三段477號" target="_blank" class="text-white text-nowrap text-decoration">
-                台中市西屯區黎明路三段477號
+              <a href="https://maps.google.com/maps?q=台中市西屯區123號" target="_blank" class="text-white text-nowrap text-decoration">
+                台中市西屯區123號
               </a>
               <p class="mb-0 text-nowrap text-white">週一 ~ 週六 10:00~17:00</p>
             </div>
@@ -54,7 +54,7 @@
           <div class="col">
             <div class="d-flex justify-content-end align-items-center">
               <a
-                href="tel:0903017408"
+                href="
                 class="h2 text-decoration-none text-white mb-0 mr-2">
                 <i class="fas fa-phone-square-alt"></i>
               </a>
@@ -64,12 +64,12 @@
                 <i class="fab fa-facebook-square"></i>
               </a>
               <a
-                href="line://ti/p/@0903017408" target="_blank"
+                href="" target="_blank"
                 class="h2 text-decoration-none text-white mb-0 d-lg-none">
                 <i class="fab fa-line"></i>
               </a>
               <a
-                href="https://line.me/R/ti/p/0903017408" target="_blank"
+                href="" target="_blank"
                 class="h2 text-decoration-none text-white mb-0 d-none d-lg-block">
                 <i class="fab fa-line"></i>
               </a>
